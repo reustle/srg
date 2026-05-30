@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Schuylkill River Trail Map Sources</title>
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" />
+    <style>
+      :root {
+        --bg: #f5f3ef;
+        --panel: #ffffff;
+        --ink: #202124;
+        --muted: #636b70;
+        --rule: #d9d4ca;
+        --green: #397550;
+        --blue: #276b9f;
+        --red: #d52022;
+        --orange: #f99400;
+        --purple: #7656a6;
+        --shadow: 0 12px 30px rgba(28, 31, 34, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+      }
+
+      #map {
+        position: fixed;
+        inset: 0;
+      }
+
+      .topbar {
+        position: fixed;
+        z-index: 2;
+        top: 16px;
+        left: 16px;
+        right: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        pointer-events: none;
+      }
+
+      .title {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid var(--rule);
+        box-shadow: var(--shadow);
+        pointer-events: auto;
+      }
+
+      .title {
+        max-width: min(520px, calc(100vw - 32px));
+        padding: 14px 16px;
+        border-radius: 8px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .panel {
+        position: fixed;
+        z-index: 2;
+        left: 16px;
+        bottom: 24px;
+        width: min(380px, calc(100vw - 32px));
+        max-height: min(66vh, 680px);
+        overflow: auto;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .panel-header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 13px 14px;
+        background: rgba(255, 255, 255, 0.97);
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .panel-title {
+        font-size: 13px;
+        font-weight: 750;
+        text-transform: uppercase;
+        color: #3a3e41;
+      }
+
+      .panel-meta {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.25;
+        text-transform: none;
+      }
+
+      button {
+        appearance: none;
+        border: 1px solid var(--rule);
+        background: #fff;
+        color: var(--ink);
+        border-radius: 6px;
+        font: inherit;
+        font-size: 12px;
+        line-height: 1;
+        padding: 8px 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #aeb7b2;
+      }
+
+      .group {
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .group:last-child {
+        border-bottom: 0;
+      }
+
+      .group-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 9px;
+      }
+
+      .group h2 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.25;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .count {
+        color: var(--muted);
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      label {
+        display: grid;
+        grid-template-columns: 18px 18px 1fr auto;
+        align-items: center;
+        gap: 8px;
+        min-height: 31px;
+        color: #282d30;
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        accent-color: var(--green);
+      }
+
+      .swatch {
+        width: 16px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--muted);
+      }
+
+      .swatch.point {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        justify-self: center;
+      }
+
+      .swatch.poly {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        opacity: 0.75;
+      }
+
+      .swatch.dashed {
+        background:
+          linear-gradient(90deg, currentColor 0 45%, transparent 45% 65%, currentColor 65% 100%);
+        color: var(--red);
+      }
+
+      .folder-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .folder-list label {
+        grid-template-columns: 18px 14px 1fr auto;
+        font-size: 12px;
+      }
+
+      .mapboxgl-popup-content {
+        max-width: min(340px, calc(100vw - 40px));
+        padding: 13px 14px;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .popup-title {
+        margin: 0 0 6px;
+        font-size: 14px;
+        line-height: 1.25;
+        font-weight: 750;
+      }
+
+      .popup-meta {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .popup-body {
+        margin-top: 8px;
+        color: #34383b;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .popup-link {
+        display: inline-block;
+        margin-top: 8px;
+        color: var(--blue);
+        font-size: 12px;
+        text-decoration: none;
+      }
+
+      .popup-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 760px) {
+        .topbar {
+          top: 10px;
+          left: 10px;
+          right: 74px;
+          align-items: flex-start;
+        }
+
+        .panel {
+          left: 10px;
+          right: 10px;
+          bottom: 16px;
+          width: auto;
+          max-height: 48vh;
+        }
+
+        h1 {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <header class="topbar">
+      <div class="title">
+        <h1>Schuylkill River Trail Map Sources</h1>
+        <div class="subtitle">SRG website map, OpenStreetMap SRT linework, and 2025 improvement map overlays.</div>
+      </div>
+    </header>
+
+    <aside class="panel" aria-label="Layer controls">
+      <div class="panel-header">
+        <div>
+          <div class="panel-title">Layers</div>
+          <div class="panel-meta" id="status">Loading map data</div>
+        </div>
+        <button id="fit-visible" type="button">Fit Visible</button>
+      </div>
+
+      <section class="group">
+        <div class="group-head">
+          <h2>SRG Website Map</h2>
+          <span class="count" id="srg-count">0</span>
+        </div>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-active-off-road" checked />
+          <span class="swatch" style="background: #d52022"></span>
+          <span>Active off-road SRT</span>
+          <span class="count" id="count-srg-active-off-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-active-on-road" checked />
+          <span class="swatch" style="background: #f99400"></span>
+          <span>Active on-road SRT</span>
+          <span class="count" id="count-srg-active-on-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-proposed-off-road" checked />
+          <span class="swatch dashed"></span>
+          <span>Proposed off-road SRT</span>
+          <span class="count" id="count-srg-proposed-off-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-proposed-on-road" checked />
+          <span class="swatch dashed" style="color: #f99400"></span>
+          <span>Proposed on-road SRT</span>
+          <span class="count" id="count-srg-proposed-on-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-trailheads" checked />
+          <span class="swatch point" style="background: #074a67"></span>
+          <span>Trailheads</span>
+          <span class="count" id="count-srg-trailheads"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-towns" checked />
+          <span class="swatch point" style="background: #6db220"></span>
+          <span>Trail towns</span>
+          <span class="count" id="count-srg-towns"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-places" checked />
+          <span class="swatch point" style="background: #8d5b2d"></span>
+          <span>Places to visit</span>
+          <span class="count" id="count-srg-places"></span>
+        </label>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <h2>OpenStreetMap SRT</h2>
+          <span class="count" id="osm-count">0</span>
+        </div>
+        <label>
+          <input type="checkbox" data-layer-toggle="osm-srt" checked />
+          <span class="swatch" style="background: #276b9f"></span>
+          <span>OSM physical ways</span>
+          <span class="count" id="count-osm-srt"></span>
+        </label>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <h2>2025 Improvements</h2>
+          <span class="count" id="improvements-count">0</span>
+        </div>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-lines" checked />
+          <span class="swatch" style="background: #7656a6"></span>
+          <span>Lines</span>
+          <span class="count" id="count-improvements-lines"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-polygons" checked />
+          <span class="swatch poly" style="background: #7c9554"></span>
+          <span>Areas</span>
+          <span class="count" id="count-improvements-polygons"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-points" checked />
+          <span class="swatch point" style="background: #c9503c"></span>
+          <span>Points</span>
+          <span class="count" id="count-improvements-points"></span>
+        </label>
+        <div class="folder-list" id="folder-list"></div>
+      </section>
+    </aside>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoicmV1c3RsZSIsImEiOiJjbXBzZXE4ZnMxN2t4MnNvaDE4cmlxOWUxIn0.REzLL46mXYr71ad-zW02Xg";
+
+      const DATASETS = {
+        srg: "srg-website-map.geojson",
+        osm: "srt-osm.geojson",
+        improvements: "2025-Improvement-Map.geojson",
+      };
+
+      const layerGroups = {
+        "srg-active-off-road": ["srg-active-off-road"],
+        "srg-active-on-road": ["srg-active-on-road"],
+        "srg-proposed-off-road": ["srg-proposed-off-road"],
+        "srg-proposed-on-road": ["srg-proposed-on-road"],
+        "srg-trailheads": ["srg-trailheads"],
+        "srg-towns": ["srg-towns"],
+        "srg-places": ["srg-places"],
+        "osm-srt": ["osm-srt"],
+        "improvements-lines": ["improvements-lines"],
+        "improvements-polygons": ["improvements-polygons-fill", "improvements-polygons-outline"],
+        "improvements-points": ["improvements-points"],
+      };
+
+      const folderColors = [
+        "#c9503c",
+        "#397550",
+        "#276b9f",
+        "#7656a6",
+        "#b77d2c",
+        "#6d6f2d",
+        "#a24d74",
+        "#4f7e86",
+      ];
+
+      const status = document.getElementById("status");
+      const setStatus = (text, good = true) => {
+        status.textContent = text;
+        status.style.color = good ? "#636b70" : "#c9503c";
+      };
+
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/outdoors-v12",
+        center: [-75.75, 40.22],
+        zoom: 8.2,
+        maxZoom: 18,
+      });
+
+      map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
+      map.addControl(new mapboxgl.ScaleControl({ maxWidth: 140, unit: "imperial" }), "bottom-right");
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function htmlToText(value) {
+        if (!value) return "";
+        const doc = new DOMParser().parseFromString(value, "text/html");
+        return (doc.body.textContent || "").replace(/\s+/g, " ").trim();
+      }
+
+      function sourcePageUrl(feature) {
+        const props = feature.properties || {};
+        if (props.source_page_url) return props.source_page_url;
+        if (props.osm_url) return props.osm_url;
+        if (props.source_urlpath) return new URL(props.source_urlpath, "https://schuylkillriver.org").href;
+        if (props.source_url) return props.source_url;
+        return "";
+      }
+
+      function popupHtml(feature) {
+        const props = feature.properties || {};
+        const layer = props.layer || "osm";
+        const title =
+          props.display_name ||
+          props.name ||
+          props.placemark_name ||
+          props.osm_name ||
+          props.segment_name ||
+          props.folder ||
+          "Map feature";
+        const bits = [];
+
+        if (props.status || props.alignment) bits.push([props.status, props.alignment].filter(Boolean).join(" / "));
+        if (props.folder) bits.push(props.folder);
+        if (props.surface) bits.push(`surface: ${props.surface}`);
+        if (props.highway) bits.push(`highway: ${props.highway}`);
+        if (props.source_post_id) bits.push(`SRG post ${props.source_post_id}`);
+        if (props.osm_id) bits.push(`OSM ${props.osm_type || "way"} ${props.osm_id}`);
+
+        const body =
+          htmlToText(props.infowindow_html || props.description_html || props.description).slice(0, 560);
+        const url = sourcePageUrl(feature);
+
+        return `
+          <h3 class="popup-title">${escapeHtml(title)}</h3>
+          <p class="popup-meta">${escapeHtml([layer, ...bits].filter(Boolean).join(" · "))}</p>
+          ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
+          ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
+        `;
+      }
+
+      async function loadGeojson(url) {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`${url}: ${response.status}`);
+        return response.json();
+      }
+
+      function countFeatures(geojson, predicate) {
+        return geojson.features.filter(predicate).length;
+      }
+
+      function setCount(id, value) {
+        document.getElementById(id).textContent = value.toLocaleString();
+      }
+
+      function featureFolder(feature) {
+        return feature.properties?.folder || "Unsorted";
+      }
+
+      function folderColor(folder, folderIndex) {
+        return folderColors[folderIndex[folder] % folderColors.length];
+      }
+
+      function buildMatchExpression(folderIndex) {
+        const expression = ["match", ["coalesce", ["get", "folder"], "Unsorted"]];
+        for (const folder of Object.keys(folderIndex)) {
+          expression.push(folder, folderColor(folder, folderIndex));
+        }
+        expression.push("#c9503c");
+        return expression;
+      }
+
+      function addLayers(srg, osm, improvements) {
+        const folders = [...new Set(improvements.features.map(featureFolder))].sort();
+        const folderIndex = Object.fromEntries(folders.map((folder, index) => [folder, index]));
+        const improvementColor = buildMatchExpression(folderIndex);
+
+        map.addSource("srg", { type: "geojson", data: srg });
+        map.addSource("osm-srt", { type: "geojson", data: osm });
+        map.addSource("improvements", { type: "geojson", data: improvements });
+
+        map.addLayer({
+          id: "srg-active-off-road",
+          type: "line",
+          source: "srg",
+          filter: ["all", ["==", ["get", "layer"], "trail"], ["==", ["get", "status"], "active"], ["==", ["get", "alignment"], "off_road"]],
+          paint: { "line-color": ["coalesce", ["get", "color"], "#d52022"], "line-width": 5, "line-opacity": 0.9 },
+        });
+
+        map.addLayer({
+          id: "srg-active-on-road",
+          type: "line",
+          source: "srg",
+          filter: ["all", ["==", ["get", "layer"], "trail"], ["==", ["get", "status"], "active"], ["==", ["get", "alignment"], "on_road"]],
+          paint: { "line-color": ["coalesce", ["get", "color"], "#f99400"], "line-width": 4, "line-opacity": 0.9 },
+        });
+
+        map.addLayer({
+          id: "srg-proposed-off-road",
+          type: "line",
+          source: "srg",
+          filter: ["all", ["==", ["get", "layer"], "trail"], ["==", ["get", "status"], "proposed"], ["==", ["get", "alignment"], "off_road"]],
+          paint: { "line-color": ["coalesce", ["get", "color"], "#d52022"], "line-width": 4, "line-opacity": 0.8, "line-dasharray": [2, 2] },
+        });
+
+        map.addLayer({
+          id: "srg-proposed-on-road",
+          type: "line",
+          source: "srg",
+          filter: ["all", ["==", ["get", "layer"], "trail"], ["==", ["get", "status"], "proposed"], ["==", ["get", "alignment"], "on_road"]],
+          paint: { "line-color": ["coalesce", ["get", "color"], "#f99400"], "line-width": 4, "line-opacity": 0.8, "line-dasharray": [2, 2] },
+        });
+
+        map.addLayer({
+          id: "osm-srt",
+          type: "line",
+          source: "osm-srt",
+          paint: { "line-color": "#276b9f", "line-width": 2.2, "line-opacity": 0.78 },
+        });
+
+        map.addLayer({
+          id: "improvements-polygons-fill",
+          type: "fill",
+          source: "improvements",
+          filter: ["==", ["geometry-type"], "Polygon"],
+          paint: { "fill-color": improvementColor, "fill-opacity": 0.32 },
+        });
+
+        map.addLayer({
+          id: "improvements-polygons-outline",
+          type: "line",
+          source: "improvements",
+          filter: ["==", ["geometry-type"], "Polygon"],
+          paint: { "line-color": improvementColor, "line-width": 2, "line-opacity": 0.9 },
+        });
+
+        map.addLayer({
+          id: "improvements-lines",
+          type: "line",
+          source: "improvements",
+          filter: ["==", ["geometry-type"], "LineString"],
+          paint: { "line-color": improvementColor, "line-width": 4, "line-opacity": 0.9 },
+        });
+
+        map.addLayer({
+          id: "srg-trailheads",
+          type: "circle",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "trailhead"],
+          paint: { "circle-color": "#074a67", "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 },
+        });
+
+        map.addLayer({
+          id: "srg-towns",
+          type: "circle",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "town"],
+          paint: { "circle-color": "#6db220", "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 },
+        });
+
+        map.addLayer({
+          id: "srg-places",
+          type: "circle",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "places_to_visit"],
+          paint: { "circle-color": "#8d5b2d", "circle-radius": 4.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1 },
+        });
+
+        map.addLayer({
+          id: "improvements-points",
+          type: "circle",
+          source: "improvements",
+          filter: ["==", ["geometry-type"], "Point"],
+          paint: { "circle-color": improvementColor, "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.4 },
+        });
+
+        buildFolderControls(folders, folderIndex, improvements);
+        addPopups();
+      }
+
+      function buildFolderControls(folders, folderIndex, improvements) {
+        const folderList = document.getElementById("folder-list");
+        folderList.innerHTML = "";
+
+        for (const folder of folders) {
+          const id = `folder-${folder.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
+          const count = countFeatures(improvements, (feature) => featureFolder(feature) === folder);
+          const label = document.createElement("label");
+          label.innerHTML = `
+            <input id="${id}" type="checkbox" data-folder="${escapeHtml(folder)}" checked />
+            <span class="swatch point" style="background: ${folderColor(folder, folderIndex)}"></span>
+            <span>${escapeHtml(folder)}</span>
+            <span class="count">${count.toLocaleString()}</span>
+          `;
+          folderList.appendChild(label);
+        }
+
+        folderList.addEventListener("change", () => updateImprovementFolderFilter());
+      }
+
+      function updateImprovementFolderFilter() {
+        const checked = [...document.querySelectorAll("[data-folder]:checked")].map((input) => input.dataset.folder);
+        const folderFilter = checked.length
+          ? ["in", ["coalesce", ["get", "folder"], "Unsorted"], ["literal", checked]]
+          : ["==", ["get", "__never__"], "__none__"];
+
+        for (const layerId of ["improvements-lines", "improvements-polygons-fill", "improvements-polygons-outline", "improvements-points"]) {
+          if (!map.getLayer(layerId)) continue;
+          const geom =
+            layerId === "improvements-lines"
+              ? "LineString"
+              : layerId === "improvements-points"
+                ? "Point"
+                : "Polygon";
+          map.setFilter(layerId, ["all", ["==", ["geometry-type"], geom], folderFilter]);
+        }
+      }
+
+      function addPopups() {
+        const clickableLayers = [
+          "srg-active-off-road",
+          "srg-active-on-road",
+          "srg-proposed-off-road",
+          "srg-proposed-on-road",
+          "srg-trailheads",
+          "srg-towns",
+          "srg-places",
+          "osm-srt",
+          "improvements-lines",
+          "improvements-polygons-fill",
+          "improvements-points",
+        ];
+
+        for (const layerId of clickableLayers) {
+          map.on("mouseenter", layerId, () => {
+            map.getCanvas().style.cursor = "pointer";
+          });
+          map.on("mouseleave", layerId, () => {
+            map.getCanvas().style.cursor = "";
+          });
+          map.on("click", layerId, (event) => {
+            const feature = event.features?.[0];
+            if (!feature) return;
+            new mapboxgl.Popup({ closeButton: true, maxWidth: "360px" })
+              .setLngLat(event.lngLat)
+              .setHTML(popupHtml(feature))
+              .addTo(map);
+          });
+        }
+      }
+
+      function allCoordinates(geometry, out = []) {
+        if (!geometry) return out;
+        if (geometry.type === "Point") out.push(geometry.coordinates);
+        if (geometry.type === "LineString" || geometry.type === "MultiPoint") out.push(...geometry.coordinates);
+        if (geometry.type === "Polygon" || geometry.type === "MultiLineString") {
+          geometry.coordinates.flat(1).forEach((coord) => out.push(coord));
+        }
+        if (geometry.type === "MultiPolygon") {
+          geometry.coordinates.flat(2).forEach((coord) => out.push(coord));
+        }
+        return out;
+      }
+
+      function fitGeojsons(geojsons) {
+        const coords = geojsons.flatMap((geojson) => geojson.features.flatMap((feature) => allCoordinates(feature.geometry)));
+        if (!coords.length) return;
+        const bounds = coords.reduce((box, coord) => box.extend(coord), new mapboxgl.LngLatBounds(coords[0], coords[0]));
+        map.fitBounds(bounds, { padding: { top: 110, right: 40, bottom: 260, left: 420 }, maxZoom: 13, duration: 700 });
+      }
+
+      function setVisibility(toggleName, visible) {
+        for (const layerId of layerGroups[toggleName] || []) {
+          if (map.getLayer(layerId)) {
+            map.setLayoutProperty(layerId, "visibility", visible ? "visible" : "none");
+          }
+        }
+      }
+
+      function wireToggles() {
+        document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
+          input.addEventListener("change", () => setVisibility(input.dataset.layerToggle, input.checked));
+        });
+      }
+
+      function populateCounts(srg, osm, improvements) {
+        setCount("srg-count", srg.features.length);
+        setCount("osm-count", osm.features.length);
+        setCount("improvements-count", improvements.features.length);
+        setCount("count-srg-active-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "off_road"));
+        setCount("count-srg-active-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "on_road"));
+        setCount("count-srg-proposed-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "off_road"));
+        setCount("count-srg-proposed-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "on_road"));
+        setCount("count-srg-trailheads", countFeatures(srg, (f) => f.properties.layer === "trailhead"));
+        setCount("count-srg-towns", countFeatures(srg, (f) => f.properties.layer === "town"));
+        setCount("count-srg-places", countFeatures(srg, (f) => f.properties.layer === "places_to_visit"));
+        setCount("count-osm-srt", osm.features.length);
+        setCount("count-improvements-lines", countFeatures(improvements, (f) => f.geometry?.type === "LineString"));
+        setCount("count-improvements-polygons", countFeatures(improvements, (f) => f.geometry?.type === "Polygon"));
+        setCount("count-improvements-points", countFeatures(improvements, (f) => f.geometry?.type === "Point"));
+      }
+
+      async function init() {
+        try {
+          const [srg, osm, improvements] = await Promise.all([
+            loadGeojson(DATASETS.srg),
+            loadGeojson(DATASETS.osm),
+            loadGeojson(DATASETS.improvements),
+          ]);
+
+          const render = () => {
+            addLayers(srg, osm, improvements);
+            populateCounts(srg, osm, improvements);
+            wireToggles();
+            fitGeojsons([srg, osm, improvements]);
+            document.getElementById("fit-visible").addEventListener("click", () => fitGeojsons([srg, osm, improvements]));
+            setStatus(`${srg.features.length} SRG, ${osm.features.length} OSM, ${improvements.features.length} improvements`);
+          };
+
+          if (map.loaded()) {
+            render();
+          } else {
+            map.once("load", render);
+          }
+        } catch (error) {
+          console.error(error);
+          setStatus("Could not load local GeoJSON files", false);
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>
