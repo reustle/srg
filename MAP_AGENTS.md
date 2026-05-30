@@ -1,6 +1,8 @@
 # Map Agent Notes
 
-This repo contains map data for Schuylkill River Greenways work. Future agents should treat `srt.geojson` as the working master GeoJSON for the Schuylkill River Trail (SRT).
+This repo contains map data for Schuylkill River Greenways work. Future agents should treat `srt-osm.geojson` as the working master OSM-derived GeoJSON for the Schuylkill River Trail (SRT).
+
+The official Schuylkill River Greenways interactive map at `https://schuylkillriver.org/map/` is a separate source from OSM. Its derived local export is `srg-website-map.geojson`, and its raw downloaded sources live under `data/srg-map/raw/`.
 
 ## Schuylkill River Trail Identity
 
@@ -39,7 +41,7 @@ Avoid overwriting meaningful local names with `Schuylkill River Trail`. The bett
 
 ## Master GeoJSON Format
 
-`srt.geojson` is a `FeatureCollection` of physical OSM ways. Each feature should include strong source references:
+`srt-osm.geojson` is a `FeatureCollection` of physical OSM ways. Each feature should include strong source references:
 
 - `id`: stable compound ID, for example `osm:way/588786953`
 - `osm_type`: usually `way`
@@ -60,7 +62,7 @@ Top-level `metadata` should record:
 
 GeoJSON coordinates must be `[longitude, latitude]`.
 
-## Regenerating `srt.geojson`
+## Regenerating `srt-osm.geojson`
 
 The builder is `tools/build_srt_geojson.py`. It expects two Overpass JSON exports:
 
@@ -97,8 +99,55 @@ After saving those payloads, run:
 python3 tools/build_srt_geojson.py \
   --route-json /private/tmp/srt-route-members-overpass.json \
   --named-json /private/tmp/srt-named-ways-overpass.json \
-  --output srt.geojson
+  --output srt-osm.geojson
 ```
+
+## Official SRG Interactive Map Source
+
+The SRG interactive map page exposes its primary data source in the page HTML:
+
+- `bloginfo.mapjson`
+- Current URL: `https://schuylkillriver.org/wp-content/themes/schuylkill2018/data/mapdata.json`
+
+`mapdata.json` contains:
+
+- `trailhead`: point records for trailheads/parking
+- `places_to_visit`: point records for places of interest
+- `town`: point records for trail towns
+- `trail`: four trail layers with KML source paths
+
+The four trail layers currently referenced by `mapdata.json` are:
+
+- Active off-road SRT: `SRT_Existing_Off_Road_2025_v4.0.kml`
+- Active on-road SRT: `SRT_Existing_On_Road_2025_v2.kml`
+- Proposed off-road SRT: `SRT_Planned_Off_Road_2025.kml`
+- Proposed on-road SRT: `SRT_Planned_On_Road_2025.kml`
+
+This is not OSM data. Treat it as the official SRG map source and keep provenance separate from `srt-osm.geojson`.
+
+To refresh the official SRG map export, run:
+
+```sh
+python3 tools/fetch_srg_map_data.py
+```
+
+The fetcher:
+
+- Downloads the map page, `mapdata.json`, and all KML trail files.
+- Writes raw sources under `data/srg-map/raw/`.
+- Writes download metadata to `data/srg-map/manifest.json`.
+- Builds `srg-website-map.geojson` from all trail lines, trailheads, trail towns, and places to visit.
+
+`srg-website-map.geojson` feature IDs use stable source-derived IDs:
+
+- `srg:trail/{trail_post_id}/placemark/{placemark_index}`
+- `srg:trailhead/{source_id}`
+- `srg:places_to_visit/{source_id}`
+- `srg:town/{source_id}`
+
+Trail feature IDs use the placemark index because the source KML can repeat placemark IDs. The original KML ID is preserved as `placemark_id`, and the index is preserved as `placemark_index`.
+
+Trail features include `status` (`active` or `proposed`) and `alignment` (`off_road` or `on_road`) based on the source layer name. Point features preserve the source `infowindow_html` because that is where the public map stores most display text.
 
 ## OSM Update Notes
 

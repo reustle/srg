@@ -1,0 +1,132 @@
+{
+  "generated_at": "2026-05-30T13:20:47+00:00",
+  "map_page_url": "https://schuylkillriver.org/map/",
+  "downloads": [
+    {
+      "url": "https://schuylkillriver.org/map/",
+      "path": "data/srg-map/raw/map-page.html",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:47 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "close",
+        "X-Powered-By": "PleskLin",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Sat, 30 May 2026 11:01:17 GMT",
+        "Cache-Control": "max-age=0",
+        "Expires": "Sat, 30 May 2026 13:20:47 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "MISS",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains"
+      }
+    },
+    {
+      "url": "https://schuylkillriver.org/wp-content/themes/schuylkill2018/data/mapdata.json",
+      "path": "data/srg-map/raw/mapdata.json",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:47 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "265472",
+        "Connection": "close",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Mon, 27 Oct 2025 16:56:07 GMT",
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "max-age=0, public",
+        "Expires": "Sat, 30 May 2026 13:20:47 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "MISS",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains",
+        "X-Powered-By": "PleskLin"
+      }
+    },
+    {
+      "url": "https://schuylkillriver.org/wp-content/uploads/2025/04/SRT_Existing_Off_Road_2025_v4.0.kml",
+      "path": "data/srg-map/raw/trails/SRT_Existing_Off_Road_2025_v4.0.kml",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:48 GMT",
+        "Content-Type": "application/vnd.google-earth.kml+xml",
+        "Content-Length": "234325",
+        "Connection": "close",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Wed, 16 Apr 2025 16:55:40 GMT",
+        "Cache-Control": "max-age=2592000",
+        "Expires": "Mon, 29 Jun 2026 13:19:35 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "HIT",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains",
+        "X-Powered-By": "PleskLin",
+        "Accept-Ranges": "bytes"
+      }
+    },
+    {
+      "url": "https://schuylkillriver.org/wp-content/uploads/2025/04/SRT_Existing_On_Road_2025_v2.kml",
+      "path": "data/srg-map/raw/trails/SRT_Existing_On_Road_2025_v2.kml",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:48 GMT",
+        "Content-Type": "application/vnd.google-earth.kml+xml",
+        "Content-Length": "36875",
+        "Connection": "close",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Thu, 17 Apr 2025 13:51:49 GMT",
+        "Cache-Control": "max-age=2592000",
+        "Expires": "Mon, 29 Jun 2026 13:19:37 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "HIT",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains",
+        "X-Powered-By": "PleskLin",
+        "Accept-Ranges": "bytes"
+      }
+    },
+    {
+      "url": "https://schuylkillriver.org/wp-content/uploads/2025/04/SRT_Planned_Off_Road_2025.kml",
+      "path": "data/srg-map/raw/trails/SRT_Planned_Off_Road_2025.kml",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:48 GMT",
+        "Content-Type": "application/vnd.google-earth.kml+xml",
+        "Content-Length": "128351",
+        "Connection": "close",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Fri, 11 Apr 2025 15:56:57 GMT",
+        "Cache-Control": "max-age=2592000",
+        "Expires": "Mon, 29 Jun 2026 13:19:38 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "HIT",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains",
+        "X-Powered-By": "PleskLin",
+        "Accept-Ranges": "bytes"
+      }
+    },
+    {
+      "url": "https://schuylkillriver.org/wp-content/uploads/2025/04/SRT_Planned_On_Road_2025.kml",
+      "path": "data/srg-map/raw/trails/SRT_Planned_On_Road_2025.kml",
+      "headers": {
+        "Server": "nginx",
+        "Date": "Sat, 30 May 2026 13:20:48 GMT",
+        "Content-Type": "application/vnd.google-earth.kml+xml",
+        "Content-Length": "34498",
+        "Connection": "close",
+        "Content-Security-Policy": "frame-ancestors schuylkillrivergreenways.stqry.app https://schuylkillriver.org",
+        "Last-Modified": "Fri, 11 Apr 2025 16:06:31 GMT",
+        "Cache-Control": "max-age=2592000",
+        "Expires": "Mon, 29 Jun 2026 13:19:40 GMT",
+        "Vary": "Accept-Encoding,User-Agent",
+        "X-Frame-Options": "ALLOW-FROM https://schuylkillrivergreenways.stqry.app/, ALLOW-FROM https://schuylkillriver.org",
+        "X-Cache-Status": "HIT",
+        "Strict-Transport-Security": "max-age=15768000; includeSubDomains",
+        "X-Powered-By": "PleskLin",
+        "Accept-Ranges": "bytes"
+      }
+    }
+  ],
+  "mapdata_url": "https://schuylkillriver.org/wp-content/themes/schuylkill2018/data/mapdata.json"
+}
