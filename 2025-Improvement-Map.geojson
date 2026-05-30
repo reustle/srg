@@ -1,0 +1,6668 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DO NOT ENTER SIGNS (either side of trail)",
+        "description": "Unauthorized trail crossing formed here",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.69667350972334,
+          40.24643014663093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "STOP SIGN (either side of road)",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.70430734429978,
+          40.24906993868105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Better way finding signs to and from trail",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.72651371372496,
+          40.25432418107862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Signs for traffic to slow down at intersection",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78172919113031,
+          40.25847201331162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Signage for how to get across intersection properly",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.80893938574366,
+          40.2673769366539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Update faded signage on road",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.84752062512318,
+          40.2759743126725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CAUTION STEEP HILL (either end of slope)",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.90351368118185,
+          40.30791845212165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "STOP SIGNS (either side of road)",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.92419634941635,
+          40.31447186912109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DO NOT ENTER SIGN",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93147295189223,
+          40.32292170182267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "WATCH FOR TRUCK TRAFFIC SIGN (either on road section)",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93983334685214,
+          40.32800824300382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Replace trail entrance sign",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9753012534289,
+          40.45646447038362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Better off road trail way finding signage",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99174475480565,
+          40.55686879290563
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TRAIL ENTRANCE SIGN",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07457982291189,
+          40.5772738406367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RR CROSSING GATES/LIGHTS",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07881678346392,
+          40.58794806156823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mark where boy scout sitting area is",
+        "description": "Currently hidden/not marked on map",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08606517231217,
+          40.60067300495244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "STAY ON TRAIL SIGNAGE",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.12160475026974,
+          40.62806034946625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Better signage to mark where paking area is from road",
+        "description": "Hard to find",
+        "styleUrl": "#msn_grn-pushpin",
+        "folder": "Signs",
+        "folder_path": "2026 Maintenance/Improvement Map / Signs"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18372969185393,
+          40.67449183379961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "County Line Bridge",
+        "description": "Pointing work; armor abutments; plant control",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.69378529507934,
+          40.2453714815355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Horse Farm Bridge",
+        "description": "Plant management; armor abutment",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.70006274135463,
+          40.24780128082246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Morlatton Village Bridge (2)",
+        "description": "Recently improved by Amity Township",
+        "styleUrl": "#msn_ylw-diamond",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.72723659476074,
+          40.25500481555792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Douglassville Bridge",
+        "description": "Debris removal; plant management; armor abutments; clear drains",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.73249512873716,
+          40.25626526167841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Doberstein Bridge",
+        "description": "Armor abutments and stream bank; pointing work",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.74618879567984,
+          40.25945348700257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Whitacker Bridge",
+        "description": "Plant Management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7695877508076,
+          40.25629997701896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "6 Penny Creek Bridge",
+        "description": "point work; concrete repair; armor abutments; debris removal",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.77008448878104,
+          40.25618981920316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ferry Tube Bridge",
+        "description": "Concrete repair; armor up stream abutment; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.77823312420699,
+          40.25668614121441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bells Run Bridge",
+        "description": "Concrete Repair; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78033015943697,
+          40.25759950002891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Union Meadows Bridge #1",
+        "description": "Armor downstream abutment; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78777532218204,
+          40.26118648809715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Union Meadows Bridge #2",
+        "description": "Plant management; abutment armoring",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.79011367963766,
+          40.26226203934841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Birdsboro Bridge",
+        "description": "plant management; armor downstream exit",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.79884845401561,
+          40.26602411419107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "568 Bridge",
+        "description": "Spalding; concrete repair; armor abutment; clear drains; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.87386183026891,
+          40.2835189876874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boy Scout Steps/Bridge",
+        "description": "Plant management; armor abutments",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89602304054316,
+          40.29474626269523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlie Marshal Bridge",
+        "description": "Concrete repair; spalding; clear drains; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89986439394197,
+          40.30168264691558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East River Bridge",
+        "description": "Plant management; armor abutments in river",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.90613974374578,
+          40.30821469517284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "5 Ton Bridge",
+        "description": "Plant management; wooden plank replacement (coming)",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9082719709206,
+          40.30870993987477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West River Bridge",
+        "description": "Plant management; armor abutments in river",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9199581502697,
+          40.31164775751868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Powell Bridge",
+        "description": "To be removed by PennDOT - minimum work required",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93370564771404,
+          40.32392810124858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Red Bridge",
+        "description": "Plant management; paint bridge again",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.94091684603234,
+          40.3288904423381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reading Gateway Bridge",
+        "description": "Not owned by SRG",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93902417775595,
+          40.33122851381428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hamburg Bridge",
+        "description": "Plant management; heavy concrete repair; clear drains; armor abutments in river; seal broken concrete",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.98891633332246,
+          40.55547143624919
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hidden Bridge",
+        "description": "Armor abutments; plant management; point work",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.00024920762142,
+          40.5693511950911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kernsville Bridge",
+        "description": "Plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.00198189539866,
+          40.5705905511546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoney Creek Bridge",
+        "description": "Armor abutments; plant management; pointing work",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0620845729746,
+          40.58126825698529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gap Bridge",
+        "description": "Plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0762939088057,
+          40.58873570012884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gurter Bridge",
+        "description": "Clear drains; armor abutments; spalding; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08451023416225,
+          40.59855435768353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd South Bridge",
+        "description": "Debris removal; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11583879163182,
+          40.61347313945145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd North Bridge",
+        "description": "Point work; armor abutment; plant management",
+        "styleUrl": "#msn_ylw-diamond0",
+        "folder": "Bridge work",
+        "folder_path": "2026 Maintenance/Improvement Map / Bridge work"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.12399313245645,
+          40.63163642370233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "422 surface issue",
+        "description": "Water dripping off of roadway \n\nPave under trail surface \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin51",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.71886270792061,
+              40.25286816480003
+            ],
+            [
+              -75.71945867177308,
+              40.25300876889629
+            ],
+            [
+              -75.71946339971545,
+              40.25289648701337
+            ],
+            [
+              -75.7188415098923,
+              40.25273781545407
+            ],
+            [
+              -75.71886270792061,
+              40.25286816480003
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "River Bridge Rd Surface Issue",
+        "description": "Water off of bridge drips onto trail\n\nResurface trail \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.72438741064434,
+              40.25415576980117
+            ],
+            [
+              -75.72398835325978,
+              40.2540309996179
+            ],
+            [
+              -75.72392493262191,
+              40.25418460872397
+            ],
+            [
+              -75.72431402518143,
+              40.25428892895793
+            ],
+            [
+              -75.72438741064434,
+              40.25415576980117
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Farm Access Surface Rd",
+        "description": "Heavy equipment has warn surface down \n\nResurface trail\n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.7573492425123,
+              40.25817634723431
+            ],
+            [
+              -75.75709964486444,
+              40.25817198284648
+            ],
+            [
+              -75.75711706250526,
+              40.25827298393782
+            ],
+            [
+              -75.7573596716708,
+              40.25825582026306
+            ],
+            [
+              -75.7573492425123,
+              40.25817634723431
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norway Maple Section Surface Issue",
+        "description": "Trail surface is grown in \n\nTrail should be scrapped and resurfaced \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.76704188777187,
+              40.25698223147624
+            ],
+            [
+              -75.76701616192543,
+              40.2569300388172
+            ],
+            [
+              -75.7656047241079,
+              40.25719196599209
+            ],
+            [
+              -75.76410225279449,
+              40.25738803061035
+            ],
+            [
+              -75.76411881015657,
+              40.25743853023535
+            ],
+            [
+              -75.76561960367236,
+              40.25723567117181
+            ],
+            [
+              -75.76704188777187,
+              40.25698223147624
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Union Meadows Trail Surface Issues",
+        "description": "Trail surface has narrowed; water erosed trail surfcae where it exists. \n\nScrape trail and pave \n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin0",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.78230299889462,
+              40.2593000272749
+            ],
+            [
+              -75.78236418689856,
+              40.25935295405566
+            ],
+            [
+              -75.78240588769054,
+              40.25942231539959
+            ],
+            [
+              -75.78242987443338,
+              40.25947559599769
+            ],
+            [
+              -75.78243703008725,
+              40.25953227106036
+            ],
+            [
+              -75.78241883243248,
+              40.25958783333511
+            ],
+            [
+              -75.78239360602896,
+              40.25965897733104
+            ],
+            [
+              -75.7823637819373,
+              40.25971237249189
+            ],
+            [
+              -75.7823332033171,
+              40.25976434788
+            ],
+            [
+              -75.78230198327113,
+              40.2598662205164
+            ],
+            [
+              -75.78228822265795,
+              40.25991068343316
+            ],
+            [
+              -75.78231015157448,
+              40.25991863683083
+            ],
+            [
+              -75.78241821162288,
+              40.25971244528905
+            ],
+            [
+              -75.78242061526394,
+              40.2597099963909
+            ],
+            [
+              -75.78244943686624,
+              40.25962085220039
+            ],
+            [
+              -75.78247378426417,
+              40.25952316984726
+            ],
+            [
+              -75.78245228532292,
+              40.2594201825233
+            ],
+            [
+              -75.78241497895979,
+              40.25935302176882
+            ],
+            [
+              -75.78233681901263,
+              40.25926889602624
+            ],
+            [
+              -75.78220834352915,
+              40.25920954736229
+            ],
+            [
+              -75.78217162919044,
+              40.25923584981788
+            ],
+            [
+              -75.78230299889462,
+              40.2593000272749
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "176 trail surface issue",
+        "description": "Water drips from road and erodes surface \n\nResurface/pave\n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin0",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.90051015864933,
+              40.30248891554843
+            ],
+            [
+              -75.90005343002727,
+              40.30207578934378
+            ],
+            [
+              -75.89995004991393,
+              40.30216762766668
+            ],
+            [
+              -75.90042328996782,
+              40.30262996473465
+            ],
+            [
+              -75.90051015864933,
+              40.30248891554843
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "176 trail surface issues (pavement gaps)",
+        "description": "Paving is broken up into sections\n\nConnect paving sections with asphalt \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.9004858018016,
+              40.30290418793943
+            ],
+            [
+              -75.90031359001485,
+              40.30281259233008
+            ],
+            [
+              -75.8996660390963,
+              40.3039168163094
+            ],
+            [
+              -75.89958309872902,
+              40.30435617049715
+            ],
+            [
+              -75.89950049283176,
+              40.30509788729619
+            ],
+            [
+              -75.89953902781534,
+              40.30541214848343
+            ],
+            [
+              -75.89972040190753,
+              40.30545262287507
+            ],
+            [
+              -75.89974244279078,
+              40.30440897433215
+            ],
+            [
+              -75.8998598698007,
+              40.30404376737898
+            ],
+            [
+              -75.90006215743237,
+              40.30370396151103
+            ],
+            [
+              -75.9004858018016,
+              40.30290418793943
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "East River Bridge trail surface issues",
+        "description": "Pavement is pushed up by roots\n\nCut pavement and remove roots; repave trail\n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.90405472622658,
+              40.30773410796654
+            ],
+            [
+              -75.90407646887753,
+              40.30764806446561
+            ],
+            [
+              -75.90386828225301,
+              40.30764283933113
+            ],
+            [
+              -75.9038860601881,
+              40.30774643379564
+            ],
+            [
+              -75.90405472622658,
+              40.30773410796654
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "West River Bridge Surface Issues",
+        "description": "Trail subbase exposed\n\nResurface trail \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.92051446413514,
+              40.31180745982603
+            ],
+            [
+              -75.920142259548,
+              40.31171106706179
+            ],
+            [
+              -75.92013339054056,
+              40.31180438697507
+            ],
+            [
+              -75.92048404473395,
+              40.31190086607382
+            ],
+            [
+              -75.92051446413514,
+              40.31180745982603
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Victor Emmanuels Trail Surface Issues",
+        "description": "Trail is very rough for many reasons \n\nPave trail\n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.92487207323741,
+              40.32112649372351
+            ],
+            [
+              -75.92495292912231,
+              40.32108035391497
+            ],
+            [
+              -75.92486068596519,
+              40.3209603764483
+            ],
+            [
+              -75.92476939503086,
+              40.32089082547776
+            ],
+            [
+              -75.92460529171152,
+              40.32084509765342
+            ],
+            [
+              -75.92446916597711,
+              40.320892265983
+            ],
+            [
+              -75.92434232468266,
+              40.32084827235426
+            ],
+            [
+              -75.92426279869339,
+              40.32073239950545
+            ],
+            [
+              -75.92413952212807,
+              40.32047756432518
+            ],
+            [
+              -75.92398389692707,
+              40.32010955603384
+            ],
+            [
+              -75.92382909810094,
+              40.31966730307118
+            ],
+            [
+              -75.92380930665115,
+              40.31925338889926
+            ],
+            [
+              -75.92382236063813,
+              40.31886530952386
+            ],
+            [
+              -75.92373640078294,
+              40.31884167949139
+            ],
+            [
+              -75.92373797282137,
+              40.319066095294
+            ],
+            [
+              -75.92374455943339,
+              40.31930436277165
+            ],
+            [
+              -75.92375679136234,
+              40.31966370381502
+            ],
+            [
+              -75.92393736387322,
+              40.32011204590398
+            ],
+            [
+              -75.92405010422502,
+              40.32047823303028
+            ],
+            [
+              -75.92413965134467,
+              40.32066322182977
+            ],
+            [
+              -75.9242717860473,
+              40.32090966459841
+            ],
+            [
+              -75.92441642441362,
+              40.32098228940179
+            ],
+            [
+              -75.92453463993863,
+              40.32095525977429
+            ],
+            [
+              -75.92467667558233,
+              40.32093500389123
+            ],
+            [
+              -75.92478066960078,
+              40.32096735126299
+            ],
+            [
+              -75.92487207323741,
+              40.32112649372351
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Criags Link trail surface issues",
+        "description": "Pavement is broken\n\nPut cold patch into gaps \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.94096270488629,
+              40.32909203420425
+            ],
+            [
+              -75.94098121633681,
+              40.32900450921561
+            ],
+            [
+              -75.94082166956005,
+              40.32899087283666
+            ],
+            [
+              -75.9408457066792,
+              40.32906263713329
+            ],
+            [
+              -75.94096270488629,
+              40.32909203420425
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport North Trail Surface Issues",
+        "description": "Surface material is rounded and soft \n\nremove trail surfcae; re-surface with new material \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.975373346053,
+              40.45626315837794
+            ],
+            [
+              -75.97520659903599,
+              40.45576304937999
+            ],
+            [
+              -75.97479489787601,
+              40.45494491932408
+            ],
+            [
+              -75.9744287386556,
+              40.45434089977125
+            ],
+            [
+              -75.97407505608672,
+              40.45387224091581
+            ],
+            [
+              -75.97375813535784,
+              40.45344751325527
+            ],
+            [
+              -75.9734542774241,
+              40.45301114054536
+            ],
+            [
+              -75.9732317374093,
+              40.45268174851088
+            ],
+            [
+              -75.97297148100267,
+              40.45215435758951
+            ],
+            [
+              -75.97292461665795,
+              40.45201563718999
+            ],
+            [
+              -75.97296161977309,
+              40.45192448181245
+            ],
+            [
+              -75.97288945409059,
+              40.4519410144166
+            ],
+            [
+              -75.97285123760449,
+              40.45198763052477
+            ],
+            [
+              -75.97293838931624,
+              40.45223297229811
+            ],
+            [
+              -75.97323699145126,
+              40.45279873775753
+            ],
+            [
+              -75.97337206130106,
+              40.45304535510357
+            ],
+            [
+              -75.97364303133688,
+              40.4534684451264
+            ],
+            [
+              -75.97401910337024,
+              40.45397813953837
+            ],
+            [
+              -75.97465116918634,
+              40.45489880918881
+            ],
+            [
+              -75.97514032313076,
+              40.45579276377831
+            ],
+            [
+              -75.97532248185547,
+              40.45645110862392
+            ],
+            [
+              -75.97545554403929,
+              40.45646105913188
+            ],
+            [
+              -75.975373346053,
+              40.45626315837794
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hamburg Bridge Landing Trail Surface Issues",
+        "description": "Trail has thinned and subsurface exposed\n\nTrail needs to be resurfaced\n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin0",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.99142547831538,
+              40.55662105636636
+            ],
+            [
+              -75.99145593935106,
+              40.55658287173638
+            ],
+            [
+              -75.99023084283868,
+              40.55605382686252
+            ],
+            [
+              -75.99019978065661,
+              40.55608571484683
+            ],
+            [
+              -75.99142547831538,
+              40.55662105636636
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Therman Madera Loop Trail Surface Issues",
+        "description": "Trail has thinned \n\nScrape trail and resurface\n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin0",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.99173263422999,
+              40.5568296028454
+            ],
+            [
+              -75.9916801128934,
+              40.55682472205001
+            ],
+            [
+              -75.9915903866065,
+              40.55691857388239
+            ],
+            [
+              -75.9913545012,
+              40.55698366873555
+            ],
+            [
+              -75.99094892506426,
+              40.55705966336733
+            ],
+            [
+              -75.9906746014538,
+              40.55714680611352
+            ],
+            [
+              -75.99046250729214,
+              40.55729810266575
+            ],
+            [
+              -75.99036991765439,
+              40.55761693405332
+            ],
+            [
+              -75.99038348068531,
+              40.55781348066942
+            ],
+            [
+              -75.99044465519151,
+              40.55811039079596
+            ],
+            [
+              -75.99056850982772,
+              40.55855862432686
+            ],
+            [
+              -75.99077306837268,
+              40.55913888871472
+            ],
+            [
+              -75.99084749993418,
+              40.55913885920688
+            ],
+            [
+              -75.99066395351743,
+              40.55877085495448
+            ],
+            [
+              -75.99057161450935,
+              40.55840808832964
+            ],
+            [
+              -75.99047748300711,
+              40.55806294600377
+            ],
+            [
+              -75.99043542945581,
+              40.55777935684675
+            ],
+            [
+              -75.99044050473839,
+              40.55759480251906
+            ],
+            [
+              -75.99049333062524,
+              40.55741517555894
+            ],
+            [
+              -75.99053674850119,
+              40.5573244997479
+            ],
+            [
+              -75.99070744468573,
+              40.55721935144658
+            ],
+            [
+              -75.99102169147447,
+              40.55711581110467
+            ],
+            [
+              -75.99137229407006,
+              40.55704932383411
+            ],
+            [
+              -75.99162666601721,
+              40.55698355398257
+            ],
+            [
+              -75.99169409048189,
+              40.55691853002651
+            ],
+            [
+              -75.99173263422999,
+              40.5568296028454
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Therman Madera Loop Trail Surface Issues",
+        "description": "Trail surfcae has grown in\n\nScape trail; resurface with new material \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.9921567669021,
+              40.563639861262
+            ],
+            [
+              -75.99203523545665,
+              40.56366259645617
+            ],
+            [
+              -75.99213415482646,
+              40.56395940764374
+            ],
+            [
+              -75.99225735494545,
+              40.56394172660428
+            ],
+            [
+              -75.9921567669021,
+              40.563639861262
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gap Trail Surface Issues",
+        "description": "Trailsurface is thinning \n\nScrape trail; resurface with new material \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.07466878669484,
+              40.5891784872381
+            ],
+            [
+              -76.07457746093142,
+              40.5891110896528
+            ],
+            [
+              -76.07055587131576,
+              40.59099467608004
+            ],
+            [
+              -76.0706105939252,
+              40.59105358954355
+            ],
+            [
+              -76.07466878669484,
+              40.5891784872381
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Trail Surfcae Issues",
+        "description": "Trail surface is very thin \n\nScrape trail; resurface with new material \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.11725596390491,
+              40.61720609719071
+            ],
+            [
+              -76.11725145418195,
+              40.61705483019966
+            ],
+            [
+              -76.11718064850703,
+              40.61705975225971
+            ],
+            [
+              -76.11719588185312,
+              40.61725855128066
+            ],
+            [
+              -76.11742313902404,
+              40.61808537522852
+            ],
+            [
+              -76.1175202052925,
+              40.61807570389661
+            ],
+            [
+              -76.11725596390491,
+              40.61720609719071
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Trail Surface Issues",
+        "description": "Trail Entrance on Steep slope; eroding \n\nScrape eroded trail; pave \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin6",
+        "folder": "Surface Improvements",
+        "folder_path": "2026 Maintenance/Improvement Map / Surface Improvements"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.18438657627878,
+              40.67399602895954
+            ],
+            [
+              -76.18440560592673,
+              40.67392334298128
+            ],
+            [
+              -76.18434259147269,
+              40.67393323883257
+            ],
+            [
+              -76.18433177848071,
+              40.67399125931334
+            ],
+            [
+              -76.18416172206915,
+              40.6740606604937
+            ],
+            [
+              -76.18428118167259,
+              40.67411811323542
+            ],
+            [
+              -76.18438657627878,
+              40.67399602895954
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dirtbike alley drainage issue",
+        "description": "Former trails forcing water towards trail \n\nDestory spur trails; remove extra soil; fix trail surface \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.69419347976815,
+              40.24557461424322
+            ],
+            [
+              -75.695743676854,
+              40.2461553598903
+            ],
+            [
+              -75.69579811923123,
+              40.24606260356449
+            ],
+            [
+              -75.69424143154406,
+              40.24549426155925
+            ],
+            [
+              -75.69419347976815,
+              40.24557461424322
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Squirrel Hollow Drainage Issue",
+        "description": "Water coming from RR. Re-establish ditch to trail right; fix trail surface\n\n***MINOR***",
+        "styleUrl": "#m_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.70481816947301,
+              40.24921353587897
+            ],
+            [
+              -75.70484423750797,
+              40.24916863296563
+            ],
+            [
+              -75.70443263398344,
+              40.24906412072963
+            ],
+            [
+              -75.7044006248046,
+              40.24911767733002
+            ],
+            [
+              -75.70481816947301,
+              40.24921353587897
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Horse farm flooding",
+        "description": "Rainwater puddles on trail surface \n\nEstablish drainage off trail \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.79510924820778,
+              40.26448616160415
+            ],
+            [
+              -75.79318566583667,
+              40.26356188662696
+            ],
+            [
+              -75.79309750630092,
+              40.2636817491837
+            ],
+            [
+              -75.79499378425197,
+              40.26459561769516
+            ],
+            [
+              -75.79510924820778,
+              40.26448616160415
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibralatar Drainage Issue",
+        "description": "Diches failing;trail surface floods and erodes \n\nArmor drainage; pave trail \n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.87355560209195,
+              40.28352091413445
+            ],
+            [
+              -75.87357264963468,
+              40.28347816633418
+            ],
+            [
+              -75.86849575934305,
+              40.28291534230176
+            ],
+            [
+              -75.86850545323705,
+              40.28297473765653
+            ],
+            [
+              -75.87355560209195,
+              40.28352091413445
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seyfert Drainage Issue",
+        "description": "Ditches failing; ditches clogged; trail flooding \n\nclear ditches; armor drainage; resurface trai\n\nMAJOR l",
+        "styleUrl": "#msn_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.88700893803335,
+              40.29007677971401
+            ],
+            [
+              -75.887033447503,
+              40.29005674454963
+            ],
+            [
+              -75.88592172707034,
+              40.28941750824232
+            ],
+            [
+              -75.88241721988052,
+              40.2873595195767
+            ],
+            [
+              -75.88239834045969,
+              40.28738624277879
+            ],
+            [
+              -75.88700893803335,
+              40.29007677971401
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlie Marshal Drainage Issue",
+        "description": "Water not exiting trail; flows down trail surface\n\nre-establish drainage to get water off trail; resurface  \n\nMODERATE",
+        "styleUrl": "#msn_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.90341248337157,
+              40.30798722719864
+            ],
+            [
+              -75.90346235526094,
+              40.30789416379385
+            ],
+            [
+              -75.90312015754685,
+              40.30786781869146
+            ],
+            [
+              -75.90240464357647,
+              40.30763949715853
+            ],
+            [
+              -75.90100121996389,
+              40.30713434962777
+            ],
+            [
+              -75.90045977391773,
+              40.30681829620704
+            ],
+            [
+              -75.90039569153689,
+              40.30688303335691
+            ],
+            [
+              -75.90091498655643,
+              40.30716521667092
+            ],
+            [
+              -75.90191785766318,
+              40.30753889584036
+            ],
+            [
+              -75.90269403377627,
+              40.30780900232907
+            ],
+            [
+              -75.90311840761936,
+              40.30794541354098
+            ],
+            [
+              -75.90341248337157,
+              40.30798722719864
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brentwood Sinkhole Area",
+        "description": "Water flows across trail and forms sink holes frequently \n\nCreate platform trail surface (concrete decking); armor surface \n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin01",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.92413177088669,
+              40.31806543316229
+            ],
+            [
+              -75.92416654110002,
+              40.31791214903892
+            ],
+            [
+              -75.92419706904622,
+              40.31771057690277
+            ],
+            [
+              -75.92423448227277,
+              40.31752874259314
+            ],
+            [
+              -75.92423349175344,
+              40.31735504289815
+            ],
+            [
+              -75.9241344483433,
+              40.31736963773286
+            ],
+            [
+              -75.92413802689498,
+              40.31753344549131
+            ],
+            [
+              -75.92407663142967,
+              40.31785957577902
+            ],
+            [
+              -75.92396704186085,
+              40.31807525473616
+            ],
+            [
+              -75.92407947192252,
+              40.31817275198247
+            ],
+            [
+              -75.92413177088669,
+              40.31806543316229
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport South Drainage Issue",
+        "description": "Water doesnt exit trail; flows down and erodes \n\nre-establish drainage; resurface\n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin7",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.96538421699661,
+              40.44206780717833
+            ],
+            [
+              -75.9653247722195,
+              40.44197196161647
+            ],
+            [
+              -75.96485307498685,
+              40.44204681387566
+            ],
+            [
+              -75.9647263318914,
+              40.44199862048759
+            ],
+            [
+              -75.9646749359414,
+              40.44187169276903
+            ],
+            [
+              -75.96458143301612,
+              40.44171854721063
+            ],
+            [
+              -75.96439268933231,
+              40.44167391584244
+            ],
+            [
+              -75.96411467139163,
+              40.44169588878587
+            ],
+            [
+              -75.96288530504908,
+              40.44202727655571
+            ],
+            [
+              -75.96294862539288,
+              40.44212136640719
+            ],
+            [
+              -75.964035849836,
+              40.44185443096188
+            ],
+            [
+              -75.96436318495226,
+              40.44179758345777
+            ],
+            [
+              -75.9644723253772,
+              40.44183457132855
+            ],
+            [
+              -75.96460349843387,
+              40.44203005801719
+            ],
+            [
+              -75.96476796065618,
+              40.44213248482531
+            ],
+            [
+              -75.96500076562788,
+              40.44211049699774
+            ],
+            [
+              -75.96523315094603,
+              40.44206519010528
+            ],
+            [
+              -75.96538421699661,
+              40.44206780717833
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kernville Drainage Issue",
+        "description": "Stones/debris from rockwal and treesl fallen into ditches on either side of trail \n\nremove debris and reestablish ditches\n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.01394578814279,
+              40.57095557887754
+            ],
+            [
+              -76.01390548384114,
+              40.57089330546045
+            ],
+            [
+              -76.01329114858183,
+              40.571109329879
+            ],
+            [
+              -76.01249666982794,
+              40.5713584893983
+            ],
+            [
+              -76.01216424988394,
+              40.57143741899822
+            ],
+            [
+              -76.01220751134531,
+              40.57151198602702
+            ],
+            [
+              -76.01281438303933,
+              40.57134115959629
+            ],
+            [
+              -76.01394578814279,
+              40.57095557887754
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd North Drainage Issue",
+        "description": "Water sits on trail and floods \n\nRe-establish drainage; resurface \n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin7",
+        "folder": "Drainage/Erosion",
+        "folder_path": "2026 Maintenance/Improvement Map / Drainage/Erosion"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -76.1217143059913,
+              40.62803152421723
+            ],
+            [
+              -76.12043081009175,
+              40.62658691725509
+            ],
+            [
+              -76.1200160569013,
+              40.62574532122481
+            ],
+            [
+              -76.11986095754214,
+              40.62468676492565
+            ],
+            [
+              -76.11944776269326,
+              40.62361490970514
+            ],
+            [
+              -76.11898281654472,
+              40.62257954153593
+            ],
+            [
+              -76.11880646248505,
+              40.62177072013721
+            ],
+            [
+              -76.1185796529661,
+              40.62181557757876
+            ],
+            [
+              -76.11882116219341,
+              40.62253447560109
+            ],
+            [
+              -76.11922127793996,
+              40.62347463463732
+            ],
+            [
+              -76.1196044998003,
+              40.62437707757307
+            ],
+            [
+              -76.119732745246,
+              40.6248679570292
+            ],
+            [
+              -76.11984143219716,
+              40.62573705794114
+            ],
+            [
+              -76.12020601705295,
+              40.62662749290671
+            ],
+            [
+              -76.12151567868749,
+              40.62806742895707
+            ],
+            [
+              -76.1217143059913,
+              40.62803152421723
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoudts Ferry Bridge",
+        "description": "Need new one- old one is gone \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.97107907102847,
+              40.41226445312214
+            ],
+            [
+              -75.97081003769812,
+              40.41225759888855
+            ],
+            [
+              -75.97086633852933,
+              40.41257282734204
+            ],
+            [
+              -75.97111086965366,
+              40.41258467828823
+            ],
+            [
+              -75.97107907102847,
+              40.41226445312214
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dead trees in area to be removed",
+        "description": "Several dead trees need to be removed; common issue\n\nMINOR",
+        "styleUrl": "#msn_wht-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.70038306383458,
+          40.24779749295247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "(3) Sections of bamboo to be removed to cut back permanently",
+        "description": "Bamboos gets wet and flops into trail surface/grows very close to edges and blocks trail edge \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.71315642327508,
+          40.25134175651672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Many large trees on edge of trail",
+        "description": "Trees on edge need to be cut back and moved\n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.73067151364285,
+          40.25588621685441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Spur trail down bridge abutment",
+        "description": "Large spur trail down bridge abutment; should be covered \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.73178229586307,
+          40.25606342568086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Debris pilling up on upriver side of bridge",
+        "description": "Constant monitoring of trail section is required; debris shoudl be removed ASAP \n\nMAJOR",
+        "styleUrl": "#msn_ylw-pushpin",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.73311034710461,
+              40.25655423284704
+            ],
+            [
+              -75.73309518202427,
+              40.25643682801509
+            ],
+            [
+              -75.73190829781252,
+              40.25611973572941
+            ],
+            [
+              -75.73193676392273,
+              40.25624255849024
+            ],
+            [
+              -75.73311034710461,
+              40.25655423284704
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Doberstien low branches/logs next to trail",
+        "description": "Large logs next to trail edge; low hanging brnahes\n\nCut branches back and move logs in area away form trail \n\nMINOR",
+        "styleUrl": "#msn_ylw-pushpin",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.74963231755842,
+              40.25918821055772
+            ],
+            [
+              -75.74956399650826,
+              40.25909594776289
+            ],
+            [
+              -75.7475165617329,
+              40.2593300481499
+            ],
+            [
+              -75.74752153842714,
+              40.25943518561905
+            ],
+            [
+              -75.74963231755842,
+              40.25918821055772
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Norway Maple Alley Tree Removal",
+        "description": "Lots of trees need to be removed from area (1-3\" dia)\n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.76583879546665,
+          40.25718242331891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Several vine clumps growing into trail",
+        "description": "Remove clumps of vines from trail edge \n\nMAJOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.77623653197381,
+          40.25611140690414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibraltar Section Fencing Repairs",
+        "description": "Fencing destroyed by falling trees \n\nMAJOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.87842200968997,
+          40.2850653043015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cross trail drain clogged with stone",
+        "description": "Stone from ditch has clogged drain \n\nOpen drain and pull stones out by hand \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.8847820786226,
+          40.28876315973588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "PennDOT Facility Site Line Issues",
+        "description": "Plants and piled stone cause issues for trail users crossing 724\n\nNeed a permanent soluton to problem (stone pile)\n\nMAJOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89815543551327,
+          40.29611607267896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Large Trucks and Rider Conflicts",
+        "description": "Riders arent stopping at road crossing and trucks go quickly down road \n\nCreate solution to problem (gates?)\n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89945211881967,
+          40.30014993266911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fencing Destroyed By Falling Trees",
+        "description": "Fix fencing \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.90503718810278,
+          40.30790538965645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "5 ton bridge surface is rough",
+        "description": "Made of large wooden baords - boards need replaced",
+        "styleUrl": "#msn_wht-pushpin",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.90820187380662,
+          40.30868740445584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Poplar Neck Canyon Honeysuckle Issue",
+        "description": "Honey Suckle creates tunnel for trail corridor \n\nRemove/trim honey suckle \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.91729672066883,
+          40.31108106424401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Rt 10 Access Issues",
+        "description": "Public vehicles sometimes hop curb and drive down trail \n\nPut in gate \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93152996075463,
+          40.32291834390851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Criags Link Camera Upgrades",
+        "description": "Camera hardware is outdated and needs updated \n\nMAJOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9405763051879,
+          40.32831772920076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport South \"Park\" Clean Up",
+        "description": "Community has made this area into a \"Park\" with lots of trahs and cat food\n\nClean up and improve \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9590719828682,
+          40.43688458087463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Improve Access Trail For State Street",
+        "description": "Access trail is rough and needs to be paved/improved\n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9889127884028,
+          40.55448024320273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Hamburg Bridge Boardwalk",
+        "description": "Hamburg Birdge Board walk is aging and needs to be cleaned up, stained, and non-slip paint put down \n\nMAJOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.98845892361555,
+          40.55531950033975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kernsville Bridge Plant Growth",
+        "description": "Vines gowing on fencing on either side of bridge \n\nSpray plants and cut \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.00238799967605,
+          40.57077509972667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Future Warehouse Location",
+        "description": "Need to watch for warehouse affecting trail use \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.01027195929473,
+          40.57106482630993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Dense Feaf Fall in Autumn",
+        "description": "Blow leafs off trail - often  \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.02688448347882,
+          40.57751676717608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lots of Woody Debris On Edges Of Trail",
+        "description": "Cut up and push farther off trail \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.05800319037637,
+          40.57527454097343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoney Creek Path Rough From Parking Area",
+        "description": "Needs to be resurfaced\n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.06166140751529,
+          40.57946380771361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gap - Mile a Minute/Snakes",
+        "description": "Snakes and mile a minute prominate under bridge \n\nCut/Spray for plant growth \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07681122966567,
+          40.58849742208561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boy Scout Steps Need Repair",
+        "description": "Steps are rotting and need replaced\n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08628781333039,
+          40.60067955653007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Spur Trail",
+        "description": "Spur Trail needs to be covered and signed better \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11557309327384,
+          40.61344100350394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Trail Head Pot Holes",
+        "description": "Pot holes in trail head need to be filled in with stone \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11765302746146,
+          40.61773725635508
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run - Japanese Hops",
+        "description": "Japanese Hops growing into trail surface \n\nCut back and spraying required\n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18719274971188,
+          40.65801884055337
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run - Low Branches and Over Growth",
+        "description": "Lots of birch have branches growing into trail \n\nCut and put off trail  \n\nMODERATE",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18862114236855,
+          40.66415749813056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Parking Area Very Rough",
+        "description": "Tumbling Run Parking area is very rough with loose asphalt and gravel \n\nPave trail head again \n\nMINOR",
+        "styleUrl": "#m_ylw-pushpin0",
+        "folder": "MISC.",
+        "folder_path": "2026 Maintenance/Improvement Map / MISC."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18371590527602,
+          40.67424007997109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Armor various culverts in area (2)",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.71159285684612,
+          40.25096135554234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Resurface trail from 724 - Douglassville Bridge as needed",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7629116386251,
+          40.25754343371806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Put trail counter in area",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78175135389472,
+          40.25823734505975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Remove invasive species/improve habitat",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.86842392253841,
+          40.28974759562014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Remove the many maple over trail (dying)",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.87078537553525,
+          40.28307972579314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Push non-woody plants back 10'",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89277542826169,
+          40.29305082255238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Remove stumps from trail shoulder",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.90027412939143,
+          40.30660594001217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Improve landing to be used for addtional programming",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.91353010484444,
+          40.29581250702254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thin plant material here",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9219299016139,
+          40.31214467419353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Paint retaining wall to remove graffiti",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9309429931477,
+          40.32278696593118
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Get RACC to take care of garden here",
+        "styleUrl": "#msn_grn-blank",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.94110758927769,
+          40.32902917839105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Get Leesport to take over full maintenance of trail section",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.96824594920233,
+          40.44563904307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Remove ruins of old landing/regrade",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9979881240571,
+          40.52062182616312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Help Cliff Seawagon with water issues across property",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.98893264330563,
+          40.55462079612458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pave trail through here again (little rough/no protection)",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9917029835306,
+          40.55678163493649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Upgrade foot bridge here",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99160168655767,
+          40.55694719060352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fix drainage issues off of 78",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99080494266039,
+          40.55955339656522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Put steps in to complete spur trail loop",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99250060093519,
+          40.5639693905257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Get bridge over river to Port Clinton",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.02671237373113,
+          40.57767514302829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Get better access road to Stoney Creek",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.06258156176305,
+          40.58070874961477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pave on road section",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07947018696893,
+          40.5888905022341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Put in additonal parking here for Auburn",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08775265394992,
+          40.60245378257593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Make area more into park",
+        "styleUrl": "#msn_grn-blank0",
+        "folder": "Wishlist",
+        "folder_path": "2026 Maintenance/Improvement Map / Wishlist"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11799816137125,
+          40.61789160173579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grosstown Rd - Union Meadows East",
+        "styleUrl": "#m_ylw-pushpin1",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.69378586943795,
+            40.24537585505991
+          ],
+          [
+            -75.69629499147813,
+            40.24630664492741
+          ],
+          [
+            -75.69865765027764,
+            40.24720843694551
+          ],
+          [
+            -75.69931893439002,
+            40.24748990955579
+          ],
+          [
+            -75.70045984757441,
+            40.24789529381251
+          ],
+          [
+            -75.70145058310474,
+            40.24821530917632
+          ],
+          [
+            -75.7027163681092,
+            40.24860678122457
+          ],
+          [
+            -75.7036306907176,
+            40.24887847527464
+          ],
+          [
+            -75.70425653692199,
+            40.24906116006719
+          ],
+          [
+            -75.70447333974592,
+            40.24910780490529
+          ],
+          [
+            -75.70539317870855,
+            40.24934381970098
+          ],
+          [
+            -75.70769716604369,
+            40.24996174692286
+          ],
+          [
+            -75.71095180987514,
+            40.2508075869945
+          ],
+          [
+            -75.71343429848415,
+            40.25141987980166
+          ],
+          [
+            -75.71696741626324,
+            40.25230240843364
+          ],
+          [
+            -75.71909548582764,
+            40.25286818008092
+          ],
+          [
+            -75.72012964587528,
+            40.25314524420692
+          ],
+          [
+            -75.72485340367723,
+            40.25436794239311
+          ],
+          [
+            -75.72740479456063,
+            40.2550574103679
+          ],
+          [
+            -75.72894433063227,
+            40.25542887918724
+          ],
+          [
+            -75.72929602089819,
+            40.25551557054386
+          ],
+          [
+            -75.73368753142586,
+            40.25662302304678
+          ],
+          [
+            -75.73665183928996,
+            40.25742471781166
+          ],
+          [
+            -75.7381585302745,
+            40.25782005563214
+          ],
+          [
+            -75.74011276760619,
+            40.25832682420214
+          ],
+          [
+            -75.74191612089386,
+            40.25883256818214
+          ],
+          [
+            -75.74338499894536,
+            40.25923488872497
+          ],
+          [
+            -75.74483926473289,
+            40.25942955435966
+          ],
+          [
+            -75.74623137451252,
+            40.25945641717174
+          ],
+          [
+            -75.74685433989312,
+            40.25944470664496
+          ],
+          [
+            -75.7474538667085,
+            40.25940205514899
+          ],
+          [
+            -75.75050850577206,
+            40.25902577415644
+          ],
+          [
+            -75.75352892499774,
+            40.25865575520614
+          ],
+          [
+            -75.7564464515856,
+            40.25834619365118
+          ],
+          [
+            -75.75726514118526,
+            40.25821788947042
+          ],
+          [
+            -75.75999065968969,
+            40.25790423889399
+          ],
+          [
+            -75.76305292831226,
+            40.25754839545414
+          ],
+          [
+            -75.76401122937314,
+            40.25742319499982
+          ],
+          [
+            -75.7656053636997,
+            40.25721410697543
+          ],
+          [
+            -75.76707241868161,
+            40.25694197112107
+          ],
+          [
+            -75.7680810548472,
+            40.25672113224672
+          ],
+          [
+            -75.76900915137158,
+            40.2564871269335
+          ],
+          [
+            -75.76928996603317,
+            40.25647790839808
+          ],
+          [
+            -75.76983033705632,
+            40.25621254938193
+          ],
+          [
+            -75.77011951829613,
+            40.25621344500519
+          ],
+          [
+            -75.77068685805477,
+            40.25608104466589
+          ],
+          [
+            -75.7718838178355,
+            40.25591667330148
+          ],
+          [
+            -75.77342214118153,
+            40.25576161642889
+          ],
+          [
+            -75.77458612279764,
+            40.25580918343567
+          ],
+          [
+            -75.776302662341,
+            40.25611251912534
+          ],
+          [
+            -75.77760514450964,
+            40.25649479975198
+          ],
+          [
+            -75.77882758855802,
+            40.25695024050218
+          ],
+          [
+            -75.7798078249303,
+            40.25738011313695
+          ],
+          [
+            -75.78117101262102,
+            40.25797730415101
+          ],
+          [
+            -75.7815260095977,
+            40.25815122150777
+          ],
+          [
+            -75.7818768861928,
+            40.25830617948593
+          ],
+          [
+            -75.78190125280042,
+            40.25840176467374
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Union East - Berks On Rd (east edge)",
+        "styleUrl": "#m_ylw-pushpin1",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.78187658069793,
+            40.25855224587666
+          ],
+          [
+            -75.78187188121161,
+            40.25878042196134
+          ],
+          [
+            -75.78196480114823,
+            40.25901252674155
+          ],
+          [
+            -75.78209929024574,
+            40.25917577113275
+          ],
+          [
+            -75.78230995979409,
+            40.2593118347066
+          ],
+          [
+            -75.78238893149955,
+            40.2594182008663
+          ],
+          [
+            -75.7824537870727,
+            40.25949913871148
+          ],
+          [
+            -75.78242061410913,
+            40.25961925548843
+          ],
+          [
+            -75.78235990015784,
+            40.25973026789606
+          ],
+          [
+            -75.78230469695241,
+            40.25984316687041
+          ],
+          [
+            -75.78229931344246,
+            40.25993499084195
+          ],
+          [
+            -75.78308247606915,
+            40.26017873659561
+          ],
+          [
+            -75.78453849817309,
+            40.26067980921865
+          ],
+          [
+            -75.78574722143904,
+            40.26106663759855
+          ],
+          [
+            -75.78653927916383,
+            40.26147309414116
+          ],
+          [
+            -75.78704144931598,
+            40.26185068965567
+          ],
+          [
+            -75.78750887993246,
+            40.26163552207282
+          ],
+          [
+            -75.78763778482774,
+            40.26153281453025
+          ],
+          [
+            -75.78775946908245,
+            40.26142165099301
+          ],
+          [
+            -75.78781180447275,
+            40.26131713941337
+          ],
+          [
+            -75.78783831542238,
+            40.26122399153206
+          ],
+          [
+            -75.78937573897961,
+            40.2619444702939
+          ],
+          [
+            -75.7924163640076,
+            40.26327214387297
+          ],
+          [
+            -75.79344190370267,
+            40.2637536684831
+          ],
+          [
+            -75.79463740972984,
+            40.26434759561366
+          ],
+          [
+            -75.79603713662964,
+            40.26500493033038
+          ],
+          [
+            -75.79760066206306,
+            40.26572905249916
+          ],
+          [
+            -75.79824975288182,
+            40.26595849238424
+          ],
+          [
+            -75.79901132744259,
+            40.26606279210493
+          ],
+          [
+            -75.79938538283787,
+            40.26613016429664
+          ],
+          [
+            -75.79968582088807,
+            40.26619042427885
+          ],
+          [
+            -75.80033008807344,
+            40.2670221771407
+          ],
+          [
+            -75.8004719524126,
+            40.26718930033045
+          ],
+          [
+            -75.80099610158385,
+            40.26734422136959
+          ],
+          [
+            -75.80117890119439,
+            40.26740516665952
+          ],
+          [
+            -75.80177191678523,
+            40.26755697007648
+          ],
+          [
+            -75.80231237468576,
+            40.26765153394227
+          ],
+          [
+            -75.80267854725457,
+            40.26770901118367
+          ],
+          [
+            -75.8030964062591,
+            40.26783709210513
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berks On Rd Section",
+        "styleUrl": "#msn_ylw-pushpin50",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.80309947291805,
+            40.26787399681328
+          ],
+          [
+            -75.8058175404555,
+            40.26752184022887
+          ],
+          [
+            -75.80685519166826,
+            40.26729389884886
+          ],
+          [
+            -75.80835647249394,
+            40.26689904276452
+          ],
+          [
+            -75.80837219604864,
+            40.26698327925038
+          ],
+          [
+            -75.80840165849284,
+            40.26706858797155
+          ],
+          [
+            -75.80841552763704,
+            40.26714250709097
+          ],
+          [
+            -75.808462581101,
+            40.26721106300459
+          ],
+          [
+            -75.80877205396779,
+            40.26718710132037
+          ],
+          [
+            -75.80884986604829,
+            40.26723107740484
+          ],
+          [
+            -75.8090612775652,
+            40.26725686573086
+          ],
+          [
+            -75.80914217426735,
+            40.26725083991651
+          ],
+          [
+            -75.80928785717853,
+            40.26725759425415
+          ],
+          [
+            -75.80963121185147,
+            40.26725869806999
+          ],
+          [
+            -75.80973598590452,
+            40.2672653272817
+          ],
+          [
+            -75.8108724225749,
+            40.26725639775118
+          ],
+          [
+            -75.81189107203468,
+            40.26718358585117
+          ],
+          [
+            -75.81195946045557,
+            40.26737901420015
+          ],
+          [
+            -75.81219538542487,
+            40.26750458061287
+          ],
+          [
+            -75.8136338314134,
+            40.2677071267837
+          ],
+          [
+            -75.81442680512549,
+            40.26790662893682
+          ],
+          [
+            -75.81540615307401,
+            40.26818101009779
+          ],
+          [
+            -75.81632582891677,
+            40.26835877416254
+          ],
+          [
+            -75.8181014377111,
+            40.26871996593475
+          ],
+          [
+            -75.81967262661273,
+            40.26912070478321
+          ],
+          [
+            -75.82090578616092,
+            40.26934334881493
+          ],
+          [
+            -75.82191092001499,
+            40.26947646152625
+          ],
+          [
+            -75.82300271791446,
+            40.26979743023003
+          ],
+          [
+            -75.8239894275047,
+            40.27019891885512
+          ],
+          [
+            -75.82540130807209,
+            40.2710495379141
+          ],
+          [
+            -75.82771235342449,
+            40.27260425931438
+          ],
+          [
+            -75.82851390423083,
+            40.27330904374666
+          ],
+          [
+            -75.82863061562844,
+            40.27375144996189
+          ],
+          [
+            -75.82871263240501,
+            40.2742575904635
+          ],
+          [
+            -75.82889733937985,
+            40.27446615899147
+          ],
+          [
+            -75.82966155078144,
+            40.27474254970476
+          ],
+          [
+            -75.8326407314737,
+            40.27527472393396
+          ],
+          [
+            -75.83411894435916,
+            40.27545091394739
+          ],
+          [
+            -75.83562232930848,
+            40.2755405648239
+          ],
+          [
+            -75.8368582296074,
+            40.27531404486547
+          ],
+          [
+            -75.83805789908965,
+            40.27529575690572
+          ],
+          [
+            -75.83971108794766,
+            40.27552945796623
+          ],
+          [
+            -75.84090738112647,
+            40.27569012043081
+          ],
+          [
+            -75.84232011121598,
+            40.27597276400273
+          ],
+          [
+            -75.84283677158703,
+            40.27603375502068
+          ],
+          [
+            -75.84367288172389,
+            40.275876510778
+          ],
+          [
+            -75.84447133375942,
+            40.27602111686498
+          ],
+          [
+            -75.84532318825539,
+            40.27628679815718
+          ],
+          [
+            -75.84598962027104,
+            40.27636027507319
+          ],
+          [
+            -75.84640312093164,
+            40.27631714599186
+          ],
+          [
+            -75.84729124834033,
+            40.27592894671167
+          ],
+          [
+            -75.84740969244187,
+            40.27589816287809
+          ],
+          [
+            -75.84992020618424,
+            40.27690177735062
+          ],
+          [
+            -75.85281637283961,
+            40.27798488939995
+          ],
+          [
+            -75.85533723421429,
+            40.278792353897
+          ],
+          [
+            -75.85839670043491,
+            40.27984729495896
+          ],
+          [
+            -75.86250473437971,
+            40.28118675783009
+          ],
+          [
+            -75.86586094442458,
+            40.28224722147404
+          ],
+          [
+            -75.86709868433537,
+            40.28265972176954
+          ],
+          [
+            -75.86764140573544,
+            40.28276703964472
+          ],
+          [
+            -75.86830903700336,
+            40.28286079014043
+          ],
+          [
+            -75.86843141232605,
+            40.28288585212962
+          ],
+          [
+            -75.86852045293011,
+            40.2829483160101
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berks on Rd (western edge) - RACC",
+        "styleUrl": "#msn_ylw-pushpin2",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.86850931751904,
+            40.28295413810086
+          ],
+          [
+            -75.87140323937079,
+            40.28324686121243
+          ],
+          [
+            -75.87370974935186,
+            40.28351903435119
+          ],
+          [
+            -75.8751214387339,
+            40.28367115035264
+          ],
+          [
+            -75.87602019568689,
+            40.28389423157779
+          ],
+          [
+            -75.87674422155433,
+            40.284178170412
+          ],
+          [
+            -75.87795784649745,
+            40.28480195589732
+          ],
+          [
+            -75.87890018651694,
+            40.28536420211564
+          ],
+          [
+            -75.88090502689077,
+            40.28653483198837
+          ],
+          [
+            -75.88263760952,
+            40.28749923888246
+          ],
+          [
+            -75.88447509660453,
+            40.28860311291758
+          ],
+          [
+            -75.88540785577409,
+            40.28913409036755
+          ],
+          [
+            -75.8875425785486,
+            40.2903704488284
+          ],
+          [
+            -75.88945807064047,
+            40.29145701582648
+          ],
+          [
+            -75.89082366392329,
+            40.29213803804654
+          ],
+          [
+            -75.89233368530763,
+            40.29289396485871
+          ],
+          [
+            -75.89342703075428,
+            40.29344957788374
+          ],
+          [
+            -75.89553280887871,
+            40.29447792602504
+          ],
+          [
+            -75.89669361839286,
+            40.29522914828036
+          ],
+          [
+            -75.89719362034941,
+            40.29565046587828
+          ],
+          [
+            -75.89732414762622,
+            40.29588032791887
+          ],
+          [
+            -75.897523601661,
+            40.29601819092061
+          ],
+          [
+            -75.89776030001245,
+            40.29619253521639
+          ],
+          [
+            -75.89810267529369,
+            40.29658210634594
+          ],
+          [
+            -75.89848136156009,
+            40.29712934128442
+          ],
+          [
+            -75.89888577700246,
+            40.29801946720157
+          ],
+          [
+            -75.89900058645868,
+            40.29843114504032
+          ],
+          [
+            -75.89944383472275,
+            40.30010874374578
+          ],
+          [
+            -75.89985625200579,
+            40.30167996282736
+          ],
+          [
+            -75.89999898232583,
+            40.30211254823489
+          ],
+          [
+            -75.90021116858856,
+            40.30231154375534
+          ],
+          [
+            -75.90040151039683,
+            40.30248396480702
+          ],
+          [
+            -75.90047386857879,
+            40.30261958185286
+          ],
+          [
+            -75.90041304422712,
+            40.30280630699814
+          ],
+          [
+            -75.90007479949257,
+            40.30346387059288
+          ],
+          [
+            -75.89992493342972,
+            40.3037366864981
+          ],
+          [
+            -75.8997297168903,
+            40.30404099074412
+          ],
+          [
+            -75.89961074242069,
+            40.30464763473089
+          ],
+          [
+            -75.89958833481981,
+            40.30526111711286
+          ],
+          [
+            -75.89967382100416,
+            40.30556694893095
+          ],
+          [
+            -75.89973170353615,
+            40.30565014882175
+          ],
+          [
+            -75.89988958457656,
+            40.30578309693459
+          ],
+          [
+            -75.90001362140825,
+            40.30589377070211
+          ],
+          [
+            -75.9000113771505,
+            40.30603737253439
+          ],
+          [
+            -75.89997848394907,
+            40.3061581499199
+          ],
+          [
+            -75.89999084477833,
+            40.30630070744399
+          ],
+          [
+            -75.90018943581788,
+            40.30658131636034
+          ],
+          [
+            -75.9004411854824,
+            40.30685899998622
+          ],
+          [
+            -75.90099687905062,
+            40.30717013304075
+          ],
+          [
+            -75.90200720270326,
+            40.30752632905566
+          ],
+          [
+            -75.90305826136799,
+            40.30790752872603
+          ],
+          [
+            -75.90345781585111,
+            40.30794913468419
+          ],
+          [
+            -75.90366901495447,
+            40.30786902837432
+          ],
+          [
+            -75.90379940486541,
+            40.30777359769208
+          ],
+          [
+            -75.90390852186904,
+            40.30771066828634
+          ],
+          [
+            -75.90399726072114,
+            40.30767948574341
+          ],
+          [
+            -75.9047788750469,
+            40.30782415264791
+          ],
+          [
+            -75.90555296384842,
+            40.3080943478515
+          ],
+          [
+            -75.90758656925637,
+            40.30857641448622
+          ],
+          [
+            -75.91275133653352,
+            40.30987867432241
+          ],
+          [
+            -75.91744092918721,
+            40.31111619984031
+          ],
+          [
+            -75.92101473680464,
+            40.31197364920153
+          ],
+          [
+            -75.92214041466265,
+            40.31229689773375
+          ],
+          [
+            -75.92283291994353,
+            40.31260992554079
+          ],
+          [
+            -75.92322927330686,
+            40.31280713226087
+          ],
+          [
+            -75.92354913089466,
+            40.31315644622025
+          ],
+          [
+            -75.92381595759034,
+            40.31355137202836
+          ],
+          [
+            -75.92428416506178,
+            40.31448785041908
+          ],
+          [
+            -75.92427585745266,
+            40.31460179336968
+          ],
+          [
+            -75.92408421819503,
+            40.31472457676835
+          ],
+          [
+            -75.92397916575757,
+            40.31484024204953
+          ],
+          [
+            -75.92390245680447,
+            40.31494821521787
+          ],
+          [
+            -75.92389161333475,
+            40.31503302123809
+          ],
+          [
+            -75.92393737273139,
+            40.31518046864338
+          ],
+          [
+            -75.92401837646022,
+            40.3154428862893
+          ],
+          [
+            -75.92415203417981,
+            40.31583450154831
+          ],
+          [
+            -75.92418429314954,
+            40.31698654783231
+          ],
+          [
+            -75.92418327839923,
+            40.31761397112334
+          ],
+          [
+            -75.92411885367673,
+            40.3179556837902
+          ],
+          [
+            -75.92400117497517,
+            40.31810883156519
+          ],
+          [
+            -75.92391861608925,
+            40.31819430287144
+          ],
+          [
+            -75.92386709755176,
+            40.3183843847483
+          ],
+          [
+            -75.92380678023946,
+            40.31862023760164
+          ],
+          [
+            -75.92379255040493,
+            40.31886325111778
+          ],
+          [
+            -75.92378674401283,
+            40.31924616801714
+          ],
+          [
+            -75.92377586707511,
+            40.31956341245034
+          ],
+          [
+            -75.92388938983042,
+            40.3198802024114
+          ],
+          [
+            -75.9240007269449,
+            40.32019433649357
+          ],
+          [
+            -75.92413960208525,
+            40.32061425897579
+          ],
+          [
+            -75.92431103581903,
+            40.32087896712348
+          ],
+          [
+            -75.92444307901548,
+            40.32094005894549
+          ],
+          [
+            -75.92458949590676,
+            40.32090709539225
+          ],
+          [
+            -75.9247138102121,
+            40.32089077462447
+          ],
+          [
+            -75.92479827223089,
+            40.32093520478347
+          ],
+          [
+            -75.92484050305866,
+            40.32101346441442
+          ],
+          [
+            -75.92485796064577,
+            40.32103037044082
+          ],
+          [
+            -75.9249605131176,
+            40.3211613458035
+          ],
+          [
+            -75.92507461978839,
+            40.32126570872583
+          ],
+          [
+            -75.92516770484484,
+            40.32133032662458
+          ],
+          [
+            -75.92530246085934,
+            40.32146729931058
+          ],
+          [
+            -75.92540199885683,
+            40.32166227840273
+          ],
+          [
+            -75.92555459455576,
+            40.32183124814744
+          ],
+          [
+            -75.9258300718271,
+            40.32198519193704
+          ],
+          [
+            -75.92636385143877,
+            40.32228973734158
+          ],
+          [
+            -75.92752101767866,
+            40.32258083876257
+          ],
+          [
+            -75.9288686678937,
+            40.32271832173974
+          ],
+          [
+            -75.93043304493492,
+            40.32277219844529
+          ],
+          [
+            -75.93107635798205,
+            40.32286043101368
+          ],
+          [
+            -75.93207442572603,
+            40.32312898832443
+          ],
+          [
+            -75.93361172414345,
+            40.32389035776908
+          ],
+          [
+            -75.93428251322769,
+            40.3243146364167
+          ],
+          [
+            -75.93525147394169,
+            40.32506129780507
+          ],
+          [
+            -75.93672492036356,
+            40.3261288916862
+          ],
+          [
+            -75.93787122614258,
+            40.32693250545638
+          ],
+          [
+            -75.93931014185281,
+            40.32794438530273
+          ],
+          [
+            -75.93944719548931,
+            40.32800805989185
+          ],
+          [
+            -75.9403098362152,
+            40.32800392636292
+          ],
+          [
+            -75.94044970529718,
+            40.32813273724775
+          ],
+          [
+            -75.94067110013788,
+            40.32850260711311
+          ],
+          [
+            -75.94082969007124,
+            40.32875614400449
+          ],
+          [
+            -75.94092057919919,
+            40.32891266494855
+          ],
+          [
+            -75.9410184445638,
+            40.32897902049611
+          ],
+          [
+            -75.94106689095646,
+            40.32903917278235
+          ],
+          [
+            -75.94100571071098,
+            40.3290658850245
+          ],
+          [
+            -75.94090914392586,
+            40.32901875865282
+          ],
+          [
+            -75.94077631694923,
+            40.32903853828055
+          ],
+          [
+            -75.94039706765263,
+            40.3292276853626
+          ],
+          [
+            -75.93999098636156,
+            40.32960013470595
+          ],
+          [
+            -75.93979623412696,
+            40.32987162399992
+          ],
+          [
+            -75.93964977071242,
+            40.33059963919144
+          ],
+          [
+            -75.93946814939564,
+            40.33080677125397
+          ],
+          [
+            -75.93834690272952,
+            40.33200631141467
+          ],
+          [
+            -75.93755532842115,
+            40.33277349148025
+          ],
+          [
+            -75.93669422399445,
+            40.33370031437518
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport (southern edge) - Leesport on Rd (southern edge)",
+        "styleUrl": "#msn_ylw-pushpin2",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.95916912202127,
+            40.43689449302928
+          ],
+          [
+            -75.95915817504817,
+            40.43745464853017
+          ],
+          [
+            -75.95927597588216,
+            40.43809762903583
+          ],
+          [
+            -75.95961730934603,
+            40.43889996769649
+          ],
+          [
+            -75.96018336241553,
+            40.43998652465887
+          ],
+          [
+            -75.96075162841312,
+            40.44078079963174
+          ],
+          [
+            -75.96150954217065,
+            40.44160353818144
+          ],
+          [
+            -75.96178669930147,
+            40.44197238931643
+          ],
+          [
+            -75.9620391472269,
+            40.44224611717613
+          ],
+          [
+            -75.96223491916318,
+            40.44229872124316
+          ],
+          [
+            -75.96242613273766,
+            40.44224661162779
+          ],
+          [
+            -75.96271877118106,
+            40.4421892162356
+          ],
+          [
+            -75.9629033821561,
+            40.44210928288201
+          ],
+          [
+            -75.96330556026219,
+            40.44199667012845
+          ],
+          [
+            -75.96409932219136,
+            40.44178716947684
+          ],
+          [
+            -75.96434204528657,
+            40.44173844367442
+          ],
+          [
+            -75.96448305890551,
+            40.44175491008302
+          ],
+          [
+            -75.96460186922462,
+            40.44185360627799
+          ],
+          [
+            -75.96461587885346,
+            40.44187017371047
+          ],
+          [
+            -75.96466475049166,
+            40.44196470364463
+          ],
+          [
+            -75.96471436426025,
+            40.44204344631348
+          ],
+          [
+            -75.96485869735795,
+            40.44209463246635
+          ],
+          [
+            -75.96539842536912,
+            40.4420104577889
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport on Rd",
+        "styleUrl": "#msn_ylw-pushpin4",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.96543332956165,
+            40.44198242586107
+          ],
+          [
+            -75.96595601102779,
+            40.44312071190149
+          ],
+          [
+            -75.96605066624545,
+            40.44347070024723
+          ],
+          [
+            -75.9663048268452,
+            40.44386426767829
+          ],
+          [
+            -75.96663262848732,
+            40.44375954597136
+          ],
+          [
+            -75.96697411328299,
+            40.44426252928235
+          ],
+          [
+            -75.96791007289266,
+            40.44482047743339
+          ],
+          [
+            -75.9688311323707,
+            40.44522393228144
+          ],
+          [
+            -75.96625866700414,
+            40.44729985136541
+          ],
+          [
+            -75.96730631093277,
+            40.44799328319511
+          ],
+          [
+            -75.96801166590625,
+            40.44853711522456
+          ],
+          [
+            -75.96860324714545,
+            40.44908377764814
+          ],
+          [
+            -75.96920900608205,
+            40.44880011853223
+          ],
+          [
+            -75.9708243951515,
+            40.44989299172828
+          ],
+          [
+            -75.97151648803305,
+            40.45035146733778
+          ],
+          [
+            -75.97290947805719,
+            40.45179216707371
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport on rd (northern edge) - Leesport (northern edge)",
+        "styleUrl": "#msn_ylw-pushpin10",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.97290666541261,
+            40.4518627735813
+          ],
+          [
+            -75.97288668464505,
+            40.45204132890645
+          ],
+          [
+            -75.97295352142221,
+            40.45221843304906
+          ],
+          [
+            -75.9731277608782,
+            40.4525609961697
+          ],
+          [
+            -75.9736410934413,
+            40.45338636980675
+          ],
+          [
+            -75.97431165745529,
+            40.45425019677784
+          ],
+          [
+            -75.97480551450975,
+            40.45504489039693
+          ],
+          [
+            -75.97520142661529,
+            40.4558001635357
+          ],
+          [
+            -75.97540520020738,
+            40.45649691190093
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "State Street Trailhead - Auburn Gap on Rd",
+        "styleUrl": "#msn_ylw-pushpin10",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -75.98892060501355,
+            40.55443605936518
+          ],
+          [
+            -75.98889396355075,
+            40.55455930981012
+          ],
+          [
+            -75.98891661540347,
+            40.55463091396402
+          ],
+          [
+            -75.98892916155452,
+            40.55473700878091
+          ],
+          [
+            -75.98876346962076,
+            40.55501977785485
+          ],
+          [
+            -75.98863015602613,
+            40.55519279783846
+          ],
+          [
+            -75.98851688224016,
+            40.55521803635111
+          ],
+          [
+            -75.98844916328933,
+            40.55526243122002
+          ],
+          [
+            -75.98842838055668,
+            40.55529329601918
+          ],
+          [
+            -75.98843254499985,
+            40.55532457458222
+          ],
+          [
+            -75.98862482050892,
+            40.55540102094751
+          ],
+          [
+            -75.98972483492459,
+            40.55584612884417
+          ],
+          [
+            -75.99122027100907,
+            40.55651886861205
+          ],
+          [
+            -75.99146504795435,
+            40.5566170589617
+          ],
+          [
+            -75.9915789232222,
+            40.55662804961517
+          ],
+          [
+            -75.99166881330859,
+            40.5566745180316
+          ],
+          [
+            -75.99170256489245,
+            40.55678095655517
+          ],
+          [
+            -75.99170153322811,
+            40.55685319106333
+          ],
+          [
+            -75.99165269268839,
+            40.5569271967007
+          ],
+          [
+            -75.99154796652275,
+            40.55698459151828
+          ],
+          [
+            -75.99115961489501,
+            40.55706186372836
+          ],
+          [
+            -75.99077163760366,
+            40.55714454763874
+          ],
+          [
+            -75.99052206707505,
+            40.55728032369088
+          ],
+          [
+            -75.99042010954409,
+            40.5575120951852
+          ],
+          [
+            -75.99039664344886,
+            40.55779221798107
+          ],
+          [
+            -75.9905155129714,
+            40.55832275107662
+          ],
+          [
+            -75.99063943002339,
+            40.55871606429388
+          ],
+          [
+            -75.9908050902447,
+            40.55916009715146
+          ],
+          [
+            -75.99081459775273,
+            40.55955007305342
+          ],
+          [
+            -75.9905788770735,
+            40.56020778099854
+          ],
+          [
+            -75.99085956901538,
+            40.56139456026193
+          ],
+          [
+            -75.99140206374189,
+            40.56237192872167
+          ],
+          [
+            -75.99201711302177,
+            40.56347364224867
+          ],
+          [
+            -75.99247518335365,
+            40.56457833978786
+          ],
+          [
+            -75.99280379689607,
+            40.56527835379591
+          ],
+          [
+            -75.9936632879329,
+            40.56565918035218
+          ],
+          [
+            -75.99453463245615,
+            40.56587494648633
+          ],
+          [
+            -75.99541614275896,
+            40.56609559183494
+          ],
+          [
+            -75.9957831453722,
+            40.56597174870939
+          ],
+          [
+            -75.99574252716717,
+            40.5656810610232
+          ],
+          [
+            -75.99560713815343,
+            40.56544362637923
+          ],
+          [
+            -75.99536652061931,
+            40.56530012933553
+          ],
+          [
+            -75.99509191645006,
+            40.56514997003676
+          ],
+          [
+            -75.99489510718769,
+            40.5650108871635
+          ],
+          [
+            -75.99475365569354,
+            40.56466419881161
+          ],
+          [
+            -75.99469036955796,
+            40.5644590595286
+          ],
+          [
+            -75.99460929301648,
+            40.5643380968456
+          ],
+          [
+            -75.99460025182054,
+            40.56423464056333
+          ],
+          [
+            -75.99464272522462,
+            40.56403132146158
+          ],
+          [
+            -75.99463664256045,
+            40.56387037657392
+          ],
+          [
+            -75.99458111199405,
+            40.56363059847555
+          ],
+          [
+            -75.99446248267574,
+            40.56341878860876
+          ],
+          [
+            -75.9943849495347,
+            40.56317702049308
+          ],
+          [
+            -75.9944735078451,
+            40.56296946372026
+          ],
+          [
+            -75.99452131024029,
+            40.56269382115955
+          ],
+          [
+            -75.99448868725177,
+            40.56242064265525
+          ],
+          [
+            -75.9945828904179,
+            40.56226241981022
+          ],
+          [
+            -75.99482879458505,
+            40.56231299140737
+          ],
+          [
+            -75.99503233912702,
+            40.56270761184884
+          ],
+          [
+            -75.99581829405857,
+            40.56411838982459
+          ],
+          [
+            -75.99670667402069,
+            40.56526678958682
+          ],
+          [
+            -75.99805319016842,
+            40.56681939004147
+          ],
+          [
+            -76.00068863059465,
+            40.56992208874787
+          ],
+          [
+            -76.00109804733839,
+            40.57024519671244
+          ],
+          [
+            -76.00169133518759,
+            40.57053375482748
+          ],
+          [
+            -76.0022642848615,
+            40.57075192655037
+          ],
+          [
+            -76.00388586464955,
+            40.57124565480755
+          ],
+          [
+            -76.00672588563197,
+            40.57202300803394
+          ],
+          [
+            -76.00824666274768,
+            40.57221973236795
+          ],
+          [
+            -76.00906429020627,
+            40.57213263155311
+          ],
+          [
+            -76.01025643639086,
+            40.57203083334611
+          ],
+          [
+            -76.01139071848193,
+            40.57170727358005
+          ],
+          [
+            -76.01278839880268,
+            40.57131420079366
+          ],
+          [
+            -76.01406243725295,
+            40.57088613508504
+          ],
+          [
+            -76.0145773569757,
+            40.57071903885014
+          ],
+          [
+            -76.0147839337606,
+            40.57070076573727
+          ],
+          [
+            -76.01499020523418,
+            40.5706825194627
+          ],
+          [
+            -76.01537409877287,
+            40.57077547219187
+          ],
+          [
+            -76.01761318477716,
+            40.57137795824235
+          ],
+          [
+            -76.01945373361954,
+            40.57186804589553
+          ],
+          [
+            -76.02147674075316,
+            40.57278655158031
+          ],
+          [
+            -76.02196680490611,
+            40.57299416235854
+          ],
+          [
+            -76.0228353942012,
+            40.57358400115875
+          ],
+          [
+            -76.02399869798641,
+            40.57429917318771
+          ],
+          [
+            -76.02444738608686,
+            40.57485757823739
+          ],
+          [
+            -76.02498099996261,
+            40.5756868084324
+          ],
+          [
+            -76.02571156201985,
+            40.57678161058317
+          ],
+          [
+            -76.0261506790877,
+            40.57723298754647
+          ],
+          [
+            -76.02677822495889,
+            40.57753607714613
+          ],
+          [
+            -76.02773346182953,
+            40.57774649334394
+          ],
+          [
+            -76.02856347032599,
+            40.5777697329361
+          ],
+          [
+            -76.0301359156176,
+            40.57703624319305
+          ],
+          [
+            -76.03119971877335,
+            40.57663383258424
+          ],
+          [
+            -76.03186686950703,
+            40.57656343075594
+          ],
+          [
+            -76.03271692701075,
+            40.5765643140999
+          ],
+          [
+            -76.03333766120275,
+            40.57661571590624
+          ],
+          [
+            -76.03435165062815,
+            40.57683224756967
+          ],
+          [
+            -76.03575093042197,
+            40.57762350707272
+          ],
+          [
+            -76.03676004476515,
+            40.57825588613149
+          ],
+          [
+            -76.0373990965816,
+            40.5787947938011
+          ],
+          [
+            -76.03906928461834,
+            40.57999722123481
+          ],
+          [
+            -76.04043053475749,
+            40.58072828171565
+          ],
+          [
+            -76.0410913464695,
+            40.58085280332944
+          ],
+          [
+            -76.04199832895856,
+            40.58087645004687
+          ],
+          [
+            -76.04334090432144,
+            40.58063101093654
+          ],
+          [
+            -76.04454875183424,
+            40.58015188142045
+          ],
+          [
+            -76.04560527169102,
+            40.5796174950804
+          ],
+          [
+            -76.0464220945975,
+            40.57905523195613
+          ],
+          [
+            -76.04708837960554,
+            40.57847965155183
+          ],
+          [
+            -76.04785531457104,
+            40.57759467205721
+          ],
+          [
+            -76.04870803585099,
+            40.57649998527112
+          ],
+          [
+            -76.04923711739563,
+            40.57585528014943
+          ],
+          [
+            -76.05006879762018,
+            40.57513491646553
+          ],
+          [
+            -76.05081081197724,
+            40.57454939526237
+          ],
+          [
+            -76.05227802367703,
+            40.57383328858739
+          ],
+          [
+            -76.05363948085252,
+            40.57347481943253
+          ],
+          [
+            -76.0544097005626,
+            40.57341167486109
+          ],
+          [
+            -76.05516745816209,
+            40.573602988034
+          ],
+          [
+            -76.0563543537896,
+            40.57406325047693
+          ],
+          [
+            -76.05777579674937,
+            40.57512861193258
+          ],
+          [
+            -76.0597843049201,
+            40.57693086018226
+          ],
+          [
+            -76.06093281198127,
+            40.5783939726012
+          ],
+          [
+            -76.061437373483,
+            40.57910211461342
+          ],
+          [
+            -76.06180027785942,
+            40.58010447405167
+          ],
+          [
+            -76.06217899128964,
+            40.58179237486547
+          ],
+          [
+            -76.06284403187371,
+            40.58445021566978
+          ],
+          [
+            -76.06346581943122,
+            40.58728714775749
+          ],
+          [
+            -76.06378976786587,
+            40.58828779161137
+          ],
+          [
+            -76.06447792567606,
+            40.58932773967726
+          ],
+          [
+            -76.06564395754958,
+            40.59047840261504
+          ],
+          [
+            -76.06653616842422,
+            40.59104806143745
+          ],
+          [
+            -76.06817068004092,
+            40.59146076713824
+          ],
+          [
+            -76.07058677378896,
+            40.59101787845594
+          ],
+          [
+            -76.07280408100775,
+            40.5900048491182
+          ],
+          [
+            -76.07492519194753,
+            40.58898933673304
+          ],
+          [
+            -76.0755760720883,
+            40.58888485024787
+          ],
+          [
+            -76.076237390505,
+            40.58885676777035
+          ],
+          [
+            -76.0763423927675,
+            40.5888284475549
+          ],
+          [
+            -76.07632114523146,
+            40.58867820600611
+          ],
+          [
+            -76.07660789379774,
+            40.58867835299311
+          ],
+          [
+            -76.07742481983962,
+            40.58826598222466
+          ],
+          [
+            -76.0778847661504,
+            40.58798112248716
+          ],
+          [
+            -76.0780274725355,
+            40.5876343374004
+          ],
+          [
+            -76.07815561885032,
+            40.58729765401446
+          ],
+          [
+            -76.07826742353774,
+            40.58725628541669
+          ],
+          [
+            -76.07916431338303,
+            40.58709241319544
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gap on Rd",
+        "styleUrl": "#msn_ylw-pushpin00",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.07927584516366,
+            40.58709835634509
+          ],
+          [
+            -76.07906244423762,
+            40.58738566756399
+          ],
+          [
+            -76.07893190056107,
+            40.58753195719294
+          ],
+          [
+            -76.07894283570552,
+            40.5877267937601
+          ],
+          [
+            -76.07892040471279,
+            40.58812611586028
+          ],
+          [
+            -76.07920586276681,
+            40.58861925785412
+          ],
+          [
+            -76.0801325389029,
+            40.58962425121334
+          ],
+          [
+            -76.08111992746608,
+            40.59050257277814
+          ],
+          [
+            -76.08156894726277,
+            40.5908207092773
+          ],
+          [
+            -76.08169303893085,
+            40.59094042158896
+          ],
+          [
+            -76.08264642325105,
+            40.59242309959567
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn Gap on Rd - Auburn 895 Trailhead",
+        "styleUrl": "#msn_ylw-pushpin1",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.0826312229096,
+            40.59243399655461
+          ],
+          [
+            -76.0828343552237,
+            40.59282942251745
+          ],
+          [
+            -76.08302532139719,
+            40.59311882603449
+          ],
+          [
+            -76.0832208172154,
+            40.59339032118761
+          ],
+          [
+            -76.08341163635569,
+            40.59364216790089
+          ],
+          [
+            -76.08365701948681,
+            40.59401063249622
+          ],
+          [
+            -76.08391069860483,
+            40.59452225838302
+          ],
+          [
+            -76.08398280159274,
+            40.59465397334617
+          ],
+          [
+            -76.08407904097386,
+            40.5951121917662
+          ],
+          [
+            -76.08419116162936,
+            40.5956216661155
+          ],
+          [
+            -76.08418270412264,
+            40.59615443104345
+          ],
+          [
+            -76.08424684956775,
+            40.59689804015088
+          ],
+          [
+            -76.08443348555834,
+            40.59843301782812
+          ],
+          [
+            -76.08480015371197,
+            40.59923231478782
+          ],
+          [
+            -76.08507498660262,
+            40.59959021989295
+          ],
+          [
+            -76.08540284745155,
+            40.60001241788672
+          ],
+          [
+            -76.08624665665216,
+            40.60082595442815
+          ],
+          [
+            -76.08704168220777,
+            40.60155260713962
+          ],
+          [
+            -76.08798860687078,
+            40.60217167720327
+          ],
+          [
+            -76.08800485662772,
+            40.6025066422287
+          ],
+          [
+            -76.08793919154023,
+            40.60280689618507
+          ],
+          [
+            -76.0881452831901,
+            40.60284198092454
+          ],
+          [
+            -76.08830887365662,
+            40.60242867500165
+          ],
+          [
+            -76.08836487010794,
+            40.60240758688742
+          ],
+          [
+            -76.08842166038822,
+            40.60242870401775
+          ],
+          [
+            -76.0884614257048,
+            40.6024569509617
+          ],
+          [
+            -76.08848441101227,
+            40.60250308524024
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Section",
+        "styleUrl": "#msn_ylw-pushpin1",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.11508205388651,
+            40.61361252085236
+          ],
+          [
+            -76.11516693351807,
+            40.61353077452178
+          ],
+          [
+            -76.11534680300446,
+            40.61349416501007
+          ],
+          [
+            -76.11569725040678,
+            40.61349421203826
+          ],
+          [
+            -76.11577922909048,
+            40.61349422295595
+          ],
+          [
+            -76.11593722411565,
+            40.61356101123805
+          ],
+          [
+            -76.11605786546279,
+            40.61365327492472
+          ],
+          [
+            -76.11625171641744,
+            40.61390098409196
+          ],
+          [
+            -76.11634834243728,
+            40.6140531313833
+          ],
+          [
+            -76.11646758786291,
+            40.6143747721814
+          ],
+          [
+            -76.11662974471763,
+            40.61491936737197
+          ],
+          [
+            -76.11677573551925,
+            40.61545304589509
+          ],
+          [
+            -76.11690361633472,
+            40.6158413102472
+          ],
+          [
+            -76.11712852982322,
+            40.61668390376612
+          ],
+          [
+            -76.11720775729829,
+            40.61691790266082
+          ],
+          [
+            -76.11722277262311,
+            40.61705454438751
+          ],
+          [
+            -76.11722460476746,
+            40.61712146893907
+          ],
+          [
+            -76.11721640860553,
+            40.61719873157765
+          ],
+          [
+            -76.11723045387517,
+            40.61727685102758
+          ],
+          [
+            -76.1175618155229,
+            40.61838789312696
+          ],
+          [
+            -76.11769762113214,
+            40.61883977020286
+          ],
+          [
+            -76.11869283499576,
+            40.62169926511248
+          ],
+          [
+            -76.118773501275,
+            40.62195736941916
+          ],
+          [
+            -76.11887827304625,
+            40.62240968827808
+          ],
+          [
+            -76.11917983388635,
+            40.62317074769312
+          ],
+          [
+            -76.11962238196202,
+            40.62407088196246
+          ],
+          [
+            -76.11984305504345,
+            40.62493308142624
+          ],
+          [
+            -76.1199646523849,
+            40.62569927422615
+          ],
+          [
+            -76.12031732915258,
+            40.62658595519076
+          ],
+          [
+            -76.12089568809392,
+            40.62726829137284
+          ],
+          [
+            -76.12124762143719,
+            40.62765934189341
+          ],
+          [
+            -76.12179652756008,
+            40.62826274379631
+          ],
+          [
+            -76.12239863274145,
+            40.6288661389313
+          ],
+          [
+            -76.12316442484517,
+            40.62969944138437
+          ],
+          [
+            -76.12371551739976,
+            40.63113067388051
+          ],
+          [
+            -76.12398616196596,
+            40.63175041693452
+          ],
+          [
+            -76.12448446188351,
+            40.6323160874533
+          ],
+          [
+            -76.12482941638093,
+            40.63257596669059
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Section",
+        "styleUrl": "#msn_ylw-pushpin1",
+        "folder": "Trail Alignment",
+        "folder_path": "2026 Maintenance/Improvement Map / Trail Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.18400922783235,
+            40.67415840154018
+          ],
+          [
+            -76.18434332890155,
+            40.6739315982418
+          ],
+          [
+            -76.18442592076978,
+            40.67360284023289
+          ],
+          [
+            -76.18441621603863,
+            40.6731214929731
+          ],
+          [
+            -76.1843918127227,
+            40.67279710603705
+          ],
+          [
+            -76.18437954584927,
+            40.67229538355336
+          ],
+          [
+            -76.18442898049943,
+            40.67163259972149
+          ],
+          [
+            -76.1846226225683,
+            40.67071205996559
+          ],
+          [
+            -76.18487234815501,
+            40.6700466365507
+          ],
+          [
+            -76.18523369701238,
+            40.66925860264309
+          ],
+          [
+            -76.18597547918613,
+            40.66815478279023
+          ],
+          [
+            -76.18642210639409,
+            40.66755485117847
+          ],
+          [
+            -76.18736673616662,
+            40.66653638582479
+          ],
+          [
+            -76.18811377105956,
+            40.66578084791651
+          ],
+          [
+            -76.18857432671899,
+            40.66523356843589
+          ],
+          [
+            -76.18874332627634,
+            40.66462138900266
+          ],
+          [
+            -76.18875450836809,
+            40.66433029860713
+          ],
+          [
+            -76.18859812019318,
+            40.663828037396
+          ],
+          [
+            -76.18823468858518,
+            40.66341099007165
+          ],
+          [
+            -76.18798878460615,
+            40.66313404364799
+          ],
+          [
+            -76.18740583866307,
+            40.66259641762309
+          ],
+          [
+            -76.18680037801495,
+            40.66185330041809
+          ],
+          [
+            -76.18644281899857,
+            40.66121797880089
+          ],
+          [
+            -76.18629289814447,
+            40.66074770124088
+          ],
+          [
+            -76.18628515138124,
+            40.66070127873542
+          ],
+          [
+            -76.18628294511639,
+            40.66068805766115
+          ],
+          [
+            -76.1862383675249,
+            40.66026836244501
+          ],
+          [
+            -76.1862457878901,
+            40.66026204758386
+          ],
+          [
+            -76.18624189896785,
+            40.65979363948848
+          ],
+          [
+            -76.18654827905274,
+            40.65896587199906
+          ],
+          [
+            -76.18715723371089,
+            40.65818147011193
+          ],
+          [
+            -76.18760242415136,
+            40.65763635197476
+          ],
+          [
+            -76.18786493193836,
+            40.65726696998809
+          ],
+          [
+            -76.188081019448,
+            40.6568847116219
+          ],
+          [
+            -76.18815949215292,
+            40.65648364050761
+          ],
+          [
+            -76.18821183838446,
+            40.65554869727908
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berks County Line",
+        "styleUrl": "#msn_red-stars",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.69374977092762,
+          40.24536901971144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Grosstown Rd Trailhead",
+        "styleUrl": "#msn_parking_lot3",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.69083076060672,
+          40.2441325297733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Squirrel Hollow Rd Crossing",
+        "styleUrl": "#msn_caution12",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.7043764716353,
+          40.24908307006196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Morlatton Village Trailhead",
+        "description": "***First trailhead managed by SRG in Berks",
+        "styleUrl": "#msn_parking_lot5",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.72596580088175,
+          40.25363496068036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Doberstien Campsite",
+        "description": "Not Managed by SRG",
+        "styleUrl": "#msn_campground",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.74786054384064,
+          40.25939717141024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "724 Road Crossing (Union)",
+        "styleUrl": "#msn_caution1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78187302400057,
+          40.25834296185159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Union Meadows Trailhead",
+        "styleUrl": "#msn_parking_lot8",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.78179561875601,
+          40.25991370182739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shady Brook Driveway Crossing",
+        "styleUrl": "#msn_caution1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.79239888908022,
+          40.26318804528705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berks On Road Section (East Edge)",
+        "styleUrl": "#msn_caution1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.80316911082397,
+          40.26774331909261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Birdsboro Trailhead",
+        "styleUrl": "#msn_parking_lot6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.80612919889495,
+          40.26672177684978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "724 Crossing (Robeson)",
+        "styleUrl": "#msn_caution6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.84667203180207,
+          40.2761608088656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gibraltar Parking Area",
+        "styleUrl": "#msn_parking_lot6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.86862782246502,
+          40.28319087993935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Reesers Landing",
+        "styleUrl": "#msn_sailing",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.86776191182868,
+          40.2895527021382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Berks on Road Section (West Edge)",
+        "styleUrl": "#msn_caution8",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.86850298343202,
+          40.2829259499911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Seyfert Rd Crossing",
+        "styleUrl": "#msn_caution6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.88499066170134,
+          40.28886200819301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "724 Crossing (Ridgewood Soil)",
+        "styleUrl": "#msn_caution6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89721062610323,
+          40.29565025080321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Angstadt Ln Crossing",
+        "styleUrl": "#msn_caution6",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89944323916617,
+          40.3000317194084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Charlie Marshal Trailhead",
+        "styleUrl": "#msn_parking_lot7",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.89967296035314,
+          40.30045421136531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Poplar Neck Rd Crossing",
+        "styleUrl": "#msn_caution2",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9139611923298,
+          40.31014429726469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lock 54",
+        "styleUrl": "#msn_sailing1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.91370598108192,
+          40.29584982486607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brentwood Trailhead",
+        "styleUrl": "#msn_parking_lot4",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.92417426457575,
+          40.31411016890423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Brentwood Dr Crossing",
+        "styleUrl": "#msn_caution3",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.92429203693153,
+          40.31441371251369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Victor Emmanuel",
+        "styleUrl": "#msn_info1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9247834875189,
+          40.32022228980701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Matos Towing",
+        "styleUrl": "#msn_info",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.93985884267995,
+          40.32772599594271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Craigs Link Section Entrance",
+        "styleUrl": "#msn_caution0",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.94035402142806,
+          40.32799250192841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoudts Ferry",
+        "styleUrl": "#msn_sailing0",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.97072711132422,
+          40.41189788388714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport Southern Edge",
+        "styleUrl": "#msn_caution9",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9591575273855,
+          40.43679082399423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport on road section (southern edged)",
+        "styleUrl": "#msn_caution9",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.96541321596763,
+          40.44187788872389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport on road section (northern edge)",
+        "styleUrl": "#msn_caution9",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.97286956005392,
+          40.45180395523139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Leesport Northern Edge",
+        "styleUrl": "#msn_caution9",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.97542716568385,
+          40.45644534139688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Peter Yarnell Park/Landing",
+        "styleUrl": "#msn_sailing0",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99763486258848,
+          40.52130926050662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "State Street Trailhead",
+        "styleUrl": "#msn_parking_lot0",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.98882848824506,
+          40.55426869415601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kernsville Dam Recreation Area",
+        "styleUrl": "#msn_parking_lot",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.99410549758117,
+          40.56212910063687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "AT/SRG Crossing",
+        "styleUrl": "#msn_info0",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.02616800174562,
+          40.57721492835642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stoney Creek Parking Area",
+        "styleUrl": "#msn_parking_lot9",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.06179578284873,
+          40.57932978824765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Schuylkill on Road Section (Auburn; southern edge)",
+        "styleUrl": "#msn_caution11",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07921008955574,
+          40.58710236660428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "RR Crossing (Auburn)",
+        "styleUrl": "#msn_caution11",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.07890824818963,
+          40.58788083071785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Schuylkill on Road Section (Auburn; northern egde)",
+        "styleUrl": "#msn_caution11",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08263437214625,
+          40.59239252491988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "895 crossing",
+        "styleUrl": "#msn_caution4",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08803931211203,
+          40.6028139112081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Auburn 895 Trailhead",
+        "styleUrl": "#msn_parking_lot1",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.08849148180263,
+          40.60258039557697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Section (southern edge)",
+        "styleUrl": "#msn_caution5",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11507887640813,
+          40.61355994441725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Crossing",
+        "styleUrl": "#msn_caution5",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11722937022164,
+          40.6171259101604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Trailhead",
+        "styleUrl": "#msn_parking_lot10",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11776177756737,
+          40.61780290018049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Road Crossing/Shared Driveway Begin",
+        "styleUrl": "#msn_caution7",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.11870572813562,
+          40.62173876734874
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shared Driveway End",
+        "styleUrl": "#msn_caution7",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.12173991527136,
+          40.6281172859274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tunnel Rd Section (northern edge)",
+        "styleUrl": "#msn_caution10",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.12485304112148,
+          40.63250591072813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Section (southern edge)",
+        "styleUrl": "#msn_caution",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1881923063528,
+          40.65557396143822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Section (northern edge)",
+        "styleUrl": "#msn_caution",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18437996323301,
+          40.67382293228495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tumbling Run Trailhead",
+        "styleUrl": "#msn_parking_lot2",
+        "folder": "Labels",
+        "folder_path": "2026 Maintenance/Improvement Map / Labels"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.18388626494182,
+          40.67416540484295
+        ]
+      }
+    }
+  ]
+}
