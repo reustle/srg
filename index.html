@@ -431,7 +431,23 @@
         "#4f7e86",
       ];
 
+      const clickableLayers = [
+        "srg-active-off-road",
+        "srg-active-on-road",
+        "srg-proposed-off-road",
+        "srg-proposed-on-road",
+        "srg-trailheads",
+        "srg-towns",
+        "srg-places",
+        "osm-srt",
+        "improvements-lines",
+        "improvements-polygons-fill",
+        "improvements-points",
+      ];
+
       const status = document.getElementById("status");
+      let activePopup = null;
+
       const setStatus = (text, good = true) => {
         status.textContent = text;
         status.style.color = good ? "#636b70" : "#c9503c";
@@ -682,20 +698,6 @@
       }
 
       function addPopups() {
-        const clickableLayers = [
-          "srg-active-off-road",
-          "srg-active-on-road",
-          "srg-proposed-off-road",
-          "srg-proposed-on-road",
-          "srg-trailheads",
-          "srg-towns",
-          "srg-places",
-          "osm-srt",
-          "improvements-lines",
-          "improvements-polygons-fill",
-          "improvements-points",
-        ];
-
         for (const layerId of clickableLayers) {
           map.on("mouseenter", layerId, () => {
             map.getCanvas().style.cursor = "pointer";
@@ -703,15 +705,23 @@
           map.on("mouseleave", layerId, () => {
             map.getCanvas().style.cursor = "";
           });
-          map.on("click", layerId, (event) => {
-            const feature = event.features?.[0];
-            if (!feature) return;
-            new mapboxgl.Popup({ closeButton: true, maxWidth: "360px" })
-              .setLngLat(event.lngLat)
-              .setHTML(popupHtml(feature))
-              .addTo(map);
-          });
         }
+
+        map.on("click", (event) => {
+          const activeLayers = clickableLayers.filter((layerId) => map.getLayer(layerId));
+          const feature = map.queryRenderedFeatures(event.point, { layers: activeLayers })[0];
+          if (!feature) {
+            if (activePopup) activePopup.remove();
+            activePopup = null;
+            return;
+          }
+
+          if (activePopup) activePopup.remove();
+          activePopup = new mapboxgl.Popup({ closeButton: true, maxWidth: "360px" })
+            .setLngLat(event.lngLat)
+            .setHTML(popupHtml(feature))
+            .addTo(map);
+        });
       }
 
       function allCoordinates(geometry, out = []) {
