@@ -758,6 +758,13 @@
         });
       }
 
+      function syncLayerVisibilityFromControls() {
+        document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
+          setVisibility(input.dataset.layerToggle, input.checked);
+        });
+        updateImprovementFolderFilter();
+      }
+
       function populateCounts(srg, osm, improvements) {
         setCount("srg-count", srg.features.length);
         setCount("osm-count", osm.features.length);
@@ -787,6 +794,7 @@
             addLayers(srg, osm, improvements);
             populateCounts(srg, osm, improvements);
             wireToggles();
+            syncLayerVisibilityFromControls();
             fitGeojsons([srg, osm, improvements]);
             document.getElementById("fit-visible").addEventListener("click", () => fitGeojsons([srg, osm, improvements]));
             setStatus(`${srg.features.length} SRG, ${osm.features.length} OSM, ${improvements.features.length} improvements`);
