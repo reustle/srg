@@ -393,6 +393,32 @@
         </label>
         <div class="folder-list" id="folder-list"></div>
       </section>
+
+      <section class="group">
+        <div class="group-head">
+          <h2>2026 Improvements</h2>
+          <span class="count" id="improvements-2026-count">0</span>
+        </div>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-2026-lines" checked />
+          <span class="swatch" style="background: #2f7f84"></span>
+          <span>Lines</span>
+          <span class="count" id="count-improvements-2026-lines"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-2026-polygons" checked />
+          <span class="swatch poly" style="background: #9a6b2f"></span>
+          <span>Areas</span>
+          <span class="count" id="count-improvements-2026-polygons"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-2026-points" checked />
+          <span class="swatch point" style="background: #a24d74"></span>
+          <span>Points</span>
+          <span class="count" id="count-improvements-2026-points"></span>
+        </label>
+        <div class="folder-list" id="folder-list-2026"></div>
+      </section>
     </aside>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
@@ -404,6 +430,7 @@
         srg: "srg-website-map.geojson",
         osm: "srt-osm.geojson",
         improvements: "2025-Improvement-Map.geojson",
+        improvements2026: "2026-Improvement-Map.geojson",
       };
 
       const layerGroups = {
@@ -418,6 +445,9 @@
         "improvements-lines": ["improvements-lines"],
         "improvements-polygons": ["improvements-polygons-fill", "improvements-polygons-outline"],
         "improvements-points": ["improvements-points"],
+        "improvements-2026-lines": ["improvements-2026-lines"],
+        "improvements-2026-polygons": ["improvements-2026-polygons-fill", "improvements-2026-polygons-outline"],
+        "improvements-2026-points": ["improvements-2026-points"],
       };
 
       const folderColors = [
@@ -443,6 +473,9 @@
         "improvements-lines",
         "improvements-polygons-fill",
         "improvements-points",
+        "improvements-2026-lines",
+        "improvements-2026-polygons-fill",
+        "improvements-2026-points",
       ];
 
       const status = document.getElementById("status");
@@ -551,14 +584,18 @@
         return expression;
       }
 
-      function addLayers(srg, osm, improvements) {
+      function addLayers(srg, osm, improvements, improvements2026) {
         const folders = [...new Set(improvements.features.map(featureFolder))].sort();
         const folderIndex = Object.fromEntries(folders.map((folder, index) => [folder, index]));
         const improvementColor = buildMatchExpression(folderIndex);
+        const folders2026 = [...new Set(improvements2026.features.map(featureFolder))].sort();
+        const folderIndex2026 = Object.fromEntries(folders2026.map((folder, index) => [folder, index]));
+        const improvementColor2026 = buildMatchExpression(folderIndex2026);
 
         map.addSource("srg", { type: "geojson", data: srg });
         map.addSource("osm-srt", { type: "geojson", data: osm });
         map.addSource("improvements", { type: "geojson", data: improvements });
+        map.addSource("improvements-2026", { type: "geojson", data: improvements2026 });
 
         map.addLayer({
           id: "srg-active-off-road",
@@ -655,20 +692,53 @@
           paint: { "circle-color": improvementColor, "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.4 },
         });
 
-        buildFolderControls(folders, folderIndex, improvements);
+        map.addLayer({
+          id: "improvements-2026-polygons-fill",
+          type: "fill",
+          source: "improvements-2026",
+          filter: ["==", ["geometry-type"], "Polygon"],
+          paint: { "fill-color": improvementColor2026, "fill-opacity": 0.28 },
+        });
+
+        map.addLayer({
+          id: "improvements-2026-polygons-outline",
+          type: "line",
+          source: "improvements-2026",
+          filter: ["==", ["geometry-type"], "Polygon"],
+          paint: { "line-color": improvementColor2026, "line-width": 2, "line-opacity": 0.85 },
+        });
+
+        map.addLayer({
+          id: "improvements-2026-lines",
+          type: "line",
+          source: "improvements-2026",
+          filter: ["==", ["geometry-type"], "LineString"],
+          paint: { "line-color": improvementColor2026, "line-width": 3.5, "line-opacity": 0.82, "line-dasharray": [1.4, 1.2] },
+        });
+
+        map.addLayer({
+          id: "improvements-2026-points",
+          type: "circle",
+          source: "improvements-2026",
+          filter: ["==", ["geometry-type"], "Point"],
+          paint: { "circle-color": improvementColor2026, "circle-radius": 4.8, "circle-stroke-color": "#fff", "circle-stroke-width": 1.3 },
+        });
+
+        buildFolderControls("folder-list", "folder2025", folders, folderIndex, improvements);
+        buildFolderControls("folder-list-2026", "folder2026", folders2026, folderIndex2026, improvements2026);
         addPopups();
       }
 
-      function buildFolderControls(folders, folderIndex, improvements) {
-        const folderList = document.getElementById("folder-list");
+      function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
+        const folderList = document.getElementById(containerId);
         folderList.innerHTML = "";
 
         for (const folder of folders) {
-          const id = `folder-${folder.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
+          const id = `${dataName}-${folder.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
           const count = countFeatures(improvements, (feature) => featureFolder(feature) === folder);
           const label = document.createElement("label");
           label.innerHTML = `
-            <input id="${id}" type="checkbox" data-folder="${escapeHtml(folder)}" checked />
+            <input id="${id}" type="checkbox" data-${dataName}="${escapeHtml(folder)}" checked />
             <span class="swatch point" style="background: ${folderColor(folder, folderIndex)}"></span>
             <span>${escapeHtml(folder)}</span>
             <span class="count">${count.toLocaleString()}</span>
@@ -676,25 +746,30 @@
           folderList.appendChild(label);
         }
 
-        folderList.addEventListener("change", () => updateImprovementFolderFilter());
+        folderList.addEventListener("change", () => updateImprovementFolderFilters());
       }
 
-      function updateImprovementFolderFilter() {
-        const checked = [...document.querySelectorAll("[data-folder]:checked")].map((input) => input.dataset.folder);
+      function updateImprovementFolderFilter(dataName, layerIds) {
+        const checked = [...document.querySelectorAll(`[data-${dataName}]:checked`)].map((input) => input.dataset[dataName]);
         const folderFilter = checked.length
           ? ["in", ["coalesce", ["get", "folder"], "Unsorted"], ["literal", checked]]
           : ["==", ["get", "__never__"], "__none__"];
 
-        for (const layerId of ["improvements-lines", "improvements-polygons-fill", "improvements-polygons-outline", "improvements-points"]) {
+        for (const layerId of layerIds) {
           if (!map.getLayer(layerId)) continue;
           const geom =
-            layerId === "improvements-lines"
+            layerId.endsWith("-lines")
               ? "LineString"
-              : layerId === "improvements-points"
+              : layerId.endsWith("-points")
                 ? "Point"
                 : "Polygon";
           map.setFilter(layerId, ["all", ["==", ["geometry-type"], geom], folderFilter]);
         }
+      }
+
+      function updateImprovementFolderFilters() {
+        updateImprovementFolderFilter("folder2025", ["improvements-lines", "improvements-polygons-fill", "improvements-polygons-outline", "improvements-points"]);
+        updateImprovementFolderFilter("folder2026", ["improvements-2026-lines", "improvements-2026-polygons-fill", "improvements-2026-polygons-outline", "improvements-2026-points"]);
       }
 
       function addPopups() {
@@ -762,13 +837,14 @@
         document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
           setVisibility(input.dataset.layerToggle, input.checked);
         });
-        updateImprovementFolderFilter();
+        updateImprovementFolderFilters();
       }
 
-      function populateCounts(srg, osm, improvements) {
+      function populateCounts(srg, osm, improvements, improvements2026) {
         setCount("srg-count", srg.features.length);
         setCount("osm-count", osm.features.length);
         setCount("improvements-count", improvements.features.length);
+        setCount("improvements-2026-count", improvements2026.features.length);
         setCount("count-srg-active-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "off_road"));
         setCount("count-srg-active-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "on_road"));
         setCount("count-srg-proposed-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "off_road"));
@@ -780,24 +856,28 @@
         setCount("count-improvements-lines", countFeatures(improvements, (f) => f.geometry?.type === "LineString"));
         setCount("count-improvements-polygons", countFeatures(improvements, (f) => f.geometry?.type === "Polygon"));
         setCount("count-improvements-points", countFeatures(improvements, (f) => f.geometry?.type === "Point"));
+        setCount("count-improvements-2026-lines", countFeatures(improvements2026, (f) => f.geometry?.type === "LineString"));
+        setCount("count-improvements-2026-polygons", countFeatures(improvements2026, (f) => f.geometry?.type === "Polygon"));
+        setCount("count-improvements-2026-points", countFeatures(improvements2026, (f) => f.geometry?.type === "Point"));
       }
 
       async function init() {
         try {
-          const [srg, osm, improvements] = await Promise.all([
+          const [srg, osm, improvements, improvements2026] = await Promise.all([
             loadGeojson(DATASETS.srg),
             loadGeojson(DATASETS.osm),
             loadGeojson(DATASETS.improvements),
+            loadGeojson(DATASETS.improvements2026),
           ]);
 
           const render = () => {
-            addLayers(srg, osm, improvements);
-            populateCounts(srg, osm, improvements);
+            addLayers(srg, osm, improvements, improvements2026);
+            populateCounts(srg, osm, improvements, improvements2026);
             wireToggles();
             syncLayerVisibilityFromControls();
-            fitGeojsons([srg, osm, improvements]);
-            document.getElementById("fit-visible").addEventListener("click", () => fitGeojsons([srg, osm, improvements]));
-            setStatus(`${srg.features.length} SRG, ${osm.features.length} OSM, ${improvements.features.length} improvements`);
+            fitGeojsons([srg, osm, improvements, improvements2026]);
+            document.getElementById("fit-visible").addEventListener("click", () => fitGeojsons([srg, osm, improvements, improvements2026]));
+            setStatus(`${srg.features.length} SRG, ${osm.features.length} OSM, ${improvements.features.length} 2025 improvements, ${improvements2026.features.length} 2026 improvements`);
           };
 
           if (map.loaded()) {
