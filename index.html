@@ -490,6 +490,8 @@
         "improvements-2026": "folder2026",
       };
 
+      const excludedSrgPostIds = new Set([1796]);
+
       const folderColors = [
         "#c9503c",
         "#397550",
@@ -607,6 +609,13 @@
         const response = await fetch(url);
         if (!response.ok) throw new Error(`${url}: ${response.status}`);
         return response.json();
+      }
+
+      function withoutExcludedSrgFeatures(geojson) {
+        return {
+          ...geojson,
+          features: geojson.features.filter((feature) => !excludedSrgPostIds.has(feature.properties?.source_post_id)),
+        };
       }
 
       function countFeatures(geojson, predicate) {
@@ -959,12 +968,13 @@
 
       async function init() {
         try {
-          const [srg, osm, improvements, improvements2026] = await Promise.all([
+          const [rawSrg, osm, improvements, improvements2026] = await Promise.all([
             loadGeojson(DATASETS.srg),
             loadGeojson(DATASETS.osm),
             loadGeojson(DATASETS.improvements),
             loadGeojson(DATASETS.improvements2026),
           ]);
+          const srg = withoutExcludedSrgFeatures(rawSrg);
 
           const render = () => {
             addLayers(srg, osm, improvements, improvements2026);
