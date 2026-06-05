@@ -556,9 +556,19 @@
         return "";
       }
 
+      function sourceLabel(feature) {
+        const props = feature.properties || {};
+        const source = feature.source || "";
+        if (source === "improvements") return "2025 improvements";
+        if (source === "improvements-2026") return "2026 improvements";
+        if (source === "osm-srt" || props.osm_id) return "OSM";
+        if (source === "srg") return props.layer ? `SRG ${props.layer}` : "SRG";
+        return props.layer || "Map feature";
+      }
+
       function popupHtml(feature) {
         const props = feature.properties || {};
-        const layer = props.layer || "osm";
+        const layer = sourceLabel(feature);
         const title =
           props.display_name ||
           props.name ||
