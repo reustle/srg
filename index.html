@@ -155,6 +155,14 @@
         margin-bottom: 9px;
       }
 
+      .group-toggle {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+
       .group h2 {
         margin: 0;
         font-size: 14px;
@@ -308,7 +316,10 @@
 
       <section class="group">
         <div class="group-head">
-          <h2>SRG Website Map</h2>
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="srg" checked />
+            <h2>SRG Website Map</h2>
+          </label>
           <span class="count" id="srg-count">0</span>
         </div>
         <label>
@@ -357,7 +368,10 @@
 
       <section class="group">
         <div class="group-head">
-          <h2>OpenStreetMap SRT</h2>
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="osm" checked />
+            <h2>OpenStreetMap SRT</h2>
+          </label>
           <span class="count" id="osm-count">0</span>
         </div>
         <label>
@@ -370,7 +384,10 @@
 
       <section class="group">
         <div class="group-head">
-          <h2>2025 Improvements</h2>
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="improvements-2025" checked />
+            <h2>2025 Improvements</h2>
+          </label>
           <span class="count" id="improvements-count">0</span>
         </div>
         <label>
@@ -396,7 +413,10 @@
 
       <section class="group">
         <div class="group-head">
-          <h2>2026 Improvements</h2>
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="improvements-2026" checked />
+            <h2>2026 Improvements</h2>
+          </label>
           <span class="count" id="improvements-2026-count">0</span>
         </div>
         <label>
@@ -448,6 +468,21 @@
         "improvements-2026-lines": ["improvements-2026-lines"],
         "improvements-2026-polygons": ["improvements-2026-polygons-fill", "improvements-2026-polygons-outline"],
         "improvements-2026-points": ["improvements-2026-points"],
+      };
+
+      const layerGroupControls = {
+        srg: [
+          "srg-active-off-road",
+          "srg-active-on-road",
+          "srg-proposed-off-road",
+          "srg-proposed-on-road",
+          "srg-trailheads",
+          "srg-towns",
+          "srg-places",
+        ],
+        osm: ["osm-srt"],
+        "improvements-2025": ["improvements-lines", "improvements-polygons", "improvements-points"],
+        "improvements-2026": ["improvements-2026-lines", "improvements-2026-polygons", "improvements-2026-points"],
       };
 
       const folderColors = [
@@ -827,9 +862,39 @@
         }
       }
 
+      function updateLayerGroupToggle(groupName) {
+        const groupToggle = document.querySelector(`[data-layer-group-toggle="${groupName}"]`);
+        if (!groupToggle) return;
+        const toggles = (layerGroupControls[groupName] || [])
+          .map((toggleName) => document.querySelector(`[data-layer-toggle="${toggleName}"]`))
+          .filter(Boolean);
+        const checkedCount = toggles.filter((input) => input.checked).length;
+        groupToggle.checked = checkedCount === toggles.length;
+        groupToggle.indeterminate = checkedCount > 0 && checkedCount < toggles.length;
+      }
+
+      function updateAllLayerGroupToggles() {
+        Object.keys(layerGroupControls).forEach(updateLayerGroupToggle);
+      }
+
+      function setLayerGroupVisibility(groupName, visible) {
+        for (const toggleName of layerGroupControls[groupName] || []) {
+          const input = document.querySelector(`[data-layer-toggle="${toggleName}"]`);
+          if (input) input.checked = visible;
+          setVisibility(toggleName, visible);
+        }
+        updateLayerGroupToggle(groupName);
+      }
+
       function wireToggles() {
         document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
-          input.addEventListener("change", () => setVisibility(input.dataset.layerToggle, input.checked));
+          input.addEventListener("change", () => {
+            setVisibility(input.dataset.layerToggle, input.checked);
+            updateAllLayerGroupToggles();
+          });
+        });
+        document.querySelectorAll("[data-layer-group-toggle]").forEach((input) => {
+          input.addEventListener("change", () => setLayerGroupVisibility(input.dataset.layerGroupToggle, input.checked));
         });
       }
 
@@ -837,6 +902,7 @@
         document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
           setVisibility(input.dataset.layerToggle, input.checked);
         });
+        updateAllLayerGroupToggles();
         updateImprovementFolderFilters();
       }
 
