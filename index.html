@@ -449,16 +449,16 @@
         "srg-active-on-road": ["srg-active-on-road"],
         "srg-proposed-off-road": ["srg-proposed-off-road"],
         "srg-proposed-on-road": ["srg-proposed-on-road"],
-        "srg-trailheads": ["srg-trailheads"],
-        "srg-towns": ["srg-towns"],
-        "srg-places": ["srg-places"],
+        "srg-trailheads": ["srg-trailheads", "srg-trailheads-icons"],
+        "srg-towns": ["srg-towns", "srg-towns-icons"],
+        "srg-places": ["srg-places", "srg-places-icons"],
         "osm-srt": ["osm-srt"],
         "improvements-lines": ["improvements-lines"],
         "improvements-polygons": ["improvements-polygons-fill", "improvements-polygons-outline"],
-        "improvements-points": ["improvements-points"],
+        "improvements-points": ["improvements-points", "improvements-points-icons"],
         "improvements-2026-lines": ["improvements-2026-lines"],
         "improvements-2026-polygons": ["improvements-2026-polygons-fill", "improvements-2026-polygons-outline"],
-        "improvements-2026-points": ["improvements-2026-points"],
+        "improvements-2026-points": ["improvements-2026-points", "improvements-2026-points-icons"],
       };
 
       const layerGroupControls = {
@@ -500,15 +500,20 @@
         "srg-proposed-off-road",
         "srg-proposed-on-road",
         "srg-trailheads",
+        "srg-trailheads-icons",
         "srg-towns",
+        "srg-towns-icons",
         "srg-places",
+        "srg-places-icons",
         "osm-srt",
         "improvements-lines",
         "improvements-polygons-fill",
         "improvements-points",
+        "improvements-points-icons",
         "improvements-2026-lines",
         "improvements-2026-polygons-fill",
         "improvements-2026-points",
+        "improvements-2026-points-icons",
       ];
 
       const status = document.getElementById("status");
@@ -636,13 +641,66 @@
         return expression;
       }
 
-      function addLayers(srg, osm, improvements, improvements2026) {
+      function iconMatchExpression(folderIndex, prefix) {
+        const expression = ["match", ["coalesce", ["get", "folder"], "Unsorted"]];
+        for (const folder of Object.keys(folderIndex)) {
+          expression.push(folder, `${prefix}-${folderIndex[folder] % folderColors.length}`);
+        }
+        expression.push(`${prefix}-0`);
+        return expression;
+      }
+
+      function badgeSvg(background, path) {
+        return `
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" fill="${background}" stroke="#fff" stroke-width="4"/>
+            <path d="${path}" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        `;
+      }
+
+      function loadSvgImage(svg) {
+        return new Promise((resolve, reject) => {
+          const image = new Image(48, 48);
+          image.onload = () => resolve(image);
+          image.onerror = reject;
+          image.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+        });
+      }
+
+      async function addBadgeImage(name, background, path) {
+        if (map.hasImage(name)) return;
+        map.addImage(name, await loadSvgImage(badgeSvg(background, path)), { pixelRatio: 2 });
+      }
+
+      async function addMapIcons() {
+        const icons = {
+          trailhead: "M24 13v22 M15 24h18 M18 14h12l-2 6 2 6H18",
+          town: "M14 34h20 M16 34V21l8-7 8 7v13 M21 34v-8h6v8",
+          place: "M24 34s9-8 9-15a9 9 0 0 0-18 0c0 7 9 15 9 15z M24 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z",
+          improvement: "M24 12l13 23H11L24 12z M24 20v7 M24 32h.01",
+        };
+
+        await Promise.all([
+          addBadgeImage("icon-trailhead", "#074a67", icons.trailhead),
+          addBadgeImage("icon-town", "#5c971c", icons.town),
+          addBadgeImage("icon-place", "#8d5b2d", icons.place),
+          ...folderColors.map((color, index) => addBadgeImage(`icon-improvement-2025-${index}`, color, icons.improvement)),
+          ...folderColors.map((color, index) => addBadgeImage(`icon-improvement-2026-${index}`, color, icons.improvement)),
+        ]);
+      }
+
+      async function addLayers(srg, osm, improvements, improvements2026) {
         const folders = [...new Set(improvements.features.map(featureFolder))].sort();
         const folderIndex = Object.fromEntries(folders.map((folder, index) => [folder, index]));
         const improvementColor = buildMatchExpression(folderIndex);
+        const improvementIcon = iconMatchExpression(folderIndex, "icon-improvement-2025");
         const folders2026 = [...new Set(improvements2026.features.map(featureFolder))].sort();
         const folderIndex2026 = Object.fromEntries(folders2026.map((folder, index) => [folder, index]));
         const improvementColor2026 = buildMatchExpression(folderIndex2026);
+        const improvementIcon2026 = iconMatchExpression(folderIndex2026, "icon-improvement-2026");
+
+        await addMapIcons();
 
         map.addSource("srg", { type: "geojson", data: srg });
         map.addSource("osm-srt", { type: "geojson", data: osm });
@@ -717,7 +775,17 @@
           type: "circle",
           source: "srg",
           filter: ["==", ["get", "layer"], "trailhead"],
+          maxzoom: 11,
           paint: { "circle-color": "#074a67", "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 },
+        });
+
+        map.addLayer({
+          id: "srg-trailheads-icons",
+          type: "symbol",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "trailhead"],
+          minzoom: 11,
+          layout: { "icon-image": "icon-trailhead", "icon-size": 0.72, "icon-allow-overlap": true },
         });
 
         map.addLayer({
@@ -725,7 +793,17 @@
           type: "circle",
           source: "srg",
           filter: ["==", ["get", "layer"], "town"],
+          maxzoom: 11,
           paint: { "circle-color": "#6db220", "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 },
+        });
+
+        map.addLayer({
+          id: "srg-towns-icons",
+          type: "symbol",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "town"],
+          minzoom: 11,
+          layout: { "icon-image": "icon-town", "icon-size": 0.72, "icon-allow-overlap": true },
         });
 
         map.addLayer({
@@ -733,7 +811,17 @@
           type: "circle",
           source: "srg",
           filter: ["==", ["get", "layer"], "places_to_visit"],
+          maxzoom: 11,
           paint: { "circle-color": "#8d5b2d", "circle-radius": 4.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1 },
+        });
+
+        map.addLayer({
+          id: "srg-places-icons",
+          type: "symbol",
+          source: "srg",
+          filter: ["==", ["get", "layer"], "places_to_visit"],
+          minzoom: 11,
+          layout: { "icon-image": "icon-place", "icon-size": 0.64, "icon-allow-overlap": true },
         });
 
         map.addLayer({
@@ -741,7 +829,17 @@
           type: "circle",
           source: "improvements",
           filter: ["==", ["geometry-type"], "Point"],
+          maxzoom: 12,
           paint: { "circle-color": improvementColor, "circle-radius": 5.5, "circle-stroke-color": "#fff", "circle-stroke-width": 1.4 },
+        });
+
+        map.addLayer({
+          id: "improvements-points-icons",
+          type: "symbol",
+          source: "improvements",
+          filter: ["==", ["geometry-type"], "Point"],
+          minzoom: 12,
+          layout: { "icon-image": improvementIcon, "icon-size": 0.64, "icon-allow-overlap": true },
         });
 
         map.addLayer({
@@ -773,7 +871,17 @@
           type: "circle",
           source: "improvements-2026",
           filter: ["==", ["geometry-type"], "Point"],
+          maxzoom: 12,
           paint: { "circle-color": improvementColor2026, "circle-radius": 4.8, "circle-stroke-color": "#fff", "circle-stroke-width": 1.3 },
+        });
+
+        map.addLayer({
+          id: "improvements-2026-points-icons",
+          type: "symbol",
+          source: "improvements-2026",
+          filter: ["==", ["geometry-type"], "Point"],
+          minzoom: 12,
+          layout: { "icon-image": improvementIcon2026, "icon-size": 0.6, "icon-allow-overlap": true },
         });
       }
 
@@ -809,9 +917,9 @@
         for (const layerId of layerIds) {
           if (!map.getLayer(layerId)) continue;
           const geom =
-            layerId.endsWith("-lines")
+            layerId.includes("lines")
               ? "LineString"
-              : layerId.endsWith("-points")
+              : layerId.includes("points")
                 ? "Point"
                 : "Polygon";
           map.setFilter(layerId, ["all", ["==", ["geometry-type"], geom], folderFilter]);
@@ -819,8 +927,8 @@
       }
 
       function updateImprovementFolderFilters() {
-        updateImprovementFolderFilter("folder2025", ["improvements-lines", "improvements-polygons-fill", "improvements-polygons-outline", "improvements-points"]);
-        updateImprovementFolderFilter("folder2026", ["improvements-2026-lines", "improvements-2026-polygons-fill", "improvements-2026-polygons-outline", "improvements-2026-points"]);
+        updateImprovementFolderFilter("folder2025", ["improvements-lines", "improvements-polygons-fill", "improvements-polygons-outline", "improvements-points", "improvements-points-icons"]);
+        updateImprovementFolderFilter("folder2026", ["improvements-2026-lines", "improvements-2026-polygons-fill", "improvements-2026-polygons-outline", "improvements-2026-points", "improvements-2026-points-icons"]);
       }
 
       function addPopups() {
@@ -933,13 +1041,13 @@
         updateImprovementFolderFilters();
       }
 
-      function renderOverlays() {
+      async function renderOverlays() {
         if (!overlays) return;
         if (map.getSource("srg")) {
           syncLayerVisibilityFromControls();
           return;
         }
-        addLayers(overlays.srg, overlays.osm, overlays.improvements, overlays.improvements2026);
+        await addLayers(overlays.srg, overlays.osm, overlays.improvements, overlays.improvements2026);
         syncLayerVisibilityFromControls();
       }
 
@@ -948,7 +1056,12 @@
           const styleUrl = MAP_STYLES[basemapStyle.value] || MAP_STYLES.outdoors;
           if (activePopup) activePopup.remove();
           activePopup = null;
-          map.once("style.load", renderOverlays);
+          map.once("style.load", () => {
+            renderOverlays().catch((error) => {
+              console.error(error);
+              setStatus("Could not redraw overlays after style change", false);
+            });
+          });
           map.setStyle(styleUrl);
         });
       }
@@ -991,12 +1104,12 @@
           const srg = withoutExcludedSrgFeatures(rawSrg);
           overlays = { srg, osm, improvements, improvements2026 };
 
-          const render = () => {
+          const render = async () => {
             const folders2025 = folderControlConfig(improvements);
             const folders2026 = folderControlConfig(improvements2026);
             buildFolderControls("folder-list", "folder2025", folders2025.folders, folders2025.folderIndex, improvements);
             buildFolderControls("folder-list-2026", "folder2026", folders2026.folders, folders2026.folderIndex, improvements2026);
-            renderOverlays();
+            await renderOverlays();
             populateCounts(srg, osm, improvements, improvements2026);
             wireToggles();
             wireBasemapSelector();
@@ -1007,9 +1120,14 @@
           };
 
           if (map.loaded()) {
-            render();
+            await render();
           } else {
-            map.once("load", render);
+            map.once("load", () => {
+              render().catch((error) => {
+                console.error(error);
+                setStatus("Could not load local GeoJSON files", false);
+              });
+            });
           }
         } catch (error) {
           console.error(error);
