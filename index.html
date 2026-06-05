@@ -485,6 +485,11 @@
         "improvements-2026": ["improvements-2026-lines", "improvements-2026-polygons", "improvements-2026-points"],
       };
 
+      const layerGroupFolderControls = {
+        "improvements-2025": "folder2025",
+        "improvements-2026": "folder2026",
+      };
+
       const folderColors = [
         "#c9503c",
         "#397550",
@@ -791,7 +796,10 @@
           folderList.appendChild(label);
         }
 
-        folderList.addEventListener("change", () => updateImprovementFolderFilters());
+        folderList.addEventListener("change", () => {
+          updateImprovementFolderFilters();
+          updateAllLayerGroupToggles();
+        });
       }
 
       function updateImprovementFolderFilter(dataName, layerIds) {
@@ -875,11 +883,16 @@
       function updateLayerGroupToggle(groupName) {
         const groupToggle = document.querySelector(`[data-layer-group-toggle="${groupName}"]`);
         if (!groupToggle) return;
-        const toggles = (layerGroupControls[groupName] || [])
+        const layerToggles = (layerGroupControls[groupName] || [])
           .map((toggleName) => document.querySelector(`[data-layer-toggle="${toggleName}"]`))
           .filter(Boolean);
+        const folderDataName = layerGroupFolderControls[groupName];
+        const folderToggles = folderDataName
+          ? [...document.querySelectorAll(`[data-${folderDataName}]`)]
+          : [];
+        const toggles = [...layerToggles, ...folderToggles];
         const checkedCount = toggles.filter((input) => input.checked).length;
-        groupToggle.checked = checkedCount === toggles.length;
+        groupToggle.checked = toggles.length > 0 && checkedCount === toggles.length;
         groupToggle.indeterminate = checkedCount > 0 && checkedCount < toggles.length;
       }
 
@@ -892,6 +905,13 @@
           const input = document.querySelector(`[data-layer-toggle="${toggleName}"]`);
           if (input) input.checked = visible;
           setVisibility(toggleName, visible);
+        }
+        const folderDataName = layerGroupFolderControls[groupName];
+        if (folderDataName) {
+          document.querySelectorAll(`[data-${folderDataName}]`).forEach((input) => {
+            input.checked = visible;
+          });
+          updateImprovementFolderFilters();
         }
         updateLayerGroupToggle(groupName);
       }
