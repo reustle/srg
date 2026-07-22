@@ -1116,7 +1116,7 @@
       }
 
       function prepareScrubRoute(geojson) {
-        const coordinates = [...(geojson.features?.[0]?.geometry?.coordinates || [])].reverse();
+        const coordinates = [...(geojson.features?.[0]?.geometry?.coordinates || [])];
         if (coordinates.length < 2) return null;
         const cumulative = [0];
         for (let index = 1; index < coordinates.length; index += 1) {

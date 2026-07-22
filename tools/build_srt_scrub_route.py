@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build one west-to-east SRT line for the map's trail scrubber.
+"""Build one southeast-to-northwest SRT line for the map's trail scrubber.
 
 This is a temporary derived route. It joins the official SRG map's four trail
 line layers at nearby endpoints, bridges any remaining component gaps with
-straight lines, and exports the shortest connected path from the westernmost
-endpoint to the easternmost endpoint.
+straight lines, and exports the shortest connected path from the southeastern
+endpoint of the proposed off-road SRT to the northwestern trail endpoint.
 """
 
 from __future__ import annotations
@@ -183,9 +183,38 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
         add_edge(graph, start, end, coordinates)
 
     forced_connector_lengths = connect_graph(graph, endpoints, nearby_gap_miles)
-    west = min(range(len(endpoints)), key=lambda index: endpoints[index]["coordinate"][0])
-    east = max(range(len(endpoints)), key=lambda index: endpoints[index]["coordinate"][0])
-    path = shortest_path(graph, west, east)
+    proposed_off_road_segments = {
+        index
+        for index, feature in enumerate(features)
+        if feature.get("properties", {}).get("status") == "proposed"
+        and feature.get("properties", {}).get("alignment") == "off_road"
+    }
+    proposed_off_road_endpoints = [
+        index
+        for index, endpoint in enumerate(endpoints)
+        if endpoint["segment"] in proposed_off_road_segments
+    ]
+    if not proposed_off_road_endpoints:
+        raise RuntimeError("No proposed off-road SRT endpoints found")
+
+    # Latitude is the primary southeast discriminator for this north/south route;
+    # longitude breaks ties toward the east. Restricting this to endpoints keeps
+    # the scrub route anchored at the terminus of the source linework.
+    southeast = min(
+        proposed_off_road_endpoints,
+        key=lambda index: (
+            endpoints[index]["coordinate"][1],
+            -endpoints[index]["coordinate"][0],
+        ),
+    )
+    northwest = min(
+        range(len(endpoints)),
+        key=lambda index: (
+            endpoints[index]["coordinate"][0],
+            -endpoints[index]["coordinate"][1],
+        ),
+    )
+    path = shortest_path(graph, southeast, northwest)
 
     route_coordinates = []
     connector_count = 0
@@ -206,7 +235,7 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
         "metadata": {
             "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
             "source": "srg-website-map.geojson",
-            "purpose": "Temporary continuous west-to-east route for the map footer scrubber",
+            "purpose": "Temporary continuous Philadelphia-to-Frackville route for the map footer scrubber",
             "replacement_note": "Replace this derived line when official distance line data is available.",
             "input_trail_feature_count": len(features),
             "path_source_segment_count": source_segment_count,
@@ -214,6 +243,8 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
             "connector_miles": round(connector_miles, 6),
             "forced_component_connector_miles": [round(value, 6) for value in forced_connector_lengths],
             "route_miles": round(route_miles, 6),
+            "start_coordinate": endpoints[southeast]["coordinate"],
+            "end_coordinate": endpoints[northwest]["coordinate"],
         },
         "features": [
             {
@@ -221,8 +252,8 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
                 "id": "srt-scrubber-route",
                 "properties": {
                     "name": "Temporary SRT Scrubber Route",
-                    "start": "source",
-                    "end": "trail end",
+                    "start": "Philadelphia",
+                    "end": "Frackville",
                     "distance_miles": round(route_miles, 6),
                 },
                 "geometry": {"type": "LineString", "coordinates": route_coordinates},
