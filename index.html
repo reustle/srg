@@ -364,6 +364,21 @@
         line-height: 1.4;
       }
 
+      .popup-address {
+        margin: 8px 0 0;
+        color: #34383b;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .popup-amenities {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: #34383b;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
       .popup-link {
         display: inline-block;
         margin-top: 8px;
@@ -1056,6 +1071,27 @@
         return (doc.body.textContent || "").replace(/\s+/g, " ").trim();
       }
 
+      function parseInfoWindow(value) {
+        if (!value) return null;
+
+        const doc = new DOMParser().parseFromString(value, "text/html");
+        const addressNode = doc.querySelector(".address");
+        const addressWithoutLink = addressNode?.cloneNode(true);
+        addressWithoutLink?.querySelectorAll("a").forEach((link) => link.remove());
+
+        return {
+          address: (addressWithoutLink?.textContent || "")
+            .replace(/\s+/g, " ")
+            .replace(/\s*•\s*$/, "")
+            .trim(),
+          description: (doc.querySelector("p")?.textContent || "").replace(/\s+/g, " ").trim(),
+          directionsUrl: addressNode?.querySelector("a.directions")?.href || "",
+          amenities: [...doc.querySelectorAll(".amenity-icons li span")]
+            .map((item) => (item.textContent || "").replace(/\s+/g, " ").trim())
+            .filter(Boolean),
+        };
+      }
+
       function sourcePageUrl(feature) {
         const props = feature.properties || {};
         if (props.google_maps_uri) return props.google_maps_uri;
@@ -1103,15 +1139,21 @@
           props.folder ||
           "Map feature";
 
-        const body = htmlToText(
-          props.infowindow_html || props.description_html || props.description || props.formatted_address,
+        const infoWindow = parseInfoWindow(props.infowindow_html);
+        const body = (
+          infoWindow?.description ||
+          htmlToText(props.description_html || props.description || props.formatted_address)
         ).slice(0, 560);
         const url = sourcePageUrl(feature);
+        const amenities = infoWindow?.amenities || [];
 
         return `
           <h3 class="popup-title">${escapeHtml(title)}</h3>
           <p class="popup-meta">${escapeHtml(featureMetadata(feature))}</p>
+          ${infoWindow?.address ? `<p class="popup-address">${escapeHtml(infoWindow.address)}</p>` : ""}
           ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
+          ${amenities.length ? `<ul class="popup-amenities">${amenities.map((amenity) => `<li>${escapeHtml(amenity)}</li>`).join("")}</ul>` : ""}
+          ${infoWindow?.directionsUrl ? `<a class="popup-link" href="${escapeHtml(infoWindow.directionsUrl)}" target="_blank" rel="noreferrer">Get directions</a>` : ""}
           ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
         `;
       }
