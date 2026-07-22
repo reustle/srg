@@ -533,6 +533,14 @@
         bottom: var(--scrubber-height);
       }
 
+      @media (max-width: 1000px) {
+        .scrubber-stop[data-name="Manayunk"],
+        .scrubber-stop[data-name="Phoenixville"],
+        .scrubber-stop[data-name="Pottsville"] {
+          display: none;
+        }
+      }
+
       @media (max-width: 760px) {
         :root {
           --scrubber-height: 96px;
@@ -553,10 +561,6 @@
 
         .scrubber-stop {
           font-size: 8px;
-        }
-
-        .scrubber-stop[data-name="Phoenixville"] {
-          display: none;
         }
 
       }
@@ -1165,7 +1169,7 @@
           { name: "Philadelphia", fraction: 0, endpoint: "start" },
           { name: "Frackville", fraction: 1, endpoint: "end" },
         ];
-        for (const name of ["Reading", "Pottstown", "Phoenixville", "Hamburg"]) {
+        for (const name of ["Manayunk", "Phoenixville", "Pottstown", "Reading", "Hamburg", "Pottsville"]) {
           const town = srg.features.find(
             (feature) => feature.properties?.layer === "town" && feature.properties?.name === name,
           );
