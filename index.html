@@ -1236,7 +1236,8 @@
 
       function updateLocationHash(fraction) {
         const miles = Math.max(0, Math.min(1, fraction)) * scrubRoute.totalMiles;
-        history.replaceState(null, "", `#marker-${miles.toFixed(1)}`);
+        const hash = `#marker-${miles.toFixed(1)}`;
+        if (window.location.hash !== hash) history.replaceState(null, "", hash);
       }
 
       function updateTrailScrubber(fraction, moveCamera = true) {
@@ -1293,7 +1294,9 @@
         const max = Number(trailRange.max);
         scrubPlaybackValue = Math.min(max, scrubPlaybackValue + elapsed * max / SCRUB_PLAYBACK_DURATION);
         trailRange.value = String(scrubPlaybackValue);
-        updateTrailScrubber(scrubPlaybackValue / max);
+        const fraction = scrubPlaybackValue / max;
+        updateLocationHash(fraction);
+        updateTrailScrubber(fraction);
         if (scrubPlaybackValue >= max) {
           scrubPlaybackStarted = false;
           pauseTrailPlayback();
