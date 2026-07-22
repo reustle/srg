@@ -55,6 +55,11 @@ API key configured in the `google-maps-api-key` meta tag in `index.html`; users
 are never prompted for credentials. When deploying on a new host, add that
 host's referrer to the key restrictions.
 
+When the **Trailheads** layer is enabled, each trailhead point gains a
+collision-aware callout with its name and amenity pictograms. The amenity list
+is read from that feature's `infowindow_html`, so refreshed SRG exports update
+the labels without a separate amenity lookup table.
+
 ## Map data notes
 
 ### Schuylkill River Trail identity in OSM

@@ -696,7 +696,7 @@
           <span class="count" id="count-srg-proposed-on-road"></span>
         </label>
         <label>
-          <input type="checkbox" data-layer-toggle="srg-trailheads" />
+          <input type="checkbox" data-layer-toggle="srg-trailheads" checked />
           <span class="swatch point" style="background: #074a67"></span>
           <span>Trailheads</span>
           <span class="count" id="count-srg-trailheads"></span>
@@ -961,7 +961,7 @@
         "srg-active-on-road": ["srg-active-on-road"],
         "srg-proposed-off-road": ["srg-proposed-off-road"],
         "srg-proposed-on-road": ["srg-proposed-on-road"],
-        "srg-trailheads": ["srg-trailheads"],
+        "srg-trailheads": ["srg-trailheads", "srg-trailhead-labels"],
         "srg-towns": ["srg-towns"],
         "srg-places": ["srg-places"],
         "osm-srt": ["osm-srt"],
@@ -1014,6 +1014,7 @@
         "srg-proposed-off-road",
         "srg-proposed-on-road",
         "srg-trailheads",
+        "srg-trailhead-labels",
         "srg-towns",
         "srg-places",
         "osm-srt",
@@ -1090,6 +1091,173 @@
             .map((item) => (item.textContent || "").replace(/\s+/g, " ").trim())
             .filter(Boolean),
         };
+      }
+
+      function wrapCanvasText(context, value, maxWidth) {
+        const words = value.split(/\s+/).filter(Boolean);
+        const lines = [];
+        let line = "";
+        for (const word of words) {
+          const candidate = line ? `${line} ${word}` : word;
+          if (line && context.measureText(candidate).width > maxWidth) {
+            lines.push(line);
+            line = word;
+          } else {
+            line = candidate;
+          }
+        }
+        if (line) lines.push(line);
+        return lines;
+      }
+
+      function drawAmenityGlyph(context, amenity, x, y, size) {
+        const key = amenity.toLowerCase();
+        const centerX = x + size / 2;
+        const centerY = y + size / 2;
+        const left = x + 4;
+        const right = x + size - 4;
+        const top = y + 4;
+        const bottom = y + size - 4;
+        context.save();
+        context.fillStyle = "#fff";
+        context.strokeStyle = "#fff";
+        context.lineWidth = 1.45;
+        context.lineCap = "round";
+        context.lineJoin = "round";
+
+        if (key === "parking") {
+          context.font = `800 ${size - 5}px Arial, sans-serif`;
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.fillText("P", centerX, centerY + 0.5);
+        } else if (key === "visitor center") {
+          context.beginPath();
+          context.arc(centerX, centerY, size / 2 - 4, 0, Math.PI * 2);
+          context.stroke();
+          context.font = `800 ${size - 8}px Georgia, serif`;
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.fillText("i", centerX, centerY + 0.5);
+        } else if (key === "restaurant") {
+          context.beginPath();
+          context.moveTo(left + 2, top); context.lineTo(left + 2, bottom);
+          context.moveTo(left, top); context.lineTo(left, top + 4); context.lineTo(left + 4, top + 4); context.lineTo(left + 4, top);
+          context.moveTo(right, top); context.quadraticCurveTo(right - 5, top + 5, right, top + 8); context.lineTo(right, bottom);
+          context.stroke();
+        } else if (key === "restrooms") {
+          for (const offset of [-3.5, 3.5]) {
+            context.beginPath();
+            context.arc(centerX + offset, top + 1.5, 1.5, 0, Math.PI * 2);
+            context.fill();
+            context.fillRect(centerX + offset - 1.2, top + 4, 2.4, 5);
+            context.beginPath();
+            context.moveTo(centerX + offset, top + 8); context.lineTo(centerX + offset - 1.8, bottom);
+            context.moveTo(centerX + offset, top + 8); context.lineTo(centerX + offset + 1.8, bottom);
+            context.stroke();
+          }
+        } else if (key.includes("bike") || key === "mountain bikes") {
+          context.beginPath();
+          context.arc(left + 2, bottom - 1, 3, 0, Math.PI * 2);
+          context.arc(right - 2, bottom - 1, 3, 0, Math.PI * 2);
+          context.moveTo(left + 2, bottom - 1); context.lineTo(centerX - 1, top + 4); context.lineTo(right - 2, bottom - 1);
+          context.moveTo(centerX - 1, top + 4); context.lineTo(centerX + 3, bottom - 1); context.lineTo(left + 2, bottom - 1);
+          context.moveTo(centerX - 3, top + 3); context.lineTo(centerX + 1, top + 3);
+          context.stroke();
+          if (key.includes("repair")) {
+            context.beginPath(); context.moveTo(right - 3, top); context.lineTo(left + 3, bottom); context.stroke();
+          }
+        } else if (key === "gasoline") {
+          context.strokeRect(left + 1, top, 6, bottom - top);
+          context.strokeRect(left + 2.5, top + 2, 3, 3);
+          context.beginPath(); context.moveTo(left + 7, top + 3); context.quadraticCurveTo(right, top + 4, right - 1, centerY + 2); context.lineTo(right - 1, bottom); context.stroke();
+        } else if (key === "convenience store") {
+          context.beginPath(); context.moveTo(left, top + 2); context.lineTo(left + 2, bottom - 2); context.lineTo(right - 1, bottom - 2); context.lineTo(right, top + 5); context.lineTo(left + 1, top + 5); context.stroke();
+          context.beginPath(); context.arc(left + 4, bottom, 1, 0, Math.PI * 2); context.arc(right - 3, bottom, 1, 0, Math.PI * 2); context.fill();
+        } else if (key === "picnic area") {
+          context.beginPath(); context.moveTo(left, centerY); context.lineTo(right, centerY); context.moveTo(left + 2, centerY - 3); context.lineTo(right - 2, centerY - 3); context.moveTo(centerX - 3, centerY); context.lineTo(centerX - 5, bottom); context.moveTo(centerX + 3, centerY); context.lineTo(centerX + 5, bottom); context.stroke();
+        } else if (key === "septa station") {
+          context.strokeRect(left + 1, top, right - left - 2, bottom - top - 2);
+          context.beginPath(); context.moveTo(left + 3, top + 3); context.lineTo(right - 3, top + 3); context.moveTo(centerX, top + 1); context.lineTo(centerX, top + 5); context.moveTo(left + 3, bottom); context.lineTo(left + 1, bottom + 2); context.moveTo(right - 3, bottom); context.lineTo(right - 1, bottom + 2); context.stroke();
+        } else if (key === "point-of-interest") {
+          context.font = `800 ${size - 7}px Arial, sans-serif`;
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.fillText("★", centerX, centerY + 0.5);
+        } else if (key.includes("launch") || key.includes("landing") || key === "boat ramp" || key === "watercraft") {
+          context.beginPath(); context.moveTo(left, centerY); context.lineTo(right, centerY); context.lineTo(right - 3, centerY + 4); context.lineTo(left + 3, centerY + 4); context.closePath(); context.stroke();
+          context.beginPath(); context.moveTo(left, bottom - 1); context.quadraticCurveTo(left + 3, bottom - 3, centerX, bottom - 1); context.quadraticCurveTo(right - 3, bottom + 1, right, bottom - 1); context.stroke();
+          if (key.includes("canoe")) {
+            context.beginPath(); context.moveTo(left + 1, top); context.lineTo(right - 1, bottom); context.stroke();
+          }
+        } else {
+          context.font = `800 ${size - 8}px Arial, sans-serif`;
+          context.textAlign = "center";
+          context.textBaseline = "middle";
+          context.fillText(amenity.slice(0, 2).toUpperCase(), centerX, centerY);
+        }
+        context.restore();
+      }
+
+      function trailheadLabelImage(name, amenities) {
+        const scale = 2;
+        const padding = 9;
+        const iconSize = 20;
+        const iconGap = 4;
+        const pointerHeight = 8;
+        const maxTextWidth = 190;
+        const label = /trailhead/i.test(name) ? name : `${name} Trailhead`;
+        const measureCanvas = document.createElement("canvas");
+        const measureContext = measureCanvas.getContext("2d");
+        measureContext.font = "700 14px Arial, sans-serif";
+        const titleLines = wrapCanvasText(measureContext, label, maxTextWidth);
+        const titleWidth = Math.max(...titleLines.map((line) => measureContext.measureText(line).width));
+        const iconRowWidth = amenities.length ? amenities.length * iconSize + (amenities.length - 1) * iconGap : 0;
+        const width = Math.ceil(Math.max(112, titleWidth + padding * 2, iconRowWidth + padding * 2));
+        const titleHeight = titleLines.length * 16;
+        const cardHeight = padding + titleHeight + (amenities.length ? 7 + iconSize : 0) + padding;
+        const height = cardHeight + pointerHeight;
+        const canvas = document.createElement("canvas");
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        const context = canvas.getContext("2d");
+        context.scale(scale, scale);
+        context.fillStyle = "rgba(255,255,255,0.97)";
+        context.strokeStyle = "#213a70";
+        context.lineWidth = 1.5;
+        context.beginPath();
+        context.rect(0.75, 0.75, width - 1.5, cardHeight - 1.5);
+        context.moveTo(width / 2 - 7, cardHeight - 0.75);
+        context.lineTo(width / 2, height - 1);
+        context.lineTo(width / 2 + 7, cardHeight - 0.75);
+        context.fill();
+        context.stroke();
+        context.fillStyle = "#213a70";
+        context.font = "700 14px Arial, sans-serif";
+        context.textAlign = "left";
+        context.textBaseline = "top";
+        titleLines.forEach((line, index) => context.fillText(line, padding, padding + index * 16));
+        if (amenities.length) {
+          let iconX = (width - iconRowWidth) / 2;
+          const iconY = padding + titleHeight + 7;
+          for (const amenity of amenities) {
+            context.fillStyle = "#213a70";
+            context.fillRect(iconX, iconY, iconSize, iconSize);
+            drawAmenityGlyph(context, amenity, iconX, iconY, iconSize);
+            iconX += iconSize + iconGap;
+          }
+        }
+        return context.getImageData(0, 0, canvas.width, canvas.height);
+      }
+
+      function registerTrailheadLabelImages(srg) {
+        srg.features.forEach((feature, index) => {
+          if (feature.properties?.layer !== "trailhead" || feature.geometry?.type !== "Point") return;
+          const imageId = `trailhead-label-${feature.properties.source_post_id || index}`;
+          feature.properties.trailhead_label_image = imageId;
+          if (map.hasImage(imageId)) return;
+          const amenities = parseInfoWindow(feature.properties.infowindow_html)?.amenities || [];
+          map.addImage(imageId, trailheadLabelImage(feature.properties.name || "Trailhead", amenities), { pixelRatio: 2 });
+        });
       }
 
       function sourcePageUrl(feature) {
@@ -1496,6 +1664,7 @@
         const folderIndex2026 = Object.fromEntries(folders2026.map((folder, index) => [folder, index]));
         const improvementColor2026 = buildMatchExpression(folderIndex2026);
 
+        registerTrailheadLabelImages(srg);
         map.addSource("srg", { type: "geojson", data: srg });
         map.addSource("osm-srt", { type: "geojson", data: osm });
         map.addSource("google-places", { type: "geojson", data: google });
@@ -1571,6 +1740,22 @@
           source: "srg",
           filter: ["==", ["get", "layer"], "trailhead"],
           paint: { "circle-color": "#074a67", "circle-radius": zoomRadius(5.5), "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 },
+        });
+
+        map.addLayer({
+          id: "srg-trailhead-labels",
+          type: "symbol",
+          source: "srg",
+          minzoom: 8,
+          filter: ["==", ["get", "layer"], "trailhead"],
+          layout: {
+            "icon-image": ["get", "trailhead_label_image"],
+            "icon-anchor": "bottom",
+            "icon-offset": [0, -7],
+            "icon-padding": 4,
+            "icon-allow-overlap": false,
+            "icon-ignore-placement": false,
+          },
         });
 
         map.addLayer({
