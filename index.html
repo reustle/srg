@@ -1044,6 +1044,7 @@
       let scrubPlaybackTimestamp = null;
       let scrubPlaybackValue = 0;
       let scrubPlaying = false;
+      let scrubPlaybackHasStarted = false;
       const SCRUB_PLAYBACK_DURATION = 120_000;
 
       const map = new maplibregl.Map({
@@ -1501,7 +1502,7 @@
         if (window.location.hash !== hash) history.replaceState(null, "", hash);
       }
 
-      function updateTrailScrubber(fraction, moveCamera = true) {
+      function updateTrailScrubber(fraction, moveCamera = true, setCameraZoom = true) {
         const position = scrubPosition(fraction);
         if (!position) return;
         const percent = Math.round(fraction * 100);
@@ -1525,7 +1526,7 @@
           activePopup = null;
           map.jumpTo({
             center: position.coordinate,
-            zoom: 13.25,
+            zoom: setCameraZoom ? 13.25 : map.getZoom(),
             bearing: 0,
             pitch: 0,
           });
@@ -1557,7 +1558,7 @@
         trailRange.value = String(scrubPlaybackValue);
         const fraction = scrubPlaybackValue / max;
         updateLocationHash(fraction);
-        updateTrailScrubber(fraction);
+        updateTrailScrubber(fraction, true, false);
         if (scrubPlaybackValue >= max) {
           pauseTrailPlayback();
           return;
@@ -1571,10 +1572,12 @@
         if (Number(trailRange.value) >= max) {
           scrubPlaybackValue = 0;
           trailRange.value = "0";
-          updateTrailScrubber(0);
         } else {
           scrubPlaybackValue = Number(trailRange.value);
         }
+        const setCameraZoom = !scrubPlaybackHasStarted;
+        scrubPlaybackHasStarted = true;
+        updateTrailScrubber(scrubPlaybackValue / max, true, setCameraZoom);
         scrubPlaybackTimestamp = null;
         setScrubPlaybackUi(true);
         scrubPlaybackFrame = requestAnimationFrame(animateTrailPlayback);
