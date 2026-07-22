@@ -1759,6 +1759,7 @@
             "icon-allow-overlap": false,
             "icon-ignore-placement": false,
           },
+          paint: { "icon-opacity": 0.9 },
         });
 
         map.addLayer({
@@ -1832,6 +1833,7 @@
         });
 
         addTrailScrubberMarker();
+        map.moveLayer("srg-trailhead-labels");
       }
 
       function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
