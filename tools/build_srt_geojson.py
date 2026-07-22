@@ -205,7 +205,7 @@ def main() -> None:
         type=Path,
         help="Overpass JSON containing SRT name/alt-name matching way geometry.",
     )
-    parser.add_argument("--output", default="srt-osm.geojson", type=Path)
+    parser.add_argument("--output", default="data/srt-osm.geojson", type=Path)
     args = parser.parse_args()
 
     geojson = build_geojson(load_json(args.route_json), load_json(args.named_json))

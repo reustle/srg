@@ -234,7 +234,7 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
         "name": "Temporary SRT Scrubber Route",
         "metadata": {
             "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
-            "source": "srg-website-map.geojson",
+            "source": "data/srg-website-map.geojson",
             "purpose": "Temporary continuous Philadelphia-to-Frackville route for the map footer scrubber",
             "replacement_note": "Replace this derived line when official distance line data is available.",
             "input_trail_feature_count": len(features),
@@ -264,8 +264,8 @@ def build_route(source: dict, nearby_gap_miles: float, excluded_post_ids: set[in
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--input", type=Path, default=Path("srg-website-map.geojson"))
-    parser.add_argument("--output", type=Path, default=Path("srt-scrub-route.geojson"))
+    parser.add_argument("--input", type=Path, default=Path("data/srg-website-map.geojson"))
+    parser.add_argument("--output", type=Path, default=Path("data/srt-scrub-route.geojson"))
     parser.add_argument(
         "--nearby-gap-miles",
         type=float,

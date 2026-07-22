@@ -196,6 +196,23 @@
         line-height: 1;
       }
 
+      .basemap-info {
+        min-height: 14px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      .basemap-info a {
+        color: inherit;
+        text-decoration-color: #aeb7b2;
+        text-underline-offset: 2px;
+      }
+
+      .basemap-info a:hover {
+        color: var(--green);
+      }
+
       select {
         width: 100%;
         min-height: 34px;
@@ -622,6 +639,7 @@
             <span class="basemap-option-label">Google</span>
           </button>
         </div>
+        <div class="basemap-info">Tileset info: <a id="basemap-info-link" href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">openfreemap.org</a></div>
       </section>
 
       <section class="group">
@@ -904,13 +922,23 @@
         google: () => googleRoadmapStyle(),
       };
 
+      const BASEMAP_INFO = {
+        light: { url: "https://openfreemap.org/", label: "openfreemap.org" },
+        osm: { url: "https://www.openstreetmap.org/about", label: "openstreetmap.org/about" },
+        cycle: { url: "https://www.cyclosm.org/", label: "cyclosm.org" },
+        google: {
+          url: "https://developers.google.com/maps/documentation/tile/2d-tiles-overview",
+          label: "developers.google.com/maps/documentation/tile",
+        },
+      };
+
       const DATASETS = {
-        srg: "srg-website-map.geojson",
-        osm: "srt-osm.geojson",
-        google: "google-places-srt-scan-2026-07-22.geojson",
-        improvements: "2025-Improvement-Map.geojson",
-        improvements2026: "2026-Improvement-Map.geojson",
-        scrubRoute: "srt-scrub-route.geojson",
+        srg: "data/srg-website-map.geojson",
+        osm: "data/srt-osm.geojson",
+        google: "data/google-places-srt-scan-2026-07-22.geojson",
+        improvements: "data/2025-Improvement-Map.geojson",
+        improvements2026: "data/2026-Improvement-Map.geojson",
+        scrubRoute: "data/srt-scrub-route.geojson",
       };
 
       const layerGroups = {
@@ -984,6 +1012,7 @@
       ];
 
       const basemapButtons = [...document.querySelectorAll("[data-basemap-style]")];
+      const basemapInfoLink = document.getElementById("basemap-info-link");
       const trailRange = document.getElementById("trail-range");
       const scrubberDistance = document.getElementById("scrubber-distance");
       const scrubberStops = document.getElementById("scrubber-stops");
@@ -1522,6 +1551,7 @@
           id: "google-places",
           type: "circle",
           source: "google-places",
+          layout: { visibility: "none" },
           paint: {
             "circle-color": "#4285f4",
             "circle-radius": zoomRadius(3.2),
@@ -1765,6 +1795,12 @@
       }
 
       function wireBasemapSelector() {
+        const updateBasemapInfo = (styleName) => {
+          const info = BASEMAP_INFO[styleName] || BASEMAP_INFO.osm;
+          basemapInfoLink.href = info.url;
+          basemapInfoLink.textContent = info.label;
+        };
+
         basemapButtons.forEach((button) => button.addEventListener("click", async () => {
           if (button.getAttribute("aria-pressed") === "true") return;
           const createStyle = MAP_STYLES[button.dataset.basemapStyle] || MAP_STYLES.osm;
@@ -1779,6 +1815,7 @@
             basemapButtons.forEach((option) => {
               option.setAttribute("aria-pressed", String(option === button));
             });
+            updateBasemapInfo(button.dataset.basemapStyle);
             map.once("style.load", () => {
               try {
                 renderOverlays();

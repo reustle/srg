@@ -221,7 +221,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--map-page-url", default=MAP_PAGE_URL)
     parser.add_argument("--out-dir", default=DEFAULT_OUT_DIR, type=Path)
-    parser.add_argument("--geojson", default=Path("srg-website-map.geojson"), type=Path)
+    parser.add_argument("--geojson", default=Path("data/srg-website-map.geojson"), type=Path)
     args = parser.parse_args()
 
     raw_dir = args.out_dir / "raw"
