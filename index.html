@@ -359,6 +359,27 @@
         text-decoration: underline;
       }
 
+      .hover-metadata {
+        position: fixed;
+        z-index: 3;
+        top: 10px;
+        right: 50px;
+        max-width: min(560px, calc(100vw - 70px));
+        padding: 7px 9px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+        pointer-events: none;
+      }
+
+      .hover-metadata[hidden] {
+        display: none;
+      }
+
       .trail-scrubber {
         position: fixed;
         z-index: 4;
@@ -569,6 +590,7 @@
   </head>
   <body>
     <div id="map"></div>
+    <div class="hover-metadata" id="hover-metadata" hidden></div>
 
     <aside class="panel" aria-label="Layer controls">
       <div class="panel-header">
@@ -721,24 +743,6 @@
           </div>
         </div>
         <div class="group-body" id="improvements-2026-layer-list">
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-2026-lines" checked />
-          <span class="swatch" style="background: #2f7f84"></span>
-          <span>Lines</span>
-          <span class="count" id="count-improvements-2026-lines"></span>
-        </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-2026-polygons" checked />
-          <span class="swatch poly" style="background: #9a6b2f"></span>
-          <span>Areas</span>
-          <span class="count" id="count-improvements-2026-polygons"></span>
-        </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-2026-points" checked />
-          <span class="swatch point" style="background: #a24d74"></span>
-          <span>Points</span>
-          <span class="count" id="count-improvements-2026-points"></span>
-        </label>
         <div class="folder-list" id="folder-list-2026"></div>
         </div>
       </section>
@@ -757,24 +761,6 @@
           </div>
         </div>
         <div class="group-body" id="improvements-2025-layer-list">
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-lines" />
-          <span class="swatch" style="background: #7656a6"></span>
-          <span>Lines</span>
-          <span class="count" id="count-improvements-lines"></span>
-        </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-polygons" />
-          <span class="swatch poly" style="background: #7c9554"></span>
-          <span>Areas</span>
-          <span class="count" id="count-improvements-polygons"></span>
-        </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-points" />
-          <span class="swatch point" style="background: #c9503c"></span>
-          <span>Points</span>
-          <span class="count" id="count-improvements-points"></span>
-        </label>
         <div class="folder-list" id="folder-list"></div>
         </div>
       </section>
@@ -1004,6 +990,7 @@
       const scrubberPlay = document.getElementById("scrubber-play");
       const scrubberPlayIcon = scrubberPlay.querySelector("[data-play-icon]");
       const scrubberPauseIcon = scrubberPlay.querySelector("[data-pause-icon]");
+      const hoverMetadata = document.getElementById("hover-metadata");
       let activePopup = null;
       let overlays = null;
       let scrubRoute = null;
@@ -1011,7 +998,6 @@
       let scrubPlaybackFrame = null;
       let scrubPlaybackTimestamp = null;
       let scrubPlaybackValue = 0;
-      let scrubPlaybackStarted = false;
       let scrubPlaying = false;
       const SCRUB_PLAYBACK_DURATION = 120_000;
 
@@ -1062,17 +1048,8 @@
         return props.layer || "Map feature";
       }
 
-      function popupHtml(feature) {
+      function featureMetadata(feature) {
         const props = feature.properties || {};
-        const layer = sourceLabel(feature);
-        const title =
-          props.display_name ||
-          props.name ||
-          props.placemark_name ||
-          props.osm_name ||
-          props.segment_name ||
-          props.folder ||
-          "Map feature";
         const bits = [];
 
         if (props.status || props.alignment) bits.push([props.status, props.alignment].filter(Boolean).join(" / "));
@@ -1083,6 +1060,20 @@
         if (props.source_post_id) bits.push(`SRG post ${props.source_post_id}`);
         if (props.osm_id) bits.push(`OSM ${props.osm_type || "way"} ${props.osm_id}`);
 
+        return [sourceLabel(feature), ...bits].filter(Boolean).join(" · ");
+      }
+
+      function popupHtml(feature) {
+        const props = feature.properties || {};
+        const title =
+          props.display_name ||
+          props.name ||
+          props.placemark_name ||
+          props.osm_name ||
+          props.segment_name ||
+          props.folder ||
+          "Map feature";
+
         const body = htmlToText(
           props.infowindow_html || props.description_html || props.description || props.formatted_address,
         ).slice(0, 560);
@@ -1090,7 +1081,7 @@
 
         return `
           <h3 class="popup-title">${escapeHtml(title)}</h3>
-          <p class="popup-meta">${escapeHtml([layer, ...bits].filter(Boolean).join(" · "))}</p>
+          <p class="popup-meta">${escapeHtml(featureMetadata(feature))}</p>
           ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
           ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
         `;
@@ -1329,7 +1320,6 @@
         updateLocationHash(fraction);
         updateTrailScrubber(fraction);
         if (scrubPlaybackValue >= max) {
-          scrubPlaybackStarted = false;
           pauseTrailPlayback();
           return;
         }
@@ -1339,14 +1329,13 @@
       function playTrailPlayback() {
         if (scrubPlaying || !scrubRoute) return;
         const max = Number(trailRange.max);
-        if (!scrubPlaybackStarted || Number(trailRange.value) >= max) {
+        if (Number(trailRange.value) >= max) {
           scrubPlaybackValue = 0;
           trailRange.value = "0";
           updateTrailScrubber(0);
         } else {
           scrubPlaybackValue = Number(trailRange.value);
         }
-        scrubPlaybackStarted = true;
         scrubPlaybackTimestamp = null;
         setScrubPlaybackUi(true);
         scrubPlaybackFrame = requestAnimationFrame(animateTrailPlayback);
@@ -1588,11 +1577,11 @@
       function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
         const folderList = document.getElementById(containerId);
         folderList.innerHTML = "";
-        const checkedByDefault = dataName !== "folder2025";
 
         for (const folder of folders) {
           const id = `${dataName}-${folder.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
           const count = countFeatures(improvements, (feature) => featureFolder(feature) === folder);
+          const checkedByDefault = dataName !== "folder2025" && folder !== "Trail Alignment";
           const label = document.createElement("label");
           label.innerHTML = `
             <input id="${id}" type="checkbox" data-${dataName}="${escapeHtml(folder)}"${checkedByDefault ? " checked" : ""} />
@@ -1639,6 +1628,14 @@
             ? map.queryRenderedFeatures(event.point, { layers: activeLayers })
             : [];
           map.getCanvas().style.cursor = features.length ? "pointer" : "";
+          hoverMetadata.hidden = features.length === 0;
+          hoverMetadata.textContent = features.length ? featureMetadata(features[0]) : "";
+        });
+
+        map.getCanvasContainer().addEventListener("mouseleave", () => {
+          map.getCanvas().style.cursor = "";
+          hoverMetadata.hidden = true;
+          hoverMetadata.textContent = "";
         });
 
         map.on("click", (event) => {
@@ -1824,12 +1821,6 @@
         setCount("count-srg-places", countFeatures(srg, (f) => f.properties.layer === "places_to_visit"));
         setCount("count-osm-srt", osm.features.length);
         setCount("count-google-places", google.features.length);
-        setCount("count-improvements-lines", countFeatures(improvements, (f) => f.geometry?.type === "LineString"));
-        setCount("count-improvements-polygons", countFeatures(improvements, (f) => f.geometry?.type === "Polygon"));
-        setCount("count-improvements-points", countFeatures(improvements, (f) => f.geometry?.type === "Point"));
-        setCount("count-improvements-2026-lines", countFeatures(improvements2026, (f) => f.geometry?.type === "LineString"));
-        setCount("count-improvements-2026-polygons", countFeatures(improvements2026, (f) => f.geometry?.type === "Polygon"));
-        setCount("count-improvements-2026-points", countFeatures(improvements2026, (f) => f.geometry?.type === "Point"));
       }
 
       async function init() {
