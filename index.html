@@ -151,9 +151,11 @@
 
       .basemap-option {
         display: grid;
-        min-height: 38px;
+        grid-template-rows: 20px auto;
+        gap: 3px;
+        min-height: 50px;
         place-items: center;
-        padding: 0;
+        padding: 5px 3px 4px;
         border-radius: 0;
         color: var(--muted);
       }
@@ -185,6 +187,12 @@
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 1.6;
+      }
+
+      .basemap-option-label {
+        font-size: 9px;
+        font-weight: 700;
+        line-height: 1;
       }
 
       select {
@@ -479,7 +487,7 @@
       .scrubber-stops {
         position: relative;
         height: 17px;
-        margin: 0 10px -1px;
+        margin: 0 0 -1px;
         pointer-events: none;
       }
 
@@ -547,6 +555,10 @@
           font-size: 8px;
         }
 
+        .scrubber-stop[data-name="Phoenixville"] {
+          display: none;
+        }
+
       }
     </style>
   </head>
@@ -568,12 +580,15 @@
         <div class="basemap-toggle" role="group" aria-labelledby="basemap-style-label">
           <button class="basemap-option" type="button" data-basemap-style="outdoors" aria-label="Outdoors map style" aria-pressed="true" title="Outdoors">
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2.5 16 5.2-8 3 4.1 2.1-2.8 4.7 6.7Z" /><path d="m6.2 10.3 1.5-2.3 1.5 2" /></svg>
+            <span class="basemap-option-label">Outdoors</span>
           </button>
           <button class="basemap-option" type="button" data-basemap-style="satellite" aria-label="Satellite map style" aria-pressed="false" title="Satellite">
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.1 12.9 5.8-5.8" /><path d="M5.2 9.8 10.2 14.8 8 17l-5-5Z" /><path d="m12 3 5 5-2.2 2.2-5-5Z" /><path d="M12.8 14.7a4.2 4.2 0 0 0 2-2" /><path d="M5.3 7.2a4.2 4.2 0 0 1 2-2" /></svg>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6.5h3l1.2-2h5.6l1.2 2h3v9H3Z" /><circle cx="10" cy="11" r="3" /></svg>
+            <span class="basemap-option-label">Satellite</span>
           </button>
           <button class="basemap-option" type="button" data-basemap-style="light" aria-label="Light map style" aria-pressed="false" title="Light">
             <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.2" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M15.7 4.3l-1.4 1.4M5.7 14.3l-1.4 1.4" /></svg>
+            <span class="basemap-option-label">Light</span>
           </button>
         </div>
       </section>
@@ -663,36 +678,23 @@
       <section class="group">
         <div class="group-head">
           <label class="group-toggle">
-            <input type="checkbox" data-layer-group-toggle="improvements-2025" checked />
-            <h2>2025 Improvements Map</h2>
+            <input type="checkbox" data-layer-group-toggle="google" />
+            <h2>[WIP] Google Maps Search Results</h2>
           </label>
           <div class="group-head-actions">
-            <span class="count" id="improvements-count">0</span>
-            <button class="collapse-button" type="button" data-collapse-target="improvements-2025-layer-list" aria-expanded="true" aria-controls="improvements-2025-layer-list" aria-label="Collapse 2025 Improvements Map layers" title="Collapse layers">
+            <span class="count" id="google-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="google-layer-list" aria-expanded="true" aria-controls="google-layer-list" aria-label="Collapse [WIP] Google Maps Search Results layers" title="Collapse layers">
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
             </button>
           </div>
         </div>
-        <div class="group-body" id="improvements-2025-layer-list">
+        <div class="group-body" id="google-layer-list">
         <label>
-          <input type="checkbox" data-layer-toggle="improvements-lines" checked />
-          <span class="swatch" style="background: #7656a6"></span>
-          <span>Lines</span>
-          <span class="count" id="count-improvements-lines"></span>
+          <input type="checkbox" data-layer-toggle="google-places" />
+          <span class="swatch point" style="background: #4285f4"></span>
+          <span>Places results</span>
+          <span class="count" id="count-google-places"></span>
         </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-polygons" checked />
-          <span class="swatch poly" style="background: #7c9554"></span>
-          <span>Areas</span>
-          <span class="count" id="count-improvements-polygons"></span>
-        </label>
-        <label>
-          <input type="checkbox" data-layer-toggle="improvements-points" checked />
-          <span class="swatch point" style="background: #c9503c"></span>
-          <span>Points</span>
-          <span class="count" id="count-improvements-points"></span>
-        </label>
-        <div class="folder-list" id="folder-list"></div>
         </div>
       </section>
 
@@ -729,6 +731,42 @@
           <span class="count" id="count-improvements-2026-points"></span>
         </label>
         <div class="folder-list" id="folder-list-2026"></div>
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="improvements-2025" />
+            <h2>2025 Improvements Map</h2>
+          </label>
+          <div class="group-head-actions">
+            <span class="count" id="improvements-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="improvements-2025-layer-list" aria-expanded="true" aria-controls="improvements-2025-layer-list" aria-label="Collapse 2025 Improvements Map layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
+        </div>
+        <div class="group-body" id="improvements-2025-layer-list">
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-lines" />
+          <span class="swatch" style="background: #7656a6"></span>
+          <span>Lines</span>
+          <span class="count" id="count-improvements-lines"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-polygons" />
+          <span class="swatch poly" style="background: #7c9554"></span>
+          <span>Areas</span>
+          <span class="count" id="count-improvements-polygons"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="improvements-points" />
+          <span class="swatch point" style="background: #c9503c"></span>
+          <span>Points</span>
+          <span class="count" id="count-improvements-points"></span>
+        </label>
+        <div class="folder-list" id="folder-list"></div>
         </div>
       </section>
       </div>
@@ -848,6 +886,7 @@
       const DATASETS = {
         srg: "srg-website-map.geojson",
         osm: "srt-osm.geojson",
+        google: "google-places-srt-scan-2026-07-22.geojson",
         improvements: "2025-Improvement-Map.geojson",
         improvements2026: "2026-Improvement-Map.geojson",
         scrubRoute: "srt-scrub-route.geojson",
@@ -862,6 +901,7 @@
         "srg-towns": ["srg-towns"],
         "srg-places": ["srg-places"],
         "osm-srt": ["osm-srt"],
+        "google-places": ["google-places"],
         "improvements-lines": ["improvements-lines"],
         "improvements-polygons": ["improvements-polygons-fill", "improvements-polygons-outline"],
         "improvements-points": ["improvements-points"],
@@ -881,6 +921,7 @@
           "srg-places",
         ],
         osm: ["osm-srt"],
+        google: ["google-places"],
         "improvements-2025": ["improvements-lines", "improvements-polygons", "improvements-points"],
         "improvements-2026": ["improvements-2026-lines", "improvements-2026-polygons", "improvements-2026-points"],
       };
@@ -912,6 +953,7 @@
         "srg-towns",
         "srg-places",
         "osm-srt",
+        "google-places",
         "improvements-lines",
         "improvements-polygons-fill",
         "improvements-points",
@@ -966,6 +1008,7 @@
 
       function sourcePageUrl(feature) {
         const props = feature.properties || {};
+        if (props.google_maps_uri) return props.google_maps_uri;
         if (props.source_page_url) return props.source_page_url;
         if (props.osm_url) return props.osm_url;
         if (props.source_urlpath) return new URL(props.source_urlpath, "https://schuylkillriver.org").href;
@@ -978,6 +1021,7 @@
         const source = feature.source || "";
         if (source === "improvements") return "2025 improvements";
         if (source === "improvements-2026") return "2026 improvements";
+        if (source === "google-places" || props.google_place_id) return "[WIP] Google Maps Search Results";
         if (source === "osm-srt" || props.osm_id) return "OSM";
         if (source === "srg") return props.layer ? `SRG ${props.layer}` : "SRG";
         return props.layer || "Map feature";
@@ -1000,11 +1044,13 @@
         if (props.folder) bits.push(props.folder);
         if (props.surface) bits.push(`surface: ${props.surface}`);
         if (props.highway) bits.push(`highway: ${props.highway}`);
+        if (props.primary_type) bits.push(props.primary_type.replaceAll("_", " "));
         if (props.source_post_id) bits.push(`SRG post ${props.source_post_id}`);
         if (props.osm_id) bits.push(`OSM ${props.osm_type || "way"} ${props.osm_id}`);
 
-        const body =
-          htmlToText(props.infowindow_html || props.description_html || props.description).slice(0, 560);
+        const body = htmlToText(
+          props.infowindow_html || props.description_html || props.description || props.formatted_address,
+        ).slice(0, 560);
         const url = sourcePageUrl(feature);
 
         return `
@@ -1131,6 +1177,7 @@
         for (const { name, fraction, endpoint } of stops) {
           const label = document.createElement("span");
           label.className = `scrubber-stop${endpoint ? ` endpoint-${endpoint}` : ""}`;
+          label.dataset.name = name;
           label.style.left = `${(fraction * 100).toFixed(2)}%`;
           label.textContent = name;
           label.title = `${name} · ${(fraction * scrubRoute.totalMiles).toFixed(1)} mi`;
@@ -1308,7 +1355,7 @@
         });
       }
 
-      function addLayers(srg, osm, improvements, improvements2026) {
+      function addLayers(srg, osm, google, improvements, improvements2026) {
         const folders = [...new Set(improvements.features.map(featureFolder))].sort();
         const folderIndex = Object.fromEntries(folders.map((folder, index) => [folder, index]));
         const improvementColor = buildMatchExpression(folderIndex);
@@ -1318,6 +1365,7 @@
 
         map.addSource("srg", { type: "geojson", data: srg });
         map.addSource("osm-srt", { type: "geojson", data: osm });
+        map.addSource("google-places", { type: "geojson", data: google });
         map.addSource("improvements", { type: "geojson", data: improvements });
         map.addSource("improvements-2026", { type: "geojson", data: improvements2026 });
 
@@ -1409,6 +1457,19 @@
         });
 
         map.addLayer({
+          id: "google-places",
+          type: "circle",
+          source: "google-places",
+          paint: {
+            "circle-color": "#4285f4",
+            "circle-radius": zoomRadius(3.2),
+            "circle-opacity": 0.72,
+            "circle-stroke-color": "#fff",
+            "circle-stroke-width": 0.8,
+          },
+        });
+
+        map.addLayer({
           id: "improvements-points",
           type: "circle",
           source: "improvements",
@@ -1454,13 +1515,14 @@
       function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
         const folderList = document.getElementById(containerId);
         folderList.innerHTML = "";
+        const checkedByDefault = dataName !== "folder2025";
 
         for (const folder of folders) {
           const id = `${dataName}-${folder.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
           const count = countFeatures(improvements, (feature) => featureFolder(feature) === folder);
           const label = document.createElement("label");
           label.innerHTML = `
-            <input id="${id}" type="checkbox" data-${dataName}="${escapeHtml(folder)}" checked />
+            <input id="${id}" type="checkbox" data-${dataName}="${escapeHtml(folder)}"${checkedByDefault ? " checked" : ""} />
             <span class="swatch point" style="background: ${folderColor(folder, folderIndex)}"></span>
             <span>${escapeHtml(folder)}</span>
             <span class="count">${count.toLocaleString()}</span>
@@ -1628,7 +1690,7 @@
           syncLayerVisibilityFromControls();
           return;
         }
-        addLayers(overlays.srg, overlays.osm, overlays.improvements, overlays.improvements2026);
+        addLayers(overlays.srg, overlays.osm, overlays.google, overlays.improvements, overlays.improvements2026);
         syncLayerVisibilityFromControls();
       }
 
@@ -1661,9 +1723,10 @@
         return { folders, folderIndex };
       }
 
-      function populateCounts(srg, osm, improvements, improvements2026) {
+      function populateCounts(srg, osm, google, improvements, improvements2026) {
         setCount("srg-count", srg.features.length);
         setCount("osm-count", osm.features.length);
+        setCount("google-count", google.features.length);
         setCount("improvements-count", improvements.features.length);
         setCount("improvements-2026-count", improvements2026.features.length);
         setCount("count-srg-active-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "off_road"));
@@ -1674,6 +1737,7 @@
         setCount("count-srg-towns", countFeatures(srg, (f) => f.properties.layer === "town"));
         setCount("count-srg-places", countFeatures(srg, (f) => f.properties.layer === "places_to_visit"));
         setCount("count-osm-srt", osm.features.length);
+        setCount("count-google-places", google.features.length);
         setCount("count-improvements-lines", countFeatures(improvements, (f) => f.geometry?.type === "LineString"));
         setCount("count-improvements-polygons", countFeatures(improvements, (f) => f.geometry?.type === "Polygon"));
         setCount("count-improvements-points", countFeatures(improvements, (f) => f.geometry?.type === "Point"));
@@ -1684,16 +1748,17 @@
 
       async function init() {
         try {
-          const [rawSrg, osm, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
+          const [rawSrg, osm, google, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
             loadGeojson(DATASETS.srg),
             loadGeojson(DATASETS.osm),
+            loadGeojson(DATASETS.google),
             loadGeojson(DATASETS.improvements),
             loadGeojson(DATASETS.improvements2026),
             loadGeojson(DATASETS.scrubRoute),
           ]);
           const srg = withoutExcludedSrgFeatures(rawSrg);
           scrubRoute = prepareScrubRoute(scrubRouteGeojson);
-          overlays = { srg, osm, improvements, improvements2026 };
+          overlays = { srg, osm, google, improvements, improvements2026 };
 
           const render = () => {
             const folders2025 = folderControlConfig(improvements);
@@ -1701,13 +1766,13 @@
             buildFolderControls("folder-list", "folder2025", folders2025.folders, folders2025.folderIndex, improvements);
             buildFolderControls("folder-list-2026", "folder2026", folders2026.folders, folders2026.folderIndex, improvements2026);
             renderOverlays();
-            populateCounts(srg, osm, improvements, improvements2026);
+            populateCounts(srg, osm, google, improvements, improvements2026);
             wireToggles();
             wireCollapseControls();
             wireBasemapSelector();
             wireTrailScrubber(srg);
             addPopups();
-            fitGeojsons([srg, osm, improvements, improvements2026]);
+            fitGeojsons([srg, osm, google, improvements, improvements2026]);
           };
 
           if (map.loaded()) {
