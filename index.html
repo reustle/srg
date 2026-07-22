@@ -1220,8 +1220,9 @@
         } catch {
           return null;
         }
-        if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) return null;
-        const miles = Number(value);
+        const match = value.match(/^marker-((?:\d+(?:\.\d*)?|\.\d+))$/);
+        if (!match) return null;
+        const miles = Number(match[1]);
         if (!Number.isFinite(miles) || miles < 0 || miles > scrubRoute.totalMiles) return null;
         return miles;
       }
@@ -1235,7 +1236,7 @@
 
       function updateLocationHash(fraction) {
         const miles = Math.max(0, Math.min(1, fraction)) * scrubRoute.totalMiles;
-        history.replaceState(null, "", `#${miles.toFixed(1)}`);
+        history.replaceState(null, "", `#marker-${miles.toFixed(1)}`);
       }
 
       function updateTrailScrubber(fraction, moveCamera = true) {
