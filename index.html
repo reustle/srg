@@ -18,6 +18,7 @@
         --orange: #f99400;
         --purple: #7656a6;
         --shadow: 0 12px 30px rgba(28, 31, 34, 0.16);
+        --scrubber-height: 98px;
       }
 
       * {
@@ -42,9 +43,9 @@
         position: fixed;
         z-index: 2;
         left: 16px;
-        bottom: 24px;
+        top: 16px;
         width: min(380px, calc(100vw - 32px));
-        max-height: min(66vh, 680px);
+        max-height: calc(100vh - var(--scrubber-height) - 32px);
         overflow: auto;
         background: rgba(255, 255, 255, 0.96);
         border: 1px solid var(--rule);
@@ -65,19 +66,16 @@
         border-bottom: 1px solid var(--rule);
       }
 
+      .panel-body[hidden],
+      .group-body[hidden] {
+        display: none;
+      }
+
       .panel-title {
         font-size: 13px;
         font-weight: 750;
         text-transform: uppercase;
         color: #3a3e41;
-      }
-
-      .panel-meta {
-        margin-top: 3px;
-        color: var(--muted);
-        font-size: 11px;
-        line-height: 1.25;
-        text-transform: none;
       }
 
       button {
@@ -97,6 +95,38 @@
         border-color: #aeb7b2;
       }
 
+      .collapse-button {
+        display: grid;
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        padding: 0;
+        border-color: transparent;
+        background: transparent;
+        color: var(--muted);
+      }
+
+      .collapse-button:hover {
+        border-color: var(--rule);
+        color: var(--ink);
+      }
+
+      .collapse-button svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+        transition: transform 160ms ease;
+      }
+
+      .collapse-button[aria-expanded="false"] svg {
+        transform: rotate(-90deg);
+      }
+
       .basemap-control {
         display: grid;
         grid-template-columns: 1fr;
@@ -112,6 +142,49 @@
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
+      }
+
+      .basemap-toggle {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .basemap-option {
+        display: grid;
+        min-height: 38px;
+        place-items: center;
+        padding: 0;
+        border-radius: 0;
+        color: var(--muted);
+      }
+
+      .basemap-option + .basemap-option {
+        margin-left: -1px;
+      }
+
+      .basemap-option:first-child {
+        border-radius: 6px 0 0 6px;
+      }
+
+      .basemap-option:last-child {
+        border-radius: 0 6px 6px 0;
+      }
+
+      .basemap-option[aria-pressed="true"] {
+        z-index: 1;
+        border-color: var(--green);
+        background: #edf5f0;
+        color: var(--green);
+      }
+
+      .basemap-option svg {
+        width: 19px;
+        height: 19px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.6;
       }
 
       select {
@@ -141,6 +214,16 @@
         justify-content: space-between;
         gap: 8px;
         margin-bottom: 9px;
+      }
+
+      .group-head-actions {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .group-head:has(.collapse-button[aria-expanded="false"]) {
+        margin-bottom: 0;
       }
 
       .group-toggle {
@@ -216,6 +299,12 @@
         gap: 2px;
       }
 
+
+      .group-body {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
       .folder-list label {
         grid-template-columns: 18px 14px 1fr auto;
         font-size: 12px;
@@ -261,14 +350,203 @@
         text-decoration: underline;
       }
 
+      .trail-scrubber {
+        position: fixed;
+        z-index: 4;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        min-height: var(--scrubber-height);
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr);
+        align-items: center;
+        padding: 10px 20px 8px;
+        background: #fff;
+        border-top: 1px solid var(--rule);
+      }
+
+      .scrubber-control {
+        min-width: 0;
+      }
+
+      .scrubber-track {
+        min-width: 0;
+      }
+
+      .scrubber-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 26px;
+        margin-top: -1px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.2;
+      }
+
+      .scrubber-footer strong {
+        color: var(--ink);
+        font-size: 12px;
+      }
+
+      .scrubber-play {
+        display: grid;
+        width: 22px;
+        height: 22px;
+        place-items: center;
+        padding: 0;
+        border-color: #bec6c1;
+        border-radius: 50%;
+        color: var(--green);
+      }
+
+      .scrubber-play:hover {
+        border-color: var(--green);
+      }
+
+      .scrubber-play svg {
+        width: 10px;
+        height: 10px;
+        fill: currentColor;
+      }
+
+      .scrubber-play [hidden] {
+        display: none;
+      }
+
+      .trail-range {
+        --progress: 0%;
+        display: block;
+        width: 100%;
+        height: 26px;
+        margin: 0;
+        padding: 0;
+        appearance: none;
+        background: transparent;
+        cursor: ew-resize;
+      }
+
+      .trail-range:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 3px;
+        border-radius: 999px;
+      }
+
+      .trail-range::-webkit-slider-runnable-track {
+        height: 5px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--green) 0 var(--progress), #d9dedb var(--progress) 100%);
+      }
+
+      .trail-range::-webkit-slider-thumb {
+        width: 19px;
+        height: 19px;
+        margin-top: -7px;
+        appearance: none;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 1px rgba(32, 33, 36, 0.28), 0 2px 5px rgba(32, 33, 36, 0.22);
+      }
+
+      .trail-range::-moz-range-track {
+        height: 5px;
+        border-radius: 999px;
+        background: #d9dedb;
+      }
+
+      .trail-range::-moz-range-progress {
+        height: 5px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      .trail-range::-moz-range-thumb {
+        width: 15px;
+        height: 15px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 1px rgba(32, 33, 36, 0.28), 0 2px 5px rgba(32, 33, 36, 0.22);
+      }
+
+      .trail-range:disabled {
+        cursor: wait;
+        opacity: 0.5;
+      }
+
+      .scrubber-stops {
+        position: relative;
+        height: 17px;
+        margin: 0 10px -1px;
+        pointer-events: none;
+      }
+
+      .scrubber-stop {
+        position: absolute;
+        top: 2px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 650;
+        line-height: 1;
+        white-space: nowrap;
+        transform: translateX(-50%);
+      }
+
+      .scrubber-stop::before {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        width: 1px;
+        height: 4px;
+        background: #929b96;
+        content: "";
+      }
+
+      .scrubber-stop.endpoint-start {
+        transform: none;
+      }
+
+      .scrubber-stop.endpoint-start::before {
+        left: 0;
+      }
+
+      .scrubber-stop.endpoint-end {
+        transform: translateX(-100%);
+      }
+
+      .scrubber-stop.endpoint-end::before {
+        left: 100%;
+      }
+
+      .mapboxgl-ctrl-bottom-left,
+      .mapboxgl-ctrl-bottom-right {
+        bottom: var(--scrubber-height);
+      }
+
       @media (max-width: 760px) {
+        :root {
+          --scrubber-height: 96px;
+        }
+
         .panel {
           left: 10px;
           right: 10px;
-          bottom: 16px;
+          top: 10px;
           width: auto;
-          max-height: 48vh;
+          max-height: calc(100vh - var(--scrubber-height) - 20px);
         }
+
+        .trail-scrubber {
+          grid-template-columns: minmax(120px, 1fr);
+          padding: 9px 10px 7px;
+        }
+
+        .scrubber-stop {
+          font-size: 8px;
+        }
+
       }
     </style>
   </head>
@@ -277,33 +555,43 @@
 
     <aside class="panel" aria-label="Layer controls">
       <div class="panel-header">
-        <div>
-          <div class="panel-title">SRG Map Sources</div>
-          <div class="panel-meta" id="status">Loading map data</div>
-        </div>
-        <button id="fit-visible" type="button">Fit Visible</button>
+        <div class="panel-title">SRT Data Explorer</div>
+        <button class="collapse-button" type="button" data-collapse-target="panel-body" aria-expanded="false" aria-controls="panel-body" aria-label="Expand SRT Data Explorer" title="Expand panel">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+        </button>
       </div>
 
+      <div class="panel-body" id="panel-body" hidden>
+
       <section class="basemap-control">
-        <label for="basemap-style">Map Style</label>
-        <select id="basemap-style">
-          <option value="outdoors">Outdoors</option>
-          <option value="streets">Streets</option>
-          <option value="satellite-streets">Satellite Streets</option>
-          <option value="satellite">Satellite</option>
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
+        <label id="basemap-style-label">Map Style</label>
+        <div class="basemap-toggle" role="group" aria-labelledby="basemap-style-label">
+          <button class="basemap-option" type="button" data-basemap-style="outdoors" aria-label="Outdoors map style" aria-pressed="true" title="Outdoors">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m2.5 16 5.2-8 3 4.1 2.1-2.8 4.7 6.7Z" /><path d="m6.2 10.3 1.5-2.3 1.5 2" /></svg>
+          </button>
+          <button class="basemap-option" type="button" data-basemap-style="satellite" aria-label="Satellite map style" aria-pressed="false" title="Satellite">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.1 12.9 5.8-5.8" /><path d="M5.2 9.8 10.2 14.8 8 17l-5-5Z" /><path d="m12 3 5 5-2.2 2.2-5-5Z" /><path d="M12.8 14.7a4.2 4.2 0 0 0 2-2" /><path d="M5.3 7.2a4.2 4.2 0 0 1 2-2" /></svg>
+          </button>
+          <button class="basemap-option" type="button" data-basemap-style="light" aria-label="Light map style" aria-pressed="false" title="Light">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.2" /><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M15.7 4.3l-1.4 1.4M5.7 14.3l-1.4 1.4" /></svg>
+          </button>
+        </div>
       </section>
 
       <section class="group">
         <div class="group-head">
           <label class="group-toggle">
             <input type="checkbox" data-layer-group-toggle="srg" checked />
-            <h2>SRG Website Map</h2>
+            <h2>SRG Website Data</h2>
           </label>
-          <span class="count" id="srg-count">0</span>
+          <div class="group-head-actions">
+            <span class="count" id="srg-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="srg-layer-list" aria-expanded="true" aria-controls="srg-layer-list" aria-label="Collapse SRG Website Data layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
         </div>
+        <div class="group-body" id="srg-layer-list">
         <label>
           <input type="checkbox" data-layer-toggle="srg-active-off-road" checked />
           <span class="swatch" style="background: #d52022"></span>
@@ -329,49 +617,63 @@
           <span class="count" id="count-srg-proposed-on-road"></span>
         </label>
         <label>
-          <input type="checkbox" data-layer-toggle="srg-trailheads" checked />
+          <input type="checkbox" data-layer-toggle="srg-trailheads" />
           <span class="swatch point" style="background: #074a67"></span>
           <span>Trailheads</span>
           <span class="count" id="count-srg-trailheads"></span>
         </label>
         <label>
-          <input type="checkbox" data-layer-toggle="srg-towns" checked />
+          <input type="checkbox" data-layer-toggle="srg-towns" />
           <span class="swatch point" style="background: #6db220"></span>
           <span>Trail towns</span>
           <span class="count" id="count-srg-towns"></span>
         </label>
         <label>
-          <input type="checkbox" data-layer-toggle="srg-places" checked />
+          <input type="checkbox" data-layer-toggle="srg-places" />
           <span class="swatch point" style="background: #8d5b2d"></span>
           <span>Places to visit</span>
           <span class="count" id="count-srg-places"></span>
         </label>
+        </div>
       </section>
 
       <section class="group">
         <div class="group-head">
           <label class="group-toggle">
             <input type="checkbox" data-layer-group-toggle="osm" checked />
-            <h2>OpenStreetMap SRT</h2>
+            <h2>OpenStreetMap SRT Data</h2>
           </label>
-          <span class="count" id="osm-count">0</span>
+          <div class="group-head-actions">
+            <span class="count" id="osm-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="osm-layer-list" aria-expanded="true" aria-controls="osm-layer-list" aria-label="Collapse OpenStreetMap SRT Data layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
         </div>
+        <div class="group-body" id="osm-layer-list">
         <label>
           <input type="checkbox" data-layer-toggle="osm-srt" checked />
           <span class="swatch" style="background: #276b9f"></span>
           <span>OSM physical ways</span>
           <span class="count" id="count-osm-srt"></span>
         </label>
+        </div>
       </section>
 
       <section class="group">
         <div class="group-head">
           <label class="group-toggle">
             <input type="checkbox" data-layer-group-toggle="improvements-2025" checked />
-            <h2>2025 Improvements</h2>
+            <h2>2025 Improvements Map</h2>
           </label>
-          <span class="count" id="improvements-count">0</span>
+          <div class="group-head-actions">
+            <span class="count" id="improvements-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="improvements-2025-layer-list" aria-expanded="true" aria-controls="improvements-2025-layer-list" aria-label="Collapse 2025 Improvements Map layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
         </div>
+        <div class="group-body" id="improvements-2025-layer-list">
         <label>
           <input type="checkbox" data-layer-toggle="improvements-lines" checked />
           <span class="swatch" style="background: #7656a6"></span>
@@ -391,16 +693,23 @@
           <span class="count" id="count-improvements-points"></span>
         </label>
         <div class="folder-list" id="folder-list"></div>
+        </div>
       </section>
 
       <section class="group">
         <div class="group-head">
           <label class="group-toggle">
             <input type="checkbox" data-layer-group-toggle="improvements-2026" checked />
-            <h2>2026 Improvements</h2>
+            <h2>2026 Improvements Map</h2>
           </label>
-          <span class="count" id="improvements-2026-count">0</span>
+          <div class="group-head-actions">
+            <span class="count" id="improvements-2026-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="improvements-2026-layer-list" aria-expanded="true" aria-controls="improvements-2026-layer-list" aria-label="Collapse 2026 Improvements Map layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
         </div>
+        <div class="group-body" id="improvements-2026-layer-list">
         <label>
           <input type="checkbox" data-layer-toggle="improvements-2026-lines" checked />
           <span class="swatch" style="background: #2f7f84"></span>
@@ -420,21 +729,120 @@
           <span class="count" id="count-improvements-2026-points"></span>
         </label>
         <div class="folder-list" id="folder-list-2026"></div>
+        </div>
       </section>
+      </div>
     </aside>
+
+    <footer class="trail-scrubber" aria-label="Explore the trail from source to end">
+      <div class="scrubber-control">
+        <div class="scrubber-track">
+          <div class="scrubber-stops" id="scrubber-stops" aria-label="Trail towns"></div>
+          <input
+            class="trail-range"
+            id="trail-range"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            step="1"
+            aria-label="Trail position from Philadelphia to Frackville"
+            disabled
+          />
+          <div class="scrubber-footer">
+            <button
+              class="scrubber-play"
+              id="scrubber-play"
+              type="button"
+              aria-label="Play trail"
+              title="Play trail"
+              disabled
+            >
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path data-play-icon d="M2.5 1.5 10 6l-7.5 4.5z"></path>
+                <path data-pause-icon d="M2 1.5h3v9H2zm5 0h3v9H7z" hidden></path>
+              </svg>
+            </button>
+            <strong id="scrubber-distance" aria-live="polite">Loading route</strong>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
     <script>
       mapboxgl.accessToken =
         "pk.eyJ1IjoicmV1c3RsZSIsImEiOiJjbXBzZXE4ZnMxN2t4MnNvaDE4cmlxOWUxIn0.REzLL46mXYr71ad-zW02Xg";
 
+      const ATTRIBUTION = {
+        esri:
+          'Tiles &copy; <a href="https://www.esri.com/">Esri</a> and its data providers',
+        carto:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      };
+
+      function rasterStyle({ background, sources }) {
+        const styleSources = {};
+        const layers = [{ id: "basemap-background", type: "background", paint: { "background-color": background } }];
+        for (const source of sources) {
+          styleSources[source.id] = {
+            type: "raster",
+            tiles: source.tiles,
+            tileSize: 256,
+            maxzoom: source.maxzoom || 19,
+            attribution: source.attribution,
+          };
+          layers.push({
+            id: `${source.id}-layer`,
+            type: "raster",
+            source: source.id,
+            paint: { "raster-opacity": source.opacity ?? 1 },
+          });
+        }
+        return { version: 8, sources: styleSources, layers };
+      }
+
+      function satelliteStyle() {
+        return rasterStyle({
+          background: "#0a0d11",
+          sources: [
+            {
+              id: "esri-satellite",
+              tiles: [
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+              ],
+              attribution: ATTRIBUTION.esri,
+            },
+          ],
+        });
+      }
+
       const MAP_STYLES = {
-        outdoors: "mapbox://styles/mapbox/outdoors-v12",
-        streets: "mapbox://styles/mapbox/streets-v12",
-        "satellite-streets": "mapbox://styles/mapbox/satellite-streets-v12",
-        satellite: "mapbox://styles/mapbox/satellite-v9",
-        light: "mapbox://styles/mapbox/light-v11",
-        dark: "mapbox://styles/mapbox/dark-v11",
+        outdoors: () =>
+          rasterStyle({
+            background: "#e5e2db",
+            sources: [
+              {
+                id: "esri-outdoors",
+                tiles: [
+                  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+                ],
+                attribution: ATTRIBUTION.esri,
+              },
+            ],
+          }),
+        satellite: () => satelliteStyle(),
+        light: () =>
+          rasterStyle({
+            background: "#f2f2f2",
+            sources: [
+              {
+                id: "carto-light",
+                tiles: ["https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"],
+                attribution: ATTRIBUTION.carto,
+              },
+            ],
+          }),
       };
 
       const DATASETS = {
@@ -442,6 +850,7 @@
         osm: "srt-osm.geojson",
         improvements: "2025-Improvement-Map.geojson",
         improvements2026: "2026-Improvement-Map.geojson",
+        scrubRoute: "srt-scrub-route.geojson",
       };
 
       const layerGroups = {
@@ -511,19 +920,27 @@
         "improvements-2026-points",
       ];
 
-      const status = document.getElementById("status");
-      const basemapStyle = document.getElementById("basemap-style");
+      const basemapButtons = [...document.querySelectorAll("[data-basemap-style]")];
+      const trailRange = document.getElementById("trail-range");
+      const scrubberDistance = document.getElementById("scrubber-distance");
+      const scrubberStops = document.getElementById("scrubber-stops");
+      const scrubberPlay = document.getElementById("scrubber-play");
+      const scrubberPlayIcon = scrubberPlay.querySelector("[data-play-icon]");
+      const scrubberPauseIcon = scrubberPlay.querySelector("[data-pause-icon]");
       let activePopup = null;
       let overlays = null;
-
-      const setStatus = (text, good = true) => {
-        status.textContent = text;
-        status.style.color = good ? "#636b70" : "#c9503c";
-      };
+      let scrubRoute = null;
+      let scrubFrame = null;
+      let scrubPlaybackFrame = null;
+      let scrubPlaybackTimestamp = null;
+      let scrubPlaybackValue = 0;
+      let scrubPlaybackStarted = false;
+      let scrubPlaying = false;
+      const SCRUB_PLAYBACK_DURATION = 120_000;
 
       const map = new mapboxgl.Map({
         container: "map",
-        style: MAP_STYLES.outdoors,
+        style: MAP_STYLES.outdoors(),
         center: [-75.75, 40.22],
         zoom: 8.2,
         maxZoom: 22,
@@ -638,6 +1055,257 @@
 
       function zoomRadius(base) {
         return ["interpolate", ["linear"], ["zoom"], 10, base, 13, base * 1.25];
+      }
+
+      function distanceMiles(first, second) {
+        const toRadians = Math.PI / 180;
+        const firstLat = first[1] * toRadians;
+        const secondLat = second[1] * toRadians;
+        const deltaLat = (second[1] - first[1]) * toRadians;
+        const deltaLng = (second[0] - first[0]) * toRadians;
+        const haversine =
+          Math.sin(deltaLat / 2) ** 2 +
+          Math.cos(firstLat) * Math.cos(secondLat) * Math.sin(deltaLng / 2) ** 2;
+        return 3958.8 * 2 * Math.asin(Math.min(1, Math.sqrt(haversine)));
+      }
+
+      function prepareScrubRoute(geojson) {
+        const coordinates = [...(geojson.features?.[0]?.geometry?.coordinates || [])].reverse();
+        if (coordinates.length < 2) return null;
+        const cumulative = [0];
+        for (let index = 1; index < coordinates.length; index += 1) {
+          cumulative.push(cumulative[index - 1] + distanceMiles(coordinates[index - 1], coordinates[index]));
+        }
+        return {
+          coordinates,
+          cumulative,
+          totalMiles: cumulative[cumulative.length - 1],
+        };
+      }
+
+      function routeFractionForCoordinate(point) {
+        if (!scrubRoute) return 0;
+        let closestGap = Infinity;
+        let closestMiles = 0;
+        for (let index = 1; index < scrubRoute.coordinates.length; index += 1) {
+          const first = scrubRoute.coordinates[index - 1];
+          const second = scrubRoute.coordinates[index];
+          const latitudeScale = Math.cos(((first[1] + second[1]) / 2) * Math.PI / 180);
+          const segmentX = (second[0] - first[0]) * latitudeScale;
+          const segmentY = second[1] - first[1];
+          const pointX = (point[0] - first[0]) * latitudeScale;
+          const pointY = point[1] - first[1];
+          const segmentLengthSquared = segmentX ** 2 + segmentY ** 2;
+          const amount = segmentLengthSquared
+            ? Math.max(0, Math.min(1, (pointX * segmentX + pointY * segmentY) / segmentLengthSquared))
+            : 0;
+          const projected = [
+            first[0] + (second[0] - first[0]) * amount,
+            first[1] + (second[1] - first[1]) * amount,
+          ];
+          const gap = distanceMiles(point, projected);
+          if (gap < closestGap) {
+            closestGap = gap;
+            const segmentMiles = scrubRoute.cumulative[index] - scrubRoute.cumulative[index - 1];
+            closestMiles = scrubRoute.cumulative[index - 1] + segmentMiles * amount;
+          }
+        }
+        return closestMiles / scrubRoute.totalMiles;
+      }
+
+      function buildScrubberStops(srg) {
+        scrubberStops.innerHTML = "";
+        const stops = [
+          { name: "Philadelphia", fraction: 0, endpoint: "start" },
+          { name: "Frackville", fraction: 1, endpoint: "end" },
+        ];
+        for (const name of ["Reading", "Pottstown", "Phoenixville", "Hamburg"]) {
+          const town = srg.features.find(
+            (feature) => feature.properties?.layer === "town" && feature.properties?.name === name,
+          );
+          if (!town || town.geometry?.type !== "Point") continue;
+          const fraction = routeFractionForCoordinate(town.geometry.coordinates);
+          stops.push({ name, fraction });
+        }
+        stops.sort((first, second) => first.fraction - second.fraction);
+        for (const { name, fraction, endpoint } of stops) {
+          const label = document.createElement("span");
+          label.className = `scrubber-stop${endpoint ? ` endpoint-${endpoint}` : ""}`;
+          label.style.left = `${(fraction * 100).toFixed(2)}%`;
+          label.textContent = name;
+          label.title = `${name} · ${(fraction * scrubRoute.totalMiles).toFixed(1)} mi`;
+          scrubberStops.appendChild(label);
+        }
+      }
+
+      function scrubPosition(fraction) {
+        if (!scrubRoute) return null;
+        const target = Math.max(0, Math.min(1, fraction)) * scrubRoute.totalMiles;
+        let low = 0;
+        let high = scrubRoute.cumulative.length - 1;
+        while (low < high) {
+          const middle = Math.floor((low + high) / 2);
+          if (scrubRoute.cumulative[middle] < target) low = middle + 1;
+          else high = middle;
+        }
+
+        const after = Math.max(1, low);
+        const before = after - 1;
+        const span = scrubRoute.cumulative[after] - scrubRoute.cumulative[before];
+        const amount = span ? (target - scrubRoute.cumulative[before]) / span : 0;
+        const first = scrubRoute.coordinates[before];
+        const second = scrubRoute.coordinates[after];
+        const coordinate = [
+          first[0] + (second[0] - first[0]) * amount,
+          first[1] + (second[1] - first[1]) * amount,
+        ];
+        return { coordinate, miles: target };
+      }
+
+      function updateTrailScrubber(fraction, moveCamera = true) {
+        const position = scrubPosition(fraction);
+        if (!position) return;
+        const percent = Math.round(fraction * 100);
+        trailRange.style.setProperty("--progress", `${percent}%`);
+        scrubberDistance.textContent = `${position.miles.toFixed(1)} / ${scrubRoute.totalMiles.toFixed(1)} mi`;
+        trailRange.setAttribute(
+          "aria-valuetext",
+          `${position.miles.toFixed(1)} miles from the trail source`,
+        );
+
+        const source = map.getSource("trail-scrub-position");
+        if (source) {
+          source.setData({
+            type: "Feature",
+            properties: {},
+            geometry: { type: "Point", coordinates: position.coordinate },
+          });
+        }
+        if (moveCamera) {
+          if (activePopup) activePopup.remove();
+          activePopup = null;
+          map.jumpTo({
+            center: position.coordinate,
+            zoom: 13.25,
+            bearing: 0,
+            pitch: 0,
+          });
+        }
+      }
+
+      function setScrubPlaybackUi(playing) {
+        scrubPlaying = playing;
+        scrubberPlayIcon.toggleAttribute("hidden", playing);
+        scrubberPauseIcon.toggleAttribute("hidden", !playing);
+        scrubberPlay.setAttribute("aria-label", playing ? "Pause trail" : "Play trail");
+        scrubberPlay.title = playing ? "Pause trail" : "Play trail";
+      }
+
+      function pauseTrailPlayback() {
+        if (scrubPlaybackFrame) cancelAnimationFrame(scrubPlaybackFrame);
+        scrubPlaybackFrame = null;
+        scrubPlaybackTimestamp = null;
+        setScrubPlaybackUi(false);
+      }
+
+      function animateTrailPlayback(timestamp) {
+        if (!scrubPlaying) return;
+        if (scrubPlaybackTimestamp === null) scrubPlaybackTimestamp = timestamp;
+        const elapsed = timestamp - scrubPlaybackTimestamp;
+        scrubPlaybackTimestamp = timestamp;
+        const max = Number(trailRange.max);
+        scrubPlaybackValue = Math.min(max, scrubPlaybackValue + elapsed * max / SCRUB_PLAYBACK_DURATION);
+        trailRange.value = String(scrubPlaybackValue);
+        updateTrailScrubber(scrubPlaybackValue / max);
+        if (scrubPlaybackValue >= max) {
+          scrubPlaybackStarted = false;
+          pauseTrailPlayback();
+          return;
+        }
+        scrubPlaybackFrame = requestAnimationFrame(animateTrailPlayback);
+      }
+
+      function playTrailPlayback() {
+        if (scrubPlaying || !scrubRoute) return;
+        const max = Number(trailRange.max);
+        if (!scrubPlaybackStarted || Number(trailRange.value) >= max) {
+          scrubPlaybackValue = 0;
+          trailRange.value = "0";
+          updateTrailScrubber(0);
+        } else {
+          scrubPlaybackValue = Number(trailRange.value);
+        }
+        scrubPlaybackStarted = true;
+        scrubPlaybackTimestamp = null;
+        setScrubPlaybackUi(true);
+        scrubPlaybackFrame = requestAnimationFrame(animateTrailPlayback);
+      }
+
+      function toggleTrailPlayback() {
+        if (scrubPlaying) pauseTrailPlayback();
+        else playTrailPlayback();
+      }
+
+      function wireTrailScrubber(srg) {
+        if (!scrubRoute) {
+          scrubberDistance.textContent = "Route unavailable";
+          return;
+        }
+        buildScrubberStops(srg);
+        trailRange.disabled = false;
+        scrubberPlay.disabled = false;
+        setScrubPlaybackUi(false);
+        updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max), false);
+        scrubberPlay.addEventListener("click", toggleTrailPlayback);
+        trailRange.addEventListener("input", () => {
+          pauseTrailPlayback();
+          scrubPlaybackValue = Number(trailRange.value);
+          if (scrubFrame) cancelAnimationFrame(scrubFrame);
+          scrubFrame = requestAnimationFrame(() => {
+            updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max));
+            scrubFrame = null;
+          });
+        });
+        document.addEventListener("pointerdown", (event) => {
+          if (event.target instanceof Element && event.target.closest("#scrubber-play")) return;
+          pauseTrailPlayback();
+        });
+        document.addEventListener("wheel", pauseTrailPlayback, { passive: true });
+        document.addEventListener("keydown", (event) => {
+          if (event.target instanceof Element && event.target.closest("#scrubber-play")) return;
+          pauseTrailPlayback();
+        });
+        window.addEventListener("blur", pauseTrailPlayback);
+      }
+
+      function addTrailScrubberMarker() {
+        if (!scrubRoute || map.getSource("trail-scrub-position")) return;
+        const position = scrubPosition(Number(trailRange.value) / Number(trailRange.max));
+        map.addSource("trail-scrub-position", {
+          type: "geojson",
+          data: {
+            type: "Feature",
+            properties: {},
+            geometry: { type: "Point", coordinates: position.coordinate },
+          },
+        });
+        map.addLayer({
+          id: "trail-scrub-position-halo",
+          type: "circle",
+          source: "trail-scrub-position",
+          paint: { "circle-radius": 11, "circle-color": "rgba(255,255,255,0.88)" },
+        });
+        map.addLayer({
+          id: "trail-scrub-position",
+          type: "circle",
+          source: "trail-scrub-position",
+          paint: {
+            "circle-radius": 6,
+            "circle-color": "#397550",
+            "circle-stroke-color": "#fff",
+            "circle-stroke-width": 1.5,
+          },
+        });
       }
 
       function addLayers(srg, osm, improvements, improvements2026) {
@@ -779,6 +1447,8 @@
           filter: ["==", ["geometry-type"], "Point"],
           paint: { "circle-color": improvementColor2026, "circle-radius": zoomRadius(4.8), "circle-stroke-color": "#fff", "circle-stroke-width": 1.3 },
         });
+
+        addTrailScrubberMarker();
       }
 
       function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
@@ -929,6 +1599,21 @@
         });
       }
 
+      function wireCollapseControls() {
+        document.querySelectorAll("[data-collapse-target]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const target = document.getElementById(button.dataset.collapseTarget);
+            if (!target) return;
+            const expanded = button.getAttribute("aria-expanded") === "true";
+            target.hidden = expanded;
+            button.setAttribute("aria-expanded", String(!expanded));
+            const label = button.getAttribute("aria-label") || "";
+            button.setAttribute("aria-label", label.replace(expanded ? "Collapse" : "Expand", expanded ? "Expand" : "Collapse"));
+            button.title = expanded ? "Expand" : "Collapse";
+          });
+        });
+      }
+
       function syncLayerVisibilityFromControls() {
         document.querySelectorAll("[data-layer-toggle]").forEach((input) => {
           setVisibility(input.dataset.layerToggle, input.checked);
@@ -948,13 +1633,26 @@
       }
 
       function wireBasemapSelector() {
-        basemapStyle.addEventListener("change", () => {
-          const styleUrl = MAP_STYLES[basemapStyle.value] || MAP_STYLES.outdoors;
+        basemapButtons.forEach((button) => button.addEventListener("click", () => {
+          if (button.getAttribute("aria-pressed") === "true") return;
+          const createStyle = MAP_STYLES[button.dataset.basemapStyle] || MAP_STYLES.outdoors;
           if (activePopup) activePopup.remove();
           activePopup = null;
-          map.once("style.load", renderOverlays);
-          map.setStyle(styleUrl);
-        });
+          basemapButtons.forEach((option) => {
+            option.disabled = true;
+            option.setAttribute("aria-pressed", String(option === button));
+          });
+          map.once("style.load", () => {
+            try {
+              renderOverlays();
+            } finally {
+              basemapButtons.forEach((option) => {
+                option.disabled = false;
+              });
+            }
+          });
+          map.setStyle(createStyle(), { diff: false });
+        }));
       }
 
       function folderControlConfig(improvements) {
@@ -986,13 +1684,15 @@
 
       async function init() {
         try {
-          const [rawSrg, osm, improvements, improvements2026] = await Promise.all([
+          const [rawSrg, osm, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
             loadGeojson(DATASETS.srg),
             loadGeojson(DATASETS.osm),
             loadGeojson(DATASETS.improvements),
             loadGeojson(DATASETS.improvements2026),
+            loadGeojson(DATASETS.scrubRoute),
           ]);
           const srg = withoutExcludedSrgFeatures(rawSrg);
+          scrubRoute = prepareScrubRoute(scrubRouteGeojson);
           overlays = { srg, osm, improvements, improvements2026 };
 
           const render = () => {
@@ -1003,11 +1703,11 @@
             renderOverlays();
             populateCounts(srg, osm, improvements, improvements2026);
             wireToggles();
+            wireCollapseControls();
             wireBasemapSelector();
+            wireTrailScrubber(srg);
             addPopups();
             fitGeojsons([srg, osm, improvements, improvements2026]);
-            document.getElementById("fit-visible").addEventListener("click", () => fitGeojsons([srg, osm, improvements, improvements2026]));
-            setStatus(`${srg.features.length} SRG, ${osm.features.length} OSM, ${improvements.features.length} 2025 improvements, ${improvements2026.features.length} 2026 improvements`);
           };
 
           if (map.loaded()) {
@@ -1017,7 +1717,6 @@
           }
         } catch (error) {
           console.error(error);
-          setStatus("Could not load local GeoJSON files", false);
         }
       }
 
