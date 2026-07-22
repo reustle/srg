@@ -1213,6 +1213,31 @@
         return { coordinate, miles: target };
       }
 
+      function milesFromLocationHash() {
+        let value;
+        try {
+          value = decodeURIComponent(window.location.hash.slice(1)).trim();
+        } catch {
+          return null;
+        }
+        if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) return null;
+        const miles = Number(value);
+        if (!Number.isFinite(miles) || miles < 0 || miles > scrubRoute.totalMiles) return null;
+        return miles;
+      }
+
+      function setScrubberMiles(miles, moveCamera = true) {
+        const fraction = miles / scrubRoute.totalMiles;
+        trailRange.value = String(fraction * Number(trailRange.max));
+        scrubPlaybackValue = Number(trailRange.value);
+        updateTrailScrubber(fraction, moveCamera);
+      }
+
+      function updateLocationHash(fraction) {
+        const miles = Math.max(0, Math.min(1, fraction)) * scrubRoute.totalMiles;
+        history.replaceState(null, "", `#${miles.toFixed(1)}`);
+      }
+
       function updateTrailScrubber(fraction, moveCamera = true) {
         const position = scrubPosition(fraction);
         if (!position) return;
@@ -1306,11 +1331,14 @@
         trailRange.disabled = false;
         scrubberPlay.disabled = false;
         setScrubPlaybackUi(false);
-        updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max), false);
+        const hashMiles = milesFromLocationHash();
+        if (hashMiles === null) updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max), false);
+        else setScrubberMiles(hashMiles);
         scrubberPlay.addEventListener("click", toggleTrailPlayback);
         trailRange.addEventListener("input", () => {
           pauseTrailPlayback();
           scrubPlaybackValue = Number(trailRange.value);
+          updateLocationHash(scrubPlaybackValue / Number(trailRange.max));
           if (scrubFrame) cancelAnimationFrame(scrubFrame);
           scrubFrame = requestAnimationFrame(() => {
             updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max));
@@ -1325,6 +1353,12 @@
         document.addEventListener("keydown", (event) => {
           if (event.target instanceof Element && event.target.closest("#scrubber-play")) return;
           pauseTrailPlayback();
+        });
+        window.addEventListener("hashchange", () => {
+          const miles = milesFromLocationHash();
+          if (miles === null) return;
+          pauseTrailPlayback();
+          setScrubberMiles(miles);
         });
         window.addEventListener("blur", pauseTrailPlayback);
       }
@@ -1774,9 +1808,9 @@
             wireToggles();
             wireCollapseControls();
             wireBasemapSelector();
+            fitGeojsons([srg, osm, google, improvements, improvements2026]);
             wireTrailScrubber(srg);
             addPopups();
-            fitGeojsons([srg, osm, google, improvements, improvements2026]);
           };
 
           if (map.loaded()) {
