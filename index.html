@@ -1607,7 +1607,7 @@
           updateLocationHash(scrubPlaybackValue / Number(trailRange.max));
           if (scrubFrame) cancelAnimationFrame(scrubFrame);
           scrubFrame = requestAnimationFrame(() => {
-            updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max));
+            updateTrailScrubber(Number(trailRange.value) / Number(trailRange.max), true, false);
             scrubFrame = null;
           });
         });
