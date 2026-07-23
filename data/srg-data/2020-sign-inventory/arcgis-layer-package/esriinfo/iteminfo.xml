@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ESRI_ItemInformation Culture='en-US'>
+<name>2020 Signs Inventory</name>
+<guid>0824A41E-DD74-4BF5-AF34-6476F0841BA7</guid>
+<version>1.0</version>
+<created></created>
+<modified></modified>
+<catalogpath></catalogpath>
+<snippet></snippet>
+<description>Signs2020</description>
+<summary></summary>
+<title>2020 Signs Inventory</title>
+<tags></tags>
+<type>Layer Package</type>
+<typekeywords>
+<typekeyword>Layer Package</typekeyword>
+<typekeyword>Data</typekeyword>
+<typekeyword>ArcGIS Pro</typekeyword>
+<typekeyword>ArcGIS Explorer</typekeyword>
+<typekeyword>lpkx</typekeyword>
+</typekeywords>
+<thumbnail>thumbnail/thumbnail.png</thumbnail>
+<documentation></documentation>
+<url></url>
+<extent>
+<xmin>-76.1974271239686</xmin>
+<ymin>40.2452392112768</ymin>
+<xmax>-75.6809944991962</xmax>
+<ymax>40.6742244041114</ymax>
+</extent>
+<spatialreference>NAD_1983_StatePlane_Pennsylvania_South_FIPS_3702_Feet</spatialreference>
+<minScale>591657527.591555</minScale>
+<maxScale>1128.4971760000001</maxScale>
+<datalastModifiedTime></datalastModifiedTime>
+<accessinformation></accessinformation>
+<licenseinfo></licenseinfo>
+</ESRI_ItemInformation>

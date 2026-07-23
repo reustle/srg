@@ -147,30 +147,20 @@
 
       .basemap-toggle {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
       }
 
       .basemap-option {
         display: grid;
-        grid-template-rows: 20px auto;
-        gap: 3px;
-        min-height: 50px;
+        grid-template-columns: 18px auto;
+        gap: 4px;
+        min-height: 34px;
         place-items: center;
-        padding: 5px 3px 4px;
-        border-radius: 0;
+        justify-content: center;
+        padding: 4px 5px;
+        border-radius: 6px;
         color: var(--muted);
-      }
-
-      .basemap-option + .basemap-option {
-        margin-left: -1px;
-      }
-
-      .basemap-option:first-child {
-        border-radius: 6px 0 0 6px;
-      }
-
-      .basemap-option:last-child {
-        border-radius: 0 6px 6px 0;
       }
 
       .basemap-option[aria-pressed="true"] {
@@ -181,13 +171,17 @@
       }
 
       .basemap-option svg {
-        width: 19px;
-        height: 19px;
+        width: 17px;
+        height: 17px;
         fill: none;
         stroke: currentColor;
         stroke-linecap: round;
         stroke-linejoin: round;
         stroke-width: 1.6;
+      }
+
+      .basemap-option .google-logo {
+        stroke: none;
       }
 
       .basemap-option-label {
@@ -649,12 +643,66 @@
             <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="5" cy="14" r="3" /><circle cx="15" cy="14" r="3" /><path d="m5 14 3-6h3l4 6m-7-6 4 6H5m2-8h3" /></svg>
             <span class="basemap-option-label">Cycling</span>
           </button>
-          <button class="basemap-option" type="button" data-basemap-style="google" aria-label="Google roadmap style" aria-pressed="false" title="Google Maps">
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.2 10.2c0-.7-.1-1.3-.2-1.9H10v3.5h3.4a3 3 0 0 1-1.3 1.9V16h3c1.7-1.6 2.7-3.9 2.7-5.8Z" /><path d="M10 18c2.4 0 4.4-.8 5.9-2.1l-2.9-2.2c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H2v2.3A8.9 8.9 0 0 0 10 18Z" /><path d="M5 10.9a5.4 5.4 0 0 1 0-3.5V5.1H2a9 9 0 0 0 0 8.1Z" /><path d="M10 3.5c1.3 0 2.5.5 3.4 1.3L16 2.3A8.7 8.7 0 0 0 2 5.1l3 2.3c.7-2.2 2.7-3.9 5-3.9Z" /></svg>
-            <span class="basemap-option-label">Google</span>
+          <button class="basemap-option" type="button" data-basemap-style="google" aria-label="Google Roadmap style" aria-pressed="false" title="Google Roadmap">
+            <svg class="google-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285f4" d="M21.6 12.2c0-.7-.1-1.4-.2-2.1H12v4h5.4a4.6 4.6 0 0 1-2 3v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.5Z" />
+              <path fill="#34a853" d="M12 22c2.7 0 5-.9 6.7-2.4l-3.3-2.6c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.2H3v2.7A10 10 0 0 0 12 22Z" />
+              <path fill="#fbbc05" d="M6.4 13.8a6 6 0 0 1 0-3.6V7.5H3a10 10 0 0 0 0 9Z" />
+              <path fill="#ea4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.9A9.8 9.8 0 0 0 3 7.5l3.4 2.7C7.2 7.8 9.4 6 12 6Z" />
+            </svg>
+            <span class="basemap-option-label">Google Roadmap</span>
+          </button>
+          <button class="basemap-option" type="button" data-basemap-style="google-satellite" aria-label="Google Satellite photo style" aria-pressed="false" title="Google Satellite">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" /><path d="M2.8 8.5h14.4M2.8 11.5h14.4M10 2.5c2 2 3 4.5 3 7.5s-1 5.5-3 7.5c-2-2-3-4.5-3-7.5s1-5.5 3-7.5Z" /></svg>
+            <span class="basemap-option-label">Google Satellite</span>
+          </button>
+          <button class="basemap-option" type="button" data-basemap-style="satellite" aria-label="Esri World Imagery satellite photo style" aria-pressed="false" title="Esri Satellite">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3" width="15" height="14" rx="1.5" /><circle cx="13.5" cy="7" r="1.5" /><path d="m4.5 15 4-4 2.5 2.5 2-2 2.5 3.5" /></svg>
+            <span class="basemap-option-label">Esri Satellite</span>
           </button>
         </div>
         <div class="basemap-info">Tileset info: <a id="basemap-info-link" href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">openfreemap.org</a></div>
+      </section>
+
+      <section class="group">
+        <div class="group-head">
+          <label class="group-toggle">
+            <input type="checkbox" data-layer-group-toggle="srg-data" />
+            <h2>SRG Data</h2>
+          </label>
+          <div class="group-head-actions">
+            <span class="count" id="srg-data-count">0</span>
+            <button class="collapse-button" type="button" data-collapse-target="srg-data-layer-list" aria-expanded="true" aria-controls="srg-data-layer-list" aria-label="Collapse SRG Data layers" title="Collapse layers">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg>
+            </button>
+          </div>
+        </div>
+        <div class="group-body" id="srg-data-layer-list">
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-data-existing-off-road" />
+          <span class="swatch" style="background: #007c78"></span>
+          <span>2025 existing off-road</span>
+          <span class="count" id="count-srg-data-existing-off-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-data-existing-on-road" />
+          <span class="swatch" style="background: #4255b9"></span>
+          <span>2025 existing on-road</span>
+          <span class="count" id="count-srg-data-existing-on-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-data-planned-off-road" />
+          <span class="swatch dashed" style="color: #007c78"></span>
+          <span>2025 planned off-road</span>
+          <span class="count" id="count-srg-data-planned-off-road"></span>
+        </label>
+        <label>
+          <input type="checkbox" data-layer-toggle="srg-data-planned-on-road" />
+          <span class="swatch dashed" style="color: #4255b9"></span>
+          <span>2025 planned on-road</span>
+          <span class="count" id="count-srg-data-planned-on-road"></span>
+        </label>
+        </div>
       </section>
 
       <section class="group">
@@ -843,6 +891,8 @@
         cyclosm:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · map style &copy; <a href="https://www.cyclosm.org/">CyclOSM</a>',
         google: '<a href="https://maps.google.com/">Google Maps</a>',
+        satellite:
+          '&copy; <a href="https://www.esri.com/">Esri</a>, Maxar, Earthstar Geographics, and the GIS User Community',
       };
 
       function rasterStyle({ background, sources }) {
@@ -866,7 +916,7 @@
         return { version: 8, sources: styleSources, layers };
       }
 
-      async function googleRoadmapStyle() {
+      async function googleMapStyle(mapType) {
         const apiKey = document.querySelector('meta[name="google-maps-api-key"]')?.content.trim();
         if (!apiKey) throw new Error("The Google Maps browser key is not configured.");
         const response = await fetch(
@@ -874,7 +924,7 @@
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ mapType: "roadmap", language: "en-US", region: "US" }),
+            body: JSON.stringify({ mapType, language: "en-US", region: "US" }),
           },
         );
         if (!response.ok) {
@@ -891,10 +941,10 @@
         if (!session.session) throw new Error("Google Map Tiles API returned no session token.");
         const tileUrl = `https://tile.googleapis.com/v1/2dtiles/{z}/{x}/{y}?session=${encodeURIComponent(session.session)}&key=${encodeURIComponent(apiKey)}`;
         return rasterStyle({
-          background: "#e8eaed",
+          background: mapType === "satellite" ? "#11181a" : "#e8eaed",
           sources: [
             {
-              id: "google-roadmap",
+              id: `google-${mapType}`,
               tiles: [tileUrl],
               tileSize: Number(session.tileWidth) || 256,
               maxzoom: 22,
@@ -934,7 +984,22 @@
             ],
           }),
         light: () => "https://tiles.openfreemap.org/styles/positron",
-        google: () => googleRoadmapStyle(),
+        google: () => googleMapStyle("roadmap"),
+        "google-satellite": () => googleMapStyle("satellite"),
+        satellite: () =>
+          rasterStyle({
+            background: "#151b1d",
+            sources: [
+              {
+                id: "esri-world-imagery",
+                tiles: [
+                  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                ],
+                maxzoom: 19,
+                attribution: ATTRIBUTION.satellite,
+              },
+            ],
+          }),
       };
 
       const BASEMAP_INFO = {
@@ -945,9 +1010,18 @@
           url: "https://developers.google.com/maps/documentation/tile/2d-tiles-overview",
           label: "developers.google.com/maps/documentation/tile",
         },
+        "google-satellite": {
+          url: "https://developers.google.com/maps/documentation/tile/satellite",
+          label: "developers.google.com/maps/documentation/tile/satellite",
+        },
+        satellite: {
+          url: "https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9",
+          label: "arcgis.com · World Imagery",
+        },
       };
 
       const DATASETS = {
+        srgData: "data/srg-data/2025-alignment.geojson",
         srg: "data/srg-website-map.geojson",
         osm: "data/srt-osm.geojson",
         google: "data/google-places-srt-scan-2026-07-22.geojson",
@@ -957,6 +1031,10 @@
       };
 
       const layerGroups = {
+        "srg-data-existing-off-road": ["srg-data-existing-off-road"],
+        "srg-data-existing-on-road": ["srg-data-existing-on-road"],
+        "srg-data-planned-off-road": ["srg-data-planned-off-road"],
+        "srg-data-planned-on-road": ["srg-data-planned-on-road"],
         "srg-active-off-road": ["srg-active-off-road"],
         "srg-active-on-road": ["srg-active-on-road"],
         "srg-proposed-off-road": ["srg-proposed-off-road"],
@@ -975,6 +1053,12 @@
       };
 
       const layerGroupControls = {
+        "srg-data": [
+          "srg-data-existing-off-road",
+          "srg-data-existing-on-road",
+          "srg-data-planned-off-road",
+          "srg-data-planned-on-road",
+        ],
         srg: [
           "srg-active-off-road",
           "srg-active-on-road",
@@ -1009,6 +1093,10 @@
       ];
 
       const clickableLayers = [
+        "srg-data-existing-off-road",
+        "srg-data-existing-on-road",
+        "srg-data-planned-off-road",
+        "srg-data-planned-on-road",
         "srg-active-off-road",
         "srg-active-on-road",
         "srg-proposed-off-road",
@@ -1070,6 +1158,7 @@
       function htmlToText(value) {
         if (!value) return "";
         const doc = new DOMParser().parseFromString(value, "text/html");
+        doc.querySelectorAll("script, style, noscript, template").forEach((node) => node.remove());
         return (doc.body.textContent || "").replace(/\s+/g, " ").trim();
       }
 
@@ -1278,6 +1367,7 @@
         if (source === "improvements-2026") return "2026 improvements";
         if (source === "google-places" || props.google_place_id) return "[WIP] Google Maps Search Results";
         if (source === "osm-srt" || props.osm_id) return "OSM";
+        if (source === "srg-data" || props.source === "SRG data delivery") return "SRG Data";
         if (source === "srg") return props.layer ? `SRG ${props.layer}` : "SRG";
         return props.layer || "Map feature";
       }
@@ -1291,6 +1381,11 @@
         if (props.surface) bits.push(`surface: ${props.surface}`);
         if (props.highway) bits.push(`highway: ${props.highway}`);
         if (props.primary_type) bits.push(props.primary_type.replaceAll("_", " "));
+        if (props.owner) bits.push(`owner: ${props.owner}`);
+        if (props.county) bits.push(props.county);
+        if (props.municipality) bits.push(props.municipality);
+        if (props.property_interest) bits.push(props.property_interest);
+        if (typeof props.length_miles === "number") bits.push(`${props.length_miles.toFixed(2)} mi`);
         if (props.source_post_id) bits.push(`SRG post ${props.source_post_id}`);
         if (props.osm_id) bits.push(`OSM ${props.osm_type || "way"} ${props.osm_id}`);
 
@@ -1659,7 +1754,7 @@
         });
       }
 
-      function addLayers(srg, osm, google, improvements, improvements2026) {
+      function addLayers(srgData, srg, osm, google, improvements, improvements2026) {
         const folders = [...new Set(improvements.features.map(featureFolder))].sort();
         const folderIndex = Object.fromEntries(folders.map((folder, index) => [folder, index]));
         const improvementColor = buildMatchExpression(folderIndex);
@@ -1668,6 +1763,7 @@
         const improvementColor2026 = buildMatchExpression(folderIndex2026);
 
         registerTrailheadLabelImages(srg);
+        map.addSource("srg-data", { type: "geojson", data: srgData });
         map.addSource("srg", { type: "geojson", data: srg });
         map.addSource("osm-srt", { type: "geojson", data: osm });
         map.addSource("google-places", { type: "geojson", data: google });
@@ -1704,6 +1800,42 @@
           source: "srg",
           filter: ["all", ["==", ["get", "layer"], "trail"], ["==", ["get", "status"], "proposed"], ["==", ["get", "alignment"], "on_road"]],
           paint: { "line-color": ["coalesce", ["get", "color"], "#f99400"], "line-width": 4, "line-opacity": 0.8, "line-dasharray": [2, 2] },
+        });
+
+        map.addLayer({
+          id: "srg-data-existing-off-road",
+          type: "line",
+          source: "srg-data",
+          filter: ["==", ["get", "alignment_class"], "existing_off_road"],
+          layout: { visibility: "none" },
+          paint: { "line-color": "#007c78", "line-width": 5.5, "line-opacity": 0.92 },
+        });
+
+        map.addLayer({
+          id: "srg-data-existing-on-road",
+          type: "line",
+          source: "srg-data",
+          filter: ["==", ["get", "alignment_class"], "existing_on_road"],
+          layout: { visibility: "none" },
+          paint: { "line-color": "#4255b9", "line-width": 5, "line-opacity": 0.92 },
+        });
+
+        map.addLayer({
+          id: "srg-data-planned-off-road",
+          type: "line",
+          source: "srg-data",
+          filter: ["==", ["get", "alignment_class"], "planned_off_road"],
+          layout: { visibility: "none" },
+          paint: { "line-color": "#007c78", "line-width": 4.5, "line-opacity": 0.85, "line-dasharray": [2, 1.5] },
+        });
+
+        map.addLayer({
+          id: "srg-data-planned-on-road",
+          type: "line",
+          source: "srg-data",
+          filter: ["==", ["get", "alignment_class"], "planned_on_road"],
+          layout: { visibility: "none" },
+          paint: { "line-color": "#4255b9", "line-width": 4.5, "line-opacity": 0.85, "line-dasharray": [2, 1.5] },
         });
 
         map.addLayer({
@@ -2022,7 +2154,7 @@
           syncLayerVisibilityFromControls();
           return;
         }
-        addLayers(overlays.srg, overlays.osm, overlays.google, overlays.improvements, overlays.improvements2026);
+        addLayers(overlays.srgData, overlays.srg, overlays.osm, overlays.google, overlays.improvements, overlays.improvements2026);
         syncLayerVisibilityFromControls();
       }
 
@@ -2075,12 +2207,17 @@
         return { folders, folderIndex };
       }
 
-      function populateCounts(srg, osm, google, improvements, improvements2026) {
+      function populateCounts(srgData, srg, osm, google, improvements, improvements2026) {
+        setCount("srg-data-count", srgData.features.length);
         setCount("srg-count", srg.features.length);
         setCount("osm-count", osm.features.length);
         setCount("google-count", google.features.length);
         setCount("improvements-count", improvements.features.length);
         setCount("improvements-2026-count", improvements2026.features.length);
+        setCount("count-srg-data-existing-off-road", countFeatures(srgData, (f) => f.properties.alignment_class === "existing_off_road"));
+        setCount("count-srg-data-existing-on-road", countFeatures(srgData, (f) => f.properties.alignment_class === "existing_on_road"));
+        setCount("count-srg-data-planned-off-road", countFeatures(srgData, (f) => f.properties.alignment_class === "planned_off_road"));
+        setCount("count-srg-data-planned-on-road", countFeatures(srgData, (f) => f.properties.alignment_class === "planned_on_road"));
         setCount("count-srg-active-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "off_road"));
         setCount("count-srg-active-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "on_road"));
         setCount("count-srg-proposed-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "off_road"));
@@ -2094,7 +2231,8 @@
 
       async function init() {
         try {
-          const [rawSrg, osm, google, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
+          const [srgData, rawSrg, osm, google, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
+            loadGeojson(DATASETS.srgData),
             loadGeojson(DATASETS.srg),
             loadGeojson(DATASETS.osm),
             loadGeojson(DATASETS.google),
@@ -2104,7 +2242,7 @@
           ]);
           const srg = withoutExcludedSrgFeatures(rawSrg);
           scrubRoute = prepareScrubRoute(scrubRouteGeojson);
-          overlays = { srg, osm, google, improvements, improvements2026 };
+          overlays = { srgData, srg, osm, google, improvements, improvements2026 };
 
           const render = () => {
             const folders2025 = folderControlConfig(improvements);
@@ -2112,11 +2250,11 @@
             buildFolderControls("folder-list", "folder2025", folders2025.folders, folders2025.folderIndex, improvements);
             buildFolderControls("folder-list-2026", "folder2026", folders2026.folders, folders2026.folderIndex, improvements2026);
             renderOverlays();
-            populateCounts(srg, osm, google, improvements, improvements2026);
+            populateCounts(srgData, srg, osm, google, improvements, improvements2026);
             wireToggles();
             wireCollapseControls();
             wireBasemapSelector();
-            fitGeojsons([srg, osm, google, improvements, improvements2026]);
+            fitGeojsons([srgData, srg, osm, google, improvements, improvements2026]);
             wireTrailScrubber(srg);
             addPopups();
           };

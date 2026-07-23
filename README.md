@@ -23,6 +23,7 @@ restrictions.
 index.html       Interactive MapLibre map
 data/            GeoJSON, KMZ, downloaded source data, and manifests
   srg-map/raw/   Raw files downloaded from the official SRG map
+  srg-data/      SRG source deliveries, organized by year and purpose
 tools/           Scripts for fetching and rebuilding map datasets
 ```
 
@@ -38,6 +39,10 @@ The principal datasets are:
 - `data/google-places-srt-scan-2026-07-22.geojson`: a point-in-time Google
   Places research layer.
 - `data/srg-map/`: raw official-map downloads and their provenance manifest.
+- `data/srg-data/`: SRG alignment, mileage, sign-inventory, and
+  supporting source files, with an inventory of known completeness issues.
+- `data/srg-data/2025-alignment.geojson`: browser-ready export of the four
+  supplied 2025 SRG alignment layers used by the explorer's **SRG Data** group.
 
 Generated datasets are checked in so the map works without running the tools.
 Run commands from the repository root because script defaults are relative to
@@ -47,8 +52,10 @@ it.
 
 The map uses MapLibre GL JS so local GeoJSON layers can be rendered over
 OpenStreetMap Standard, CyclOSM, a light OSM-derived OpenFreeMap style, or
-Google roadmap tiles. Choose a provider under **Map Style**; local layers remain
-visible when the basemap changes.
+Google roadmap and satellite tiles. Esri World Imagery provides another
+satellite and aerial photography option without the Google API. Choose a
+provider under **Map Style**; local layers remain visible when the basemap
+changes.
 
 The Google basemap uses the public browser- and referrer-restricted Map Tiles
 API key configured in the `google-maps-api-key` meta tag in `index.html`; users
@@ -182,6 +189,13 @@ Refresh the local export with:
 python3 tools/fetch_srg_map_data.py
 ```
 
+To regenerate only the GeoJSON from the checked-in raw downloads, without
+network access:
+
+```sh
+python3 tools/fetch_srg_map_data.py --use-existing
+```
+
 The fetcher downloads the map page, `mapdata.json`, and referenced KML files to
 `data/srg-map/raw/`; writes download metadata to
 `data/srg-map/manifest.json`; and rebuilds `data/srg-website-map.geojson`.
@@ -198,6 +212,18 @@ The original KML ID and index remain in `placemark_id` and `placemark_index`.
 Trail features include `status` (`active` or `proposed`) and `alignment`
 (`off_road` or `on_road`). Point features retain `infowindow_html`, where the
 public map stores most display text.
+
+### Supplied SRG alignment
+
+Rebuild the browser-ready 2025 alignment after replacing any source KML under
+`data/srg-data/2025-alignment/`:
+
+```sh
+python3 tools/build_srg_data_geojson.py
+```
+
+The output is `data/srg-data/2025-alignment.geojson`, displayed as the separate
+**SRG Data** layer group in the explorer.
 
 ### Scrubber route
 

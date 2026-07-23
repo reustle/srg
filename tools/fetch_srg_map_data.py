@@ -70,6 +70,26 @@ def child_text(element: ET.Element, name: str) -> str | None:
     return child.text.strip()
 
 
+def clean_html(value: str) -> str:
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", value)).split())
+
+
+def description_fields(description: str | None) -> dict[str, str]:
+    if not description:
+        return {}
+
+    decoded = html.unescape(description)
+    fields = {}
+    for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>", decoded, flags=re.I | re.S):
+        cells = re.findall(r"<td\b[^>]*>(.*?)</td>", row, flags=re.I | re.S)
+        if len(cells) != 2:
+            continue
+        key, value = (clean_html(cell) for cell in cells)
+        if key and value and value not in {"<Null>", "&lt;Null&gt;"}:
+            fields[key] = value
+    return fields
+
+
 def placemark_geometry(placemark: ET.Element) -> dict | None:
     lines = [
         parse_coordinates(node.text)
@@ -124,30 +144,38 @@ def kml_features(kml_path: Path, trail_id: str, trail: dict, kml_url: str) -> li
         placemark_id = placemark.get("id")
         placemark_name = child_text(placemark, "name")
         description = child_text(placemark, "description")
+        source_fields = description_fields(description)
+        shape_length = source_fields.get("SHAPE_Length")
+        try:
+            shape_length = float(shape_length) if shape_length is not None else None
+        except ValueError:
+            pass
         feature_id = f"srg:trail/{trail_id}/placemark/{index}"
+        properties = {
+            "source": "Schuylkill River Greenways interactive map",
+            "source_type": "kml",
+            "source_url": kml_url,
+            "source_file": str(kml_path),
+            "source_trail_id": trail_id,
+            "source_post_id": trail.get("post_id"),
+            "source_urlpath": trail.get("urlpath"),
+            "layer": "trail",
+            "name": trail.get("name"),
+            "placemark_id": placemark_id,
+            "placemark_index": index,
+            "placemark_name": html.unescape(placemark_name) if placemark_name else None,
+            "status": status,
+            "alignment": alignment,
+            "color": trail.get("color"),
+            "dashed": trail.get("dashed"),
+        }
+        if shape_length is not None:
+            properties["shape_length_ft"] = shape_length
         features.append(
             {
                 "type": "Feature",
                 "id": feature_id,
-                "properties": {
-                    "source": "Schuylkill River Greenways interactive map",
-                    "source_type": "kml",
-                    "source_url": kml_url,
-                    "source_file": str(kml_path),
-                    "source_trail_id": trail_id,
-                    "source_post_id": trail.get("post_id"),
-                    "source_urlpath": trail.get("urlpath"),
-                    "layer": "trail",
-                    "name": trail.get("name"),
-                    "placemark_id": placemark_id,
-                    "placemark_index": index,
-                    "placemark_name": html.unescape(placemark_name) if placemark_name else None,
-                    "description_html": description,
-                    "status": status,
-                    "alignment": alignment,
-                    "color": trail.get("color"),
-                    "dashed": trail.get("dashed"),
-                },
+                "properties": properties,
                 "geometry": geometry,
             }
         )
@@ -222,10 +250,37 @@ def main() -> None:
     parser.add_argument("--map-page-url", default=MAP_PAGE_URL)
     parser.add_argument("--out-dir", default=DEFAULT_OUT_DIR, type=Path)
     parser.add_argument("--geojson", default=Path("data/srg-website-map.geojson"), type=Path)
+    parser.add_argument(
+        "--use-existing",
+        action="store_true",
+        help="Rebuild GeoJSON from the existing raw downloads without fetching.",
+    )
     args = parser.parse_args()
 
     raw_dir = args.out_dir / "raw"
     trail_dir = raw_dir / "trails"
+    if args.use_existing:
+        mapdata = json.loads((raw_dir / "mapdata.json").read_text(encoding="utf-8"))
+        manifest_path = args.out_dir / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        mapjson_url = manifest.get("mapdata_url", args.map_page_url)
+        kml_paths = {}
+        kml_urls = {}
+        for trail_id, trail in mapdata.get("trail", {}).items():
+            kml_url = absolute_url(args.map_page_url, trail["kml"])
+            kml_paths[trail_id] = trail_dir / safe_filename_from_url(kml_url)
+            kml_urls[trail_id] = kml_url
+        args.geojson.parent.mkdir(parents=True, exist_ok=True)
+        with args.geojson.open("w", encoding="utf-8") as handle:
+            json.dump(
+                build_geojson(mapdata, kml_paths, kml_urls, mapjson_url),
+                handle,
+                indent=2,
+            )
+            handle.write("\n")
+        print(f"Wrote {args.geojson} from existing raw sources")
+        return
+
     manifest = {
         "generated_at": utc_now(),
         "map_page_url": args.map_page_url,

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import html
 import json
 import re
 import zipfile
@@ -128,6 +129,22 @@ def extended_data(placemark):
     return data
 
 
+def description_text(value):
+    if not value:
+        return None
+    decoded = html.unescape(value)
+    decoded = re.sub(
+        r"<(script|style|noscript|template)\b[^>]*>.*?</\1\s*>",
+        " ",
+        decoded,
+        flags=re.I | re.S,
+    )
+    if re.search(r"<[a-z!/][^>]*>", decoded, flags=re.I):
+        decoded = re.sub(r"<[^>]+>", " ", decoded)
+    cleaned = " ".join(html.unescape(decoded).split())
+    return cleaned or None
+
+
 def feature_for(placemark, folder_path):
     props = {}
     name = text_of(placemark, "name")
@@ -136,7 +153,9 @@ def feature_for(placemark, folder_path):
 
     description = text_of(placemark, "description")
     if description is not None:
-        props["description"] = description
+        cleaned_description = description_text(description)
+        if cleaned_description is not None:
+            props["description"] = cleaned_description
 
     style_url = text_of(placemark, "styleUrl")
     if style_url is not None:

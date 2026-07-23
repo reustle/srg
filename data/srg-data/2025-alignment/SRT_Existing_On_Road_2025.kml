@@ -1,0 +1,1478 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="SRT_Existing_On_Road_2020" xsi:schemaLocation="http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd">
+	<name>SRT_Existing_On_Road_2020</name>
+	<snippet></snippet>
+	<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.6.10201"></atom:link>
+	<Style id="LineStyle00">
+		<LabelStyle>
+			<color>00000000</color>
+			<scale>0</scale>
+		</LabelStyle>
+		<LineStyle>
+			<color>ffe600a9</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00000000</color>
+			<outline>0</outline>
+		</PolyStyle>
+	</Style>
+	<Folder id="FeatureLayer0">
+		<name>SRT_Existing_On_Road_2020</name>
+		<snippet></snippet>
+		<Placemark id="ID_00000">
+			<name>Birdsboro Power</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Birdsboro Power</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>1532.174167</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Birdsboro Power</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Birdsboro</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>????</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.80834919329099,40.26692888709299,0 -75.80831891540397,40.26689977576522,0 -75.80823819462427,40.26689364878467,0 -75.80725361331865,40.26715830495436,0 -75.80642575141253,40.2673826935387,0 -75.80578667179491,40.26753399018962,0 -75.80530592847903,40.26759832684726,0 -75.80446080199845,40.26769264944544,0 -75.80321889524363,40.26783124310988,0 -75.80304669679248,40.26781665720787,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00001">
+			<name>Birdsboro, Robeson (PADOT)</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Birdsboro, Robeson (PADOT)</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>18322.582243</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Birdsboro, Robeson (PADOT)</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Birdsboro, Robeson</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>public road, sign agreements</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.86856982862255,40.2829287348545,0 -75.86841628311645,40.28285472707296,0 -75.86794438787365,40.2828136568889,0 -75.8674668031987,40.28275342525274,0 -75.86729962320078,40.28272209366137,0 -75.86708293727604,40.28268042092088,0 -75.86673812505009,40.28254608537105,0 -75.86622666642806,40.28236135769313,0 -75.86539329732965,40.28211416441891,0 -75.86492446391756,40.28196349464975,0 -75.8641525199512,40.28174589740117,0 -75.86319051352949,40.28142508157725,0 -75.86214221832265,40.28107424287256,0 -75.86142614953941,40.28086230908208,0 -75.8602047457934,40.28047048239364,0 -75.85937262085194,40.28018036387258,0 -75.85711623942244,40.27940924732376,0 -75.85514922359182,40.27875248046239,0 -75.85458765649625,40.27858117694805,0 -75.85369959081899,40.27829009600458,0 -75.85323729847666,40.27812995293174,0 -75.85272591012618,40.27794516527386,0 -75.85225766862388,40.2777753860342,0 -75.85165999565325,40.27756057220462,0 -75.851197848111,40.27739565513701,0 -75.85068673732255,40.27720132945517,0 -75.85006486138938,40.27696227369001,0 -75.84938820819937,40.27667941086741,0 -75.8486620620619,40.27638619344043,0 -75.84821859078153,40.27622157218047,0 -75.84776348474465,40.27602815711366,0 -75.84752369161866,40.27592409664642,0 -75.84737479760031,40.27590733887469,0 -75.84729231991204,40.27596317958637,0 -75.84708977306938,40.27608377369764,0 -75.84695023610837,40.27617680755021,0 -75.84672374222795,40.27626363850274,0 -75.84659812168886,40.27630446595176,0 -75.84636066116745,40.27633867938723,0 -75.84613591086561,40.27636356888181,0 -75.8459487517804,40.27637954545679,0 -75.84579972298745,40.27636755056862,0 -75.84560714891319,40.27635483525128,0 -75.84544661729412,40.27630928175488,0 -75.84513191115198,40.27621351288972,0 -75.84400753111217,40.2759184510094,0 -75.84388365412603,40.27589733609484,0 -75.84369054453644,40.27590367633331,0 -75.84344077730971,40.27593291401686,0 -75.84294652281086,40.27602484236557,0 -75.84279709106254,40.27602713741613,0 -75.84257422182735,40.27598531478596,0 -75.84235121846349,40.27594825663748,0 -75.84183083220823,40.27586337543156,0 -75.84125553723361,40.27573944652117,0 -75.84105079266874,40.27571698956225,0 -75.83986046416689,40.27555426653066,0 -75.83867717029075,40.27536304759915,0 -75.83781465985237,40.27527247434119,0 -75.83752296463879,40.27524380162041,0 -75.83709834625654,40.27529395859983,0 -75.83674850928044,40.2753405880191,0 -75.83639772811443,40.27542056891824,0 -75.83595350201958,40.27550376444177,0 -75.83548019411828,40.27551497262722,0 -75.83511980268892,40.27549468632465,0 -75.83479660021318,40.27547978388062,0 -75.83459767478362,40.27547171172561,0 -75.83413166887011,40.2754449003271,0 -75.83382712749423,40.27543030528939,0 -75.83330608079784,40.27536920741744,0 -75.83228251802892,40.27525208087535,0 -75.83150845683981,40.27511526372918,0 -75.83014033478796,40.27485891030388,0 -75.82963958206797,40.27474093238011,0 -75.82925661437213,40.2746392144704,0 -75.82891813802165,40.27450486934033,0 -75.82877831497457,40.27438813466811,0 -75.82867054198108,40.27423856572142,0 -75.82863011143985,40.2741282536288,0 -75.82862267800122,40.27395175584672,0 -75.82860970172763,40.27375133170532,0 -75.82858063614896,40.27346006795533,0 -75.82849896537468,40.27326803217828,0 -75.82825705356289,40.27302088999672,0 -75.82774483269719,40.27265006751252,0 -75.82723248198532,40.27228400763338,0 -75.82622659341811,40.27154742842708,0 -75.82562744793901,40.27117037913295,0 -75.82521720133387,40.27093472046097,0 -75.82413967793637,40.27031133072115,0 -75.8237602716485,40.27008571444272,0 -75.82326849927404,40.26987252022443,0 -75.82289895872678,40.26973763751081,0 -75.82254077432331,40.26964107808199,0 -75.82225682411877,40.26956005961042,0 -75.82199734770114,40.26949375037086,0 -75.82172502340362,40.2694415271088,0 -75.82108653218897,40.26935457427331,0 -75.82046034750527,40.26927259104414,0 -75.82010716472949,40.26921900947202,0 -75.81991570353591,40.26916813481177,0 -75.81963757090772,40.26910150781028,0 -75.81934104966027,40.26902503870079,0 -75.81837104046457,40.26877997807038,0 -75.8171961873539,40.26851717302038,0 -75.8160018661691,40.26828263132791,0 -75.81560569852793,40.26820924680074,0 -75.81525942688459,40.26813193213069,0 -75.8150428197895,40.26809016153292,0 -75.81484541913768,40.26802964427665,0 -75.81454377959986,40.2679149420311,0 -75.8141921085851,40.26780893220004,0 -75.81388883455504,40.2677514023476,0 -75.81365329713464,40.26771884458141,0 -75.81275509965118,40.26757504673578,0 -75.8120856752827,40.26748275647678,0 -75.81204281855463,40.26745820185468,0 -75.81198820517876,40.26740961456183,0 -75.811903311083,40.26733191683824,0 -75.81176162074533,40.26728186617648,0 -75.81121304564486,40.26731554227232,0 -75.81040918421273,40.26735445377789,0 -75.80963102046864,40.26736519190894,0 -75.80898969310662,40.26737822821654,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00002">
+			<name>PADOT, Leesport, Berne</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>PADOT, Leesport, Berne</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>5379.879948</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>PADOT, Leesport, Berne</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Leesport, Berne</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>PADOT approved SRT, must remain</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.97287609263481,40.45187000018858,0 -75.97287684580282,40.45184141237151,0 -75.9728428126528,40.45171219182728,0 -75.97188297645081,40.45072504867408,0 -75.97133956910547,40.45027339602427,0 -75.96992435891852,40.44928399319754,0 -75.96919475290785,40.44879609677071,0 -75.96865757817402,40.44905474780222,0 -75.96833917809063,40.44882581066003,0 -75.96811294730732,40.44865072559669,0 -75.96783310440853,40.44837948223675,0 -75.96728312821922,40.44794200806547,0 -75.96687805334392,40.44768789720821,0 -75.96624701221484,40.44724916719728,0 -75.96804212399998,40.44589931503256,0 -75.96887672246454,40.44524485772271,0 -75.96848785060175,40.44508633316423,0 -75.96800070874966,40.44486909320143,0 -75.96699329655905,40.44427203279097,0 -75.96690340198087,40.44413241452621,0 -75.9666203700568,40.44374672054424,0 -75.96626860753653,40.44388072149179,0 -75.96601045926623,40.44340978717655,0 -75.9659118823615,40.44304730035725,0 -75.96541091797906,40.44198420047892,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00003">
+			<name>Hamburg</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Hamburg</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>4946.347436</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Hamburg</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Hamburg</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>Sign Agreement</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.98862645755146,40.55449817665297,0 -75.98863019572363,40.55435523893517,0 -75.98861974937948,40.55415727219452,0 -75.98742703860515,40.55436314205694,0 -75.98647206555722,40.55455832309588,0 -75.9862554143492,40.55400211266242,0 -75.98618969205334,40.55376755360636,0 -75.98617988208504,40.55366492510424,0 -75.98611060526214,40.55356615728284,0 -75.98601502821818,40.55339787423744,0 -75.98593238098456,40.55321310627093,0 -75.98564027717427,40.5524364861481,0 -75.98528076642521,40.55154446670832,0 -75.98475690993659,40.55003517846819,0 -75.98213485974163,40.55026146527742,0 -75.98042265403974,40.54562121180833,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00004">
+			<name>Birdsboro, PADOT</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Birdsboro, PADOT</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>315.171607</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Birdsboro, PADOT</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Birdsboro</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>PADOT agreement to maintain ped access</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.80834919329099,40.26692888709299,0 -75.80837501146513,40.267000497322,0 -75.80840442887713,40.26710583841953,0 -75.80841077330518,40.26716826817225,0 -75.80845266995915,40.26722617736976,0 -75.80850851270911,40.26723188425856,0 -75.80860489858037,40.26721045101473,0 -75.80872771001762,40.26718314073642,0 -75.80880706379379,40.26723691255467,0 -75.80888129136413,40.26725246324232,0 -75.8089745886104,40.26725403436623,0 -75.80898032023153,40.26730116130454,0 -75.80898969310662,40.26737822821654,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00005">
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>3195.71441</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Montgomery</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.65332002144754,40.24380154925234,0 -75.65188506970124,40.24327831955914,0 -75.65112995005714,40.24297693071478,0 -75.64875624043657,40.2415812432815,0 -75.64772662066559,40.24116428132593,0 -75.6460745805647,40.24053305943116,0 -75.64436789251906,40.23984861367325,0 -75.64401622803371,40.23972224902519,0 -75.64342315566806,40.23945228263119,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00006">
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>2133.382368</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Philadelphia</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.21137002257653,39.93308143577092,0 -75.21139282052985,39.93302973362351,0 -75.21211349727464,39.93296939893762,0 -75.21252312592532,39.93284924223671,0 -75.21242120254122,39.93269013873112,0 -75.21238094555922,39.93244132182343,0 -75.21280742957141,39.93229818857746,0 -75.21309748873065,39.93182782384436,0 -75.21316975228481,39.93121914205022,0 -75.21323774849854,39.93072479401931,0 -75.21347331586199,39.93038672191845,0 -75.21412694796597,39.92946668612375,0 -75.21289851515716,39.92899096006246,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00007">
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>1059.458049</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Philadelphia</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.20671898798361,39.93744583719224,0 -75.20763798492617,39.93605517472848,0 -75.20682772945946,39.93519807388498,0 -75.20709982996713,39.93500033812009,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00008">
+			<name>Reading, PADOT</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Reading, PADOT</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>3924.433548</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Reading, PADOT</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>City of Reading</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>PADOT Agreement</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.95058833585021,40.34701048441429,0 -75.94978865923413,40.34828122608491,0 -75.94866711933838,40.3497887566546,0 -75.94642483151729,40.35093739368979,0 -75.94499301595116,40.35178741145922,0 -75.94305355082339,40.34998101604629,0 -75.94246032820497,40.34934250639409,0 -75.94368016281486,40.34897726347951,0 -75.94370556900806,40.34902688474199,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00009">
+			<name>Auburn Borough</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>Auburn Borough</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>2293.336284</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>Auburn Borough</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Schuylkill</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Auburn Borough</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>Sign Agreement</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-76.07919527700096,40.58720091860425,0 -76.07894336903495,40.58754388019095,0 -76.07887474276605,40.58800928107925,0 -76.07896137447194,40.58834798336996,0 -76.07970749694333,40.58909371829444,0 -76.08062283587127,40.5900006024452,0 -76.0817124178671,40.59091111985248,0 -76.08194785537106,40.59134528637385,0 -76.08253089288843,40.59220249800266,0 -76.08262925165576,40.59237764060708,0 -76.08263773483645,40.59252548560234,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00010">
+			<name>PADOT, Centre, Shoemakersville, Perry</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>PADOT, Centre, Shoemakersville, Perry</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>34365.574125</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>PADOT, Centre, Shoemakersville, Perry</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Perry, Shoemakersville, Centre</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>PADOT Sign Agreement</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.97540067592909,40.45651588176975,0 -75.97672697779331,40.45660530611038,0 -75.979891285446,40.4570175669926,0 -75.98106284853122,40.45696403965722,0 -75.98154238011415,40.45844095803805,0 -75.98003273121323,40.46173619456051,0 -75.97993043624768,40.46244357388396,0 -75.98278486092138,40.46432123251755,0 -75.98543769438395,40.46532859743945,0 -75.98484733322182,40.46591672320001,0 -75.9833713246672,40.46948274706359,0 -75.98218916066193,40.47030827886179,0 -75.97490672137626,40.47358303483619,0 -75.97444092558378,40.47410636569912,0 -75.97411617606897,40.47392353770575,0 -75.97313486030788,40.47307682138432,0 -75.97138378440501,40.47227072268853,0 -75.96974194565939,40.47454719548293,0 -75.96831510505166,40.47651676575531,0 -75.9676702500027,40.47873844952504,0 -75.96723424880022,40.48179546523949,0 -75.96678176183428,40.4857142454979,0 -75.96844301814724,40.49407570633951,0 -75.968773924982,40.49481624745261,0 -75.96994102932531,40.49597783437743,0 -75.97012903977844,40.49769166498876,0 -75.97003747547218,40.50205916281887,0 -75.9715203703874,40.50216489927205,0 -75.97232376938832,40.50145211492866,0 -75.97294759380644,40.50148625585339,0 -75.97411191594094,40.50252604835228,0 -75.97572207682225,40.50316307159134,0 -75.97747303283538,40.50460487128998,0 -75.97910826544275,40.50543825490031,0 -75.98099090512508,40.50616734425905,0 -75.98168943769215,40.50605459781783,0 -75.98453506133919,40.50706285114055,0 -75.98649415511152,40.50813763446559,0 -75.98717053321991,40.51002278138296,0 -75.99054664998286,40.5137904154811,0 -75.995245162546,40.51763717813135,0 -75.99639621355428,40.51745044051538,0 -75.99669879483646,40.51821467854219,0 -75.9975024247664,40.51943981376139,0 -75.9979311856459,40.52011961201908,0 -75.99787667648702,40.52054247960147,0 -75.99730155671142,40.52165400110144,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00011">
+			<name>PADOT,  Berne</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>PADOT,  Berne</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>35595.525093</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>PADOT,  Berne</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>Berne</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>PADOT approved SRT, must remain</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.95921910917178,40.43685753185792,0 -75.958449084482,40.43453110774386,0 -75.95819406696329,40.43345427226276,0 -75.95835726334894,40.43255368276628,0 -75.95862621270572,40.43082445078116,0 -75.95850322773568,40.42999634635962,0 -75.95835767240091,40.42969698700347,0 -75.95798843578152,40.42918695876318,0 -75.95785492137834,40.42889214065925,0 -75.95838401101898,40.42811568148702,0 -75.95855592826467,40.4279529647599,0 -75.95868488025575,40.4279986713923,0 -75.95909875646448,40.42853823853818,0 -75.95939152636615,40.42858539067388,0 -75.95956065391444,40.42851012690702,0 -75.95961388149878,40.42837220624644,0 -75.95855137713018,40.42681796170086,0 -75.95852711568465,40.42654363276913,0 -75.95939025881945,40.42553814564933,0 -75.96113584425147,40.42607008976623,0 -75.96161559919369,40.42556745461447,0 -75.96251777408918,40.4247846575443,0 -75.9649573234356,40.42267779257422,0 -75.96741378037133,40.42081383690865,0 -75.96770391426504,40.42047454880706,0 -75.96584390881723,40.41615185928822,0 -75.96581497200414,40.41573765386314,0 -75.9675729017026,40.41400002326282,0 -75.97029348325488,40.41326268358122,0 -75.9711379515972,40.4130694093821,0 -75.97407893158979,40.41429247254735,0 -75.97563056604342,40.41323749846173,0 -75.97873099007073,40.41092050757702,0 -75.97871058110951,40.41033024028076,0 -75.97865919453785,40.40924757642596,0 -75.97879609119124,40.40861581917427,0 -75.97996166684726,40.40636831376295,0 -75.98033422318551,40.40539560798324,0 -75.98084787019654,40.40455115696847,0 -75.98101155157796,40.40388332958698,0 -75.98115683137462,40.40324425749796,0 -75.98168839965452,40.40217020789246,0 -75.98209297938847,40.40130999175594,0 -75.98242165668468,40.4008663034194,0 -75.98330072573438,40.39990648673501,0 -75.98417985048516,40.39909222051728,0 -75.98529662821021,40.39809411564166,0 -75.98591609096751,40.39765616655699,0 -75.98675895415568,40.39751378477668,0 -75.98755581991871,40.39743498318467,0 -75.98789957043073,40.39724729529022,0 -75.98827534713304,40.39687411854128,0 -75.98909979134028,40.39596610674362,0 -75.9894805051631,40.39567812186839,0 -75.99183916875633,40.39446831994037,0 -75.99347079543888,40.39356407636197,0 -75.99400599646509,40.39306066384943,0 -75.99431432467755,40.392580032384,0 -75.9949167064962,40.39143516539232,0 -75.99515341569024,40.39065506046955,0 -75.99550279844738,40.39020417899486,0 -75.99609802048272,40.38954479764863,0 -75.99641740133647,40.38906935225466,0 -75.99646918331423,40.38860160243423,0 -75.99618958570034,40.38811937471443,0 -75.99492357915332,40.38725953858076,0 -75.99456453005853,40.3868107634536,0 -75.99455165453774,40.38658091008541,0 -75.99577895189127,40.38644819410385,0 -75.99755761172186,40.38664203294184,0 -76.00080228182971,40.3869725341426,0 -76.0016158299094,40.38684972990214,0 -76.00283537886801,40.38625541483293,0 -76.00496534240642,40.38521736683814,0 -76.00723921554582,40.3841387793089,0 -76.00911919575748,40.38355967143477,0 -76.01121185112554,40.38314845740447,0 -76.01428258378553,40.38253507268331,0 -76.01806764092359,40.38177576546874,0 -76.01994389102933,40.38139490940274,0 -76.02158959978296,40.38103617224296,0 -76.02250234220104,40.38078510098869,0 -76.02303402654412,40.38044652237401,0 -76.02379750479301,40.37972324862768,0 -76.02502504980086,40.37862759393452,0 -76.02472323712628,40.37753536483514,0 -76.02544848441386,40.37737908910277,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00012">
+			<name>City of Reading</name>
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td>City of Reading</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>2561.64586</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>City of Reading</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>Berks</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>City of Reading</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>No agreeement</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.94240968267495,40.33978076567696,0 -75.94050703936907,40.33900339730653,0 -75.93882543188283,40.33830590306805,0 -75.93776815857252,40.33789751733807,0 -75.93735095485025,40.33759872486296,0 -75.93658327137217,40.3371091429713,0 -75.93578786958318,40.33643163354507,0 -75.93566136957985,40.33630363989595,0 -75.93556838316837,40.33616656344406,0 -75.93551503329063,40.33558425125984,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+		<Placemark id="ID_00013">
+			<snippet></snippet>
+			<description><![CDATA[<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+
+<head>
+
+<META http-equiv="Content-Type" content="text/html">
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head>
+
+<body style="margin:0px 0px 0px 0px;overflow:auto;background:#FFFFFF;">
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-collapse:collapse;padding:3px 3px 3px 3px">
+
+<tr style="text-align:center;font-weight:bold;background:#9CBCE2">
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<table style="font-family:Arial,Verdana,Times;font-size:12px;text-align:left;width:100%;border-spacing:0px; padding:3px 3px 3px 3px">
+
+<tr>
+
+<td>SHAPE</td>
+
+<td>PolyLine</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>SHAPE_Length</td>
+
+<td>5171.050154</td>
+
+</tr>
+
+<tr>
+
+<td>Owner</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>County</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr>
+
+<td>Municipality</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+<tr bgcolor="#D4E4F3">
+
+<td>Prop_Interest</td>
+
+<td>&lt;Null&gt;</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body><script type="text/javascript">
+
+				function changeImage(attElement, nameElement) {
+
+				document.getElementById('imageAttachment').src = attElement;
+
+				document.getElementById('imageName').innerHTML = nameElement;}
+
+			</script></html>]]></description>
+			<styleUrl>#LineStyle00</styleUrl>
+			<MultiGeometry>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-75.22023928485605,40.02315776420766,0 -75.21994141628065,40.02337400881284,0 -75.21847140690649,40.02224695000286,0 -75.21429019966585,40.01899188432174,0 -75.21368000083196,40.01805785109598,0 -75.21310132113034,40.01724751601307,0 -75.21250637875285,40.01670862122251,0 -75.21191207828639,40.01642889205725,0 -75.21121461385709,40.0163204754554,0 -75.2106727801736,40.01614729698941,0 -75.20916999772736,40.01558086407784,0 -75.2064752455756,40.01480719782479,0 
+					</coordinates>
+				</LineString>
+			</MultiGeometry>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
