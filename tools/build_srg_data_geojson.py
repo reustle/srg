@@ -9,14 +9,14 @@ from kmz_to_geojson import NS, placemark_geometry, text_of
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_DIR = ROOT / "data" / "srg-data" / "2025-alignment"
-OUTPUT = ROOT / "data" / "srg-data" / "2025-alignment.geojson"
+SOURCE_DIR = ROOT / "data" / "srg-data" / "2020-alignment"
+OUTPUT = ROOT / "data" / "srg-data" / "2020-alignment.geojson"
 
 LAYERS = [
-    ("SRT_Existing_Off_Road_2025.kml", "existing_off_road", "existing", "off_road"),
-    ("SRT_Existing_On_Road_2025.kml", "existing_on_road", "existing", "on_road"),
-    ("SRT_Planned_Off_Road_2025.kml", "planned_off_road", "planned", "off_road"),
-    ("SRT_Planned_On_Road_2025.kml", "planned_on_road", "planned", "on_road"),
+    ("SRT_Existing_Off_Road_2020.kml", "existing_off_road", "existing", "off_road"),
+    ("SRT_Existing_On_Road_2020.kml", "existing_on_road", "existing", "on_road"),
+    ("SRT_Planned_Off_Road_2020.kml", "planned_off_road", "planned", "off_road"),
+    ("SRT_Planned_On_Road_2020.kml", "planned_on_road", "planned", "on_road"),
 ]
 
 
@@ -59,8 +59,8 @@ def normalized_properties(placemark, filename, layer_key, status, alignment):
     class_label = f"{status.title()} {alignment.replace('_', '-')}"
     properties = {
         "source": "SRG data delivery",
-        "source_file": f"data/srg-data/2025-alignment/{filename}",
-        "layer": "2025_alignment",
+        "source_file": f"data/srg-data/2020-alignment/{filename}",
+        "layer": "2020_alignment",
         "alignment_class": layer_key,
         "status": status,
         "alignment": alignment,
@@ -112,7 +112,7 @@ def main():
             features.append(
                 {
                     "type": "Feature",
-                    "id": f"srg-data:2025-alignment:{layer_key}:{index}",
+                    "id": f"srg-data:2020-alignment:{layer_key}:{index}",
                     "properties": normalized_properties(
                         placemark, filename, layer_key, status, alignment
                     ),
@@ -122,16 +122,15 @@ def main():
 
     collection = {
         "type": "FeatureCollection",
-        "name": "SRG 2025 Alignment",
+        "name": "SRG 2020 Alignment",
         "metadata": {
             "source": "Schuylkill River Greenways data delivery",
-            "source_directory": "data/srg-data/2025-alignment",
+            "source_directory": "data/srg-data/2020-alignment",
             "feature_count": len(features),
             "layer_counts": counts,
             "notes": [
-                "Generated from the four supplied 2025 alignment KML files.",
+                "Generated from the four supplied 2020 alignment KML files.",
                 "The missing xsi namespace in the source KML is repaired while parsing.",
-                "Internal ArcGIS source names contain 2020; authoritative-year confirmation remains pending.",
             ],
         },
         "features": features,

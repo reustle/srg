@@ -3,9 +3,9 @@
 Source files supplied by Schuylkill River Greenways. These files are organized
 by dataset year and purpose; filenames inside each delivery are preserved.
 
-## `2025-alignment`
+## `2020-alignment`
 
-The supplied 2025 SRT alignment:
+The supplied 2020 SRT alignment:
 
 - existing off-road
 - existing on-road
@@ -17,10 +17,7 @@ portable files in the delivery, although each uses an undeclared `xsi`
 namespace and must be repaired or parsed permissively.
 
 The `.lyrx`, `.lpkx`, `.mpkx`, and `.mxd` files preserve ArcGIS layer or map
-configuration but do not embed the referenced source geodatabase. Their primary
-alignment sources are feature classes with `2020` in their internal names, so
-source confirmation is still needed that these files are the authoritative
-2025 alignment.
+configuration but do not embed the referenced source geodatabase.
 
 ## `2025-mileage-measurements`
 
@@ -61,4 +58,4 @@ Four zipped shapefile exports dated April 2024:
 - planned on-road: 16 line records
 
 These are partial legacy/supporting trail-list layers, not replacements for the
-full 2025 alignment.
+full 2020 alignment.

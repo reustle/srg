@@ -41,8 +41,8 @@ The principal datasets are:
 - `data/srg-map/`: raw official-map downloads and their provenance manifest.
 - `data/srg-data/`: SRG alignment, mileage, sign-inventory, and
   supporting source files, with an inventory of known completeness issues.
-- `data/srg-data/2025-alignment.geojson`: browser-ready export of the four
-  supplied 2025 SRG alignment layers used by the explorer's **SRG Data** group.
+- `data/srg-data/2020-alignment.geojson`: browser-ready export of the four
+  supplied 2020 SRG alignment layers used by the explorer's **SRG Data** group.
 
 Generated datasets are checked in so the map works without running the tools.
 Run commands from the repository root because script defaults are relative to
@@ -215,14 +215,14 @@ public map stores most display text.
 
 ### Supplied SRG alignment
 
-Rebuild the browser-ready 2025 alignment after replacing any source KML under
-`data/srg-data/2025-alignment/`:
+Rebuild the browser-ready 2020 alignment after replacing any source KML under
+`data/srg-data/2020-alignment/`:
 
 ```sh
 python3 tools/build_srg_data_geojson.py
 ```
 
-The output is `data/srg-data/2025-alignment.geojson`, displayed as the separate
+The output is `data/srg-data/2020-alignment.geojson`, displayed as the separate
 **SRG Data** layer group in the explorer.
 
 ### Scrubber route
