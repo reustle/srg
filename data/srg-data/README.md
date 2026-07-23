@@ -32,6 +32,10 @@ The 0.10-mile series covers the supplied route. The 0.25-mile export is partial,
 and its final 70.75 and 71.0 points do not lie on the supplied measurement
 alignment.
 
+`2025-measurements-partial.geojson` is the browser-ready combined export of
+these four KMZ files. It contains 1,520 features and is displayed as a clearly
+marked partial subsection of the map's **SRG Data** group.
+
 ## `2020-sign-inventory`
 
 The 2020 inventory contains 584 point geometries and 584 matching attribute

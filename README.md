@@ -43,6 +43,9 @@ The principal datasets are:
   supporting source files, with an inventory of known completeness issues.
 - `data/srg-data/2020-alignment.geojson`: browser-ready export of the four
   supplied 2020 SRG alignment layers used by the explorer's **SRG Data** group.
+- `data/srg-data/2025-measurements-partial.geojson`: browser-ready partial,
+  unverified export of the supplied 2025 measurement line, tenth-mile points,
+  quarter-mile points, and trailhead station data.
 
 Generated datasets are checked in so the map works without running the tools.
 Run commands from the repository root because script defaults are relative to
@@ -224,6 +227,16 @@ python3 tools/build_srg_data_geojson.py
 
 The output is `data/srg-data/2020-alignment.geojson`, displayed as the separate
 **SRG Data** layer group in the explorer.
+
+Build the partial 2025 measurement layers from the supplied KMZ files:
+
+```sh
+python3 tools/build_srg_measurements_geojson.py
+```
+
+The output is `data/srg-data/2025-measurements-partial.geojson`. These layers
+are labeled **partial** in the explorer because their completeness and
+positional accuracy have not been verified.
 
 ### Scrubber route
 
