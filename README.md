@@ -241,14 +241,17 @@ positional accuracy have not been verified.
 ### Scrubber route
 
 Rebuild the longitudinal route used by the map scrubber after refreshing the
-official data:
+official 2025 alignment or tenth-mile data:
 
 ```sh
 python3 tools/build_srt_scrub_route.py
 ```
 
-It reads `data/srg-website-map.geojson` and writes
-`data/srt-scrub-route.geojson` by default.
+It reads `data/srg-data/2025-measurements-partial.geojson` and writes
+`data/srt-scrub-route.geojson` by default. Every official 0.10-mile point is
+inserted as an exact route vertex with authoritative station mileage. Detailed
+alignment vertices between those anchors preserve the supplied trail shape,
+and their mileage is interpolated between adjacent official stations.
 
 ## OSM editing guidance
 

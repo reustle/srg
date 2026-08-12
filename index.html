@@ -1533,16 +1533,27 @@
       }
 
       function prepareScrubRoute(geojson) {
-        const coordinates = [...(geojson.features?.[0]?.geometry?.coordinates || [])];
+        const feature = geojson.features?.[0];
+        const coordinates = [...(feature?.geometry?.coordinates || [])];
         if (coordinates.length < 2) return null;
-        const cumulative = [0];
-        for (let index = 1; index < coordinates.length; index += 1) {
-          cumulative.push(cumulative[index - 1] + distanceMiles(coordinates[index - 1], coordinates[index]));
+        let cumulative = feature?.properties?.cumulative_miles;
+        const calibrated =
+          Array.isArray(cumulative) &&
+          cumulative.length === coordinates.length &&
+          cumulative.every((mile, index) =>
+            Number.isFinite(mile) && (index === 0 || mile >= cumulative[index - 1])
+          );
+        if (!calibrated) {
+          cumulative = [0];
+          for (let index = 1; index < coordinates.length; index += 1) {
+            cumulative.push(cumulative[index - 1] + distanceMiles(coordinates[index - 1], coordinates[index]));
+          }
         }
         return {
           coordinates,
           cumulative,
           totalMiles: cumulative[cumulative.length - 1],
+          calibrated,
         };
       }
 
