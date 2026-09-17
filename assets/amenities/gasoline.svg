@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#213a70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" role="img" aria-labelledby="title">
   <title id="title">Gasoline</title>
-  <path d="M3 21h12M5 21V4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v17M14 11h2a2 2 0 0 1 2 2v4a2 2 0 0 0 4 0V8l-4-4M20 6v4h2"/><rect x="8" y="6" width="3" height="4" rx=".5"/>
+  <path fill="#213a70" d="M0 0h24v24H0z"/>
+  <path fill-rule="evenodd" d="M5 3h8a1 1 0 0 1 1 1v15h2v2H2v-2h2V4a1 1 0 0 1 1-1Zm1 2v5h6V5H6Z"/>
+  <path d="M14 11h2a2 2 0 0 1 2 2v4a1.5 1.5 0 0 0 3 0V8l-4-4" fill="none" stroke="#fff" stroke-width="2"/>
+  <path d="M18 6h2l2 2v3h-3V8z"/>
 </svg>

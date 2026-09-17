@@ -71,8 +71,9 @@ is read from that feature's `infowindow_html`, so refreshed SRG exports update
 the labels without a separate amenity lookup table. Callouts show each amenity
 icon once, grouping boat ramps, canoe/kayak launches, water trail landings, and
 watercraft under one water-access pictogram. Popups retain the full amenity list.
-The SVGs in `assets/amenities/` share a 24-pixel grid, rounded strokes, and navy
-color. Each includes a descriptive SVG title. Hover over individual callout
+The SVGs in `assets/amenities/` share a 24-pixel square grid with bold white
+pictograms on solid navy backgrounds, matching traditional trailhead signs.
+Each includes a descriptive SVG title. Hover over individual callout
 icons for amenity tooltips, including the specific facilities grouped under
 water access; popup icons use the same SVGs and titles.
 

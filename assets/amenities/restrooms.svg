@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#213a70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff" role="img" aria-labelledby="title">
   <title id="title">Restrooms</title>
-  <circle cx="7" cy="5" r="2"/><circle cx="17" cy="5" r="2"/><path d="M4 13v-3h6v3M7 10v6m-2 5 2-5 2 5M17 9l-4 7h8l-4-7Zm-2 7v5m4-5v5"/>
+  <path fill="#213a70" d="M0 0h24v24H0z"/>
+  <circle cx="6.5" cy="5" r="1.8"/><circle cx="17.5" cy="5" r="1.8"/>
+  <path d="M4.5 7.5h4A1.5 1.5 0 0 1 10 9v5H8.5v6H7v-6H6v6H4.5v-6H3V9a1.5 1.5 0 0 1 1.5-1.5ZM16 7.5h3l2.5 8H19V20h-1.2v-4.5h-.6V20H16v-4.5h-2.5L16 7.5ZM11.5 3h1v18h-1z"/>
 </svg>

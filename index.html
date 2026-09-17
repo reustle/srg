@@ -402,8 +402,7 @@
         flex: 0 0 28px;
         width: 28px;
         height: 28px;
-        border-radius: 5px;
-        background: #edf2fa;
+        background: #213a70;
       }
 
       .amenity-icon:focus-visible {
@@ -1349,7 +1348,7 @@
       }
 
       function drawAmenityGlyph(context, icon, x, y, size) {
-        context.drawImage(amenityIconImages.get(icon.file), x + 3, y + 3, size - 6, size - 6);
+        context.drawImage(amenityIconImages.get(icon.file), x, y, size, size);
       }
 
       function trailheadLabelImage(name, amenities, imageId) {
@@ -1398,10 +1397,6 @@
           let iconX = (width - iconRowWidth) / 2;
           const iconY = padding + titleHeight + 7;
           for (const icon of icons) {
-            context.fillStyle = "#edf2fa";
-            context.beginPath();
-            context.roundRect(iconX, iconY, iconSize, iconSize, 5);
-            context.fill();
             drawAmenityGlyph(context, icon, iconX, iconY, iconSize);
             iconBounds.push({ x: iconX, y: iconY, size: iconSize, title: icon.hoverTitle });
             iconX += iconSize + iconGap;
@@ -1491,7 +1486,7 @@
           <p class="popup-meta">${escapeHtml(featureMetadata(feature))}</p>
           ${infoWindow?.address ? `<p class="popup-address">${escapeHtml(infoWindow.address)}</p>` : ""}
           ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
-          ${amenities.length ? `<ul class="popup-amenities">${groupedAmenityIcons(amenities).map((icon) => `<li><span class="amenity-icon" tabindex="0" title="${escapeHtml(icon.hoverTitle)}" aria-label="${escapeHtml(icon.hoverTitle)}"><img src="assets/amenities/${icon.file}.svg" alt="" width="22" height="22" /></span><span>${icon.amenities.map(escapeHtml).join("; ")}</span></li>`).join("")}</ul>` : ""}
+          ${amenities.length ? `<ul class="popup-amenities">${groupedAmenityIcons(amenities).map((icon) => `<li><span class="amenity-icon" tabindex="0" title="${escapeHtml(icon.hoverTitle)}" aria-label="${escapeHtml(icon.hoverTitle)}"><img src="assets/amenities/${icon.file}.svg" alt="" width="28" height="28" /></span><span>${icon.amenities.map(escapeHtml).join("; ")}</span></li>`).join("")}</ul>` : ""}
           ${infoWindow?.directionsUrl ? `<a class="popup-link" href="${escapeHtml(infoWindow.directionsUrl)}" target="_blank" rel="noreferrer">Get directions</a>` : ""}
           ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
         `;
