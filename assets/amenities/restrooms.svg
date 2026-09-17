@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#213a70" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">Restrooms</title>
+  <circle cx="7" cy="5" r="2"/><circle cx="17" cy="5" r="2"/><path d="M4 13v-3h6v3M7 10v6m-2 5 2-5 2 5M17 9l-4 7h8l-4-7Zm-2 7v5m4-5v5"/>
+</svg>

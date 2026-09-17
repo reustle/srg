@@ -381,10 +381,47 @@
 
       .popup-amenities {
         margin: 8px 0 0;
-        padding-left: 18px;
+        padding: 0;
+        list-style: none;
         color: #34383b;
         font-size: 12px;
         line-height: 1.5;
+      }
+
+      .popup-amenities li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 5px;
+      }
+
+      .amenity-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 28px;
+        width: 28px;
+        height: 28px;
+        border-radius: 5px;
+        background: #edf2fa;
+      }
+
+      .amenity-icon:focus-visible {
+        outline: 2px solid #213a70;
+        outline-offset: 2px;
+      }
+
+      .amenity-tooltip {
+        position: fixed;
+        z-index: 5;
+        max-width: min(280px, calc(100vw - 24px));
+        padding: 7px 10px;
+        border-radius: 5px;
+        background: #213a70;
+        color: white;
+        font: 500 12px/1.4 Arial, sans-serif;
+        box-shadow: 0 3px 10px rgba(28, 31, 34, 0.18);
+        pointer-events: none;
       }
 
       .popup-link {
@@ -1253,99 +1290,77 @@
         return lines;
       }
 
-      function drawAmenityGlyph(context, amenity, x, y, size) {
-        const key = amenity.toLowerCase();
-        const centerX = x + size / 2;
-        const centerY = y + size / 2;
-        const left = x + 4;
-        const right = x + size - 4;
-        const top = y + 4;
-        const bottom = y + size - 4;
-        context.save();
-        context.fillStyle = "#fff";
-        context.strokeStyle = "#fff";
-        context.lineWidth = 1.45;
-        context.lineCap = "round";
-        context.lineJoin = "round";
-
-        if (key === "parking") {
-          context.font = `800 ${size - 5}px Arial, sans-serif`;
-          context.textAlign = "center";
-          context.textBaseline = "middle";
-          context.fillText("P", centerX, centerY + 0.5);
-        } else if (key === "visitor center") {
-          context.beginPath();
-          context.arc(centerX, centerY, size / 2 - 4, 0, Math.PI * 2);
-          context.stroke();
-          context.font = `800 ${size - 8}px Georgia, serif`;
-          context.textAlign = "center";
-          context.textBaseline = "middle";
-          context.fillText("i", centerX, centerY + 0.5);
-        } else if (key === "restaurant") {
-          context.beginPath();
-          context.moveTo(left + 2, top); context.lineTo(left + 2, bottom);
-          context.moveTo(left, top); context.lineTo(left, top + 4); context.lineTo(left + 4, top + 4); context.lineTo(left + 4, top);
-          context.moveTo(right, top); context.quadraticCurveTo(right - 5, top + 5, right, top + 8); context.lineTo(right, bottom);
-          context.stroke();
-        } else if (key === "restrooms") {
-          for (const offset of [-3.5, 3.5]) {
-            context.beginPath();
-            context.arc(centerX + offset, top + 1.5, 1.5, 0, Math.PI * 2);
-            context.fill();
-            context.fillRect(centerX + offset - 1.2, top + 4, 2.4, 5);
-            context.beginPath();
-            context.moveTo(centerX + offset, top + 8); context.lineTo(centerX + offset - 1.8, bottom);
-            context.moveTo(centerX + offset, top + 8); context.lineTo(centerX + offset + 1.8, bottom);
-            context.stroke();
-          }
-        } else if (key.includes("bike") || key === "mountain bikes") {
-          context.beginPath();
-          context.arc(left + 2, bottom - 1, 3, 0, Math.PI * 2);
-          context.arc(right - 2, bottom - 1, 3, 0, Math.PI * 2);
-          context.moveTo(left + 2, bottom - 1); context.lineTo(centerX - 1, top + 4); context.lineTo(right - 2, bottom - 1);
-          context.moveTo(centerX - 1, top + 4); context.lineTo(centerX + 3, bottom - 1); context.lineTo(left + 2, bottom - 1);
-          context.moveTo(centerX - 3, top + 3); context.lineTo(centerX + 1, top + 3);
-          context.stroke();
-          if (key.includes("repair")) {
-            context.beginPath(); context.moveTo(right - 3, top); context.lineTo(left + 3, bottom); context.stroke();
-          }
-        } else if (key === "gasoline") {
-          context.strokeRect(left + 1, top, 6, bottom - top);
-          context.strokeRect(left + 2.5, top + 2, 3, 3);
-          context.beginPath(); context.moveTo(left + 7, top + 3); context.quadraticCurveTo(right, top + 4, right - 1, centerY + 2); context.lineTo(right - 1, bottom); context.stroke();
-        } else if (key === "convenience store") {
-          context.beginPath(); context.moveTo(left, top + 2); context.lineTo(left + 2, bottom - 2); context.lineTo(right - 1, bottom - 2); context.lineTo(right, top + 5); context.lineTo(left + 1, top + 5); context.stroke();
-          context.beginPath(); context.arc(left + 4, bottom, 1, 0, Math.PI * 2); context.arc(right - 3, bottom, 1, 0, Math.PI * 2); context.fill();
-        } else if (key === "picnic area") {
-          context.beginPath(); context.moveTo(left, centerY); context.lineTo(right, centerY); context.moveTo(left + 2, centerY - 3); context.lineTo(right - 2, centerY - 3); context.moveTo(centerX - 3, centerY); context.lineTo(centerX - 5, bottom); context.moveTo(centerX + 3, centerY); context.lineTo(centerX + 5, bottom); context.stroke();
-        } else if (key === "septa station") {
-          context.strokeRect(left + 1, top, right - left - 2, bottom - top - 2);
-          context.beginPath(); context.moveTo(left + 3, top + 3); context.lineTo(right - 3, top + 3); context.moveTo(centerX, top + 1); context.lineTo(centerX, top + 5); context.moveTo(left + 3, bottom); context.lineTo(left + 1, bottom + 2); context.moveTo(right - 3, bottom); context.lineTo(right - 1, bottom + 2); context.stroke();
-        } else if (key === "point-of-interest") {
-          context.font = `800 ${size - 7}px Arial, sans-serif`;
-          context.textAlign = "center";
-          context.textBaseline = "middle";
-          context.fillText("★", centerX, centerY + 0.5);
-        } else if (key.includes("launch") || key.includes("landing") || key === "boat ramp" || key === "watercraft") {
-          context.beginPath(); context.moveTo(left, centerY); context.lineTo(right, centerY); context.lineTo(right - 3, centerY + 4); context.lineTo(left + 3, centerY + 4); context.closePath(); context.stroke();
-          context.beginPath(); context.moveTo(left, bottom - 1); context.quadraticCurveTo(left + 3, bottom - 3, centerX, bottom - 1); context.quadraticCurveTo(right - 3, bottom + 1, right, bottom - 1); context.stroke();
-          if (key.includes("canoe")) {
-            context.beginPath(); context.moveTo(left + 1, top); context.lineTo(right - 1, bottom); context.stroke();
-          }
-        } else {
-          context.font = `800 ${size - 8}px Arial, sans-serif`;
-          context.textAlign = "center";
-          context.textBaseline = "middle";
-          context.fillText(amenity.slice(0, 2).toUpperCase(), centerX, centerY);
+      function amenityIconKey(amenity) {
+        const key = amenity.trim().toLowerCase();
+        if (key.includes("launch") || key.includes("landing") || key === "boat ramp" || key === "watercraft") {
+          return "water access";
         }
-        context.restore();
+        return key;
       }
 
-      function trailheadLabelImage(name, amenities) {
+      const AMENITY_ICONS = {
+        "parking": { file: "parking", title: "Parking" },
+        "visitor center": { file: "visitor-center", title: "Visitor center" },
+        "restaurant": { file: "restaurant", title: "Restaurant" },
+        "restrooms": { file: "restrooms", title: "Restrooms" },
+        "mountain bikes": { file: "mountain-bikes", title: "Mountain bikes" },
+        "bike repair station": { file: "bike-repair", title: "Bike repair station" },
+        "gasoline": { file: "gasoline", title: "Gasoline" },
+        "convenience store": { file: "convenience-store", title: "Convenience store" },
+        "picnic area": { file: "picnic-area", title: "Picnic area" },
+        "septa station": { file: "septa-station", title: "SEPTA station" },
+        "point-of-interest": { file: "point-of-interest", title: "Point of interest" },
+        "water access": { file: "water-access", title: "Water access" },
+      };
+      const amenityIconImages = new Map();
+      const trailheadLabelLayouts = new Map();
+      const TRAILHEAD_LABEL_OFFSET = 7;
+
+      function amenityIconDefinition(amenity) {
+        return AMENITY_ICONS[amenityIconKey(amenity)] || { file: "other", title: amenity };
+      }
+
+      function groupedAmenityIcons(amenities) {
+        const groups = new Map();
+        for (const amenity of amenities) {
+          const key = amenityIconKey(amenity);
+          if (!groups.has(key)) groups.set(key, { key, ...amenityIconDefinition(amenity), amenities: [] });
+          const group = groups.get(key);
+          if (!group.amenities.some((item) => item.toLowerCase() === amenity.toLowerCase())) {
+            group.amenities.push(amenity);
+          }
+        }
+        return [...groups.values()].map((group) => ({
+          ...group,
+          hoverTitle: group.key === "water access"
+            ? `${group.title}: ${group.amenities.join("; ")}`
+            : group.title,
+        }));
+      }
+
+      async function loadAmenityIconImages() {
+        const files = [...new Set([...Object.values(AMENITY_ICONS).map((icon) => icon.file), "other"])];
+        await Promise.all(files.map((file) => new Promise((resolve, reject) => {
+          const image = new Image();
+          image.onload = () => { amenityIconImages.set(file, image); resolve(); };
+          image.onerror = () => reject(new Error(`Unable to load amenity icon: ${file}`));
+          image.src = `assets/amenities/${file}.svg`;
+        })));
+      }
+
+      function drawAmenityGlyph(context, icon, x, y, size) {
+        context.drawImage(amenityIconImages.get(icon.file), x + 3, y + 3, size - 6, size - 6);
+      }
+
+      function trailheadLabelImage(name, amenities, imageId) {
+        // Several source amenities can describe the same icon; retain their
+        // full descriptions in the popup, but draw each icon only once.
+        const icons = groupedAmenityIcons(amenities);
+        const iconBounds = [];
         const scale = 2;
         const padding = 9;
-        const iconSize = 20;
-        const iconGap = 4;
+        const iconSize = 28;
+        const iconGap = 5;
         const pointerHeight = 8;
         const maxTextWidth = 190;
         const label = /trailhead/i.test(name) ? name : `${name} Trailhead`;
@@ -1354,10 +1369,10 @@
         measureContext.font = "700 14px Arial, sans-serif";
         const titleLines = wrapCanvasText(measureContext, label, maxTextWidth);
         const titleWidth = Math.max(...titleLines.map((line) => measureContext.measureText(line).width));
-        const iconRowWidth = amenities.length ? amenities.length * iconSize + (amenities.length - 1) * iconGap : 0;
+        const iconRowWidth = icons.length ? icons.length * iconSize + (icons.length - 1) * iconGap : 0;
         const width = Math.ceil(Math.max(112, titleWidth + padding * 2, iconRowWidth + padding * 2));
         const titleHeight = titleLines.length * 16;
-        const cardHeight = padding + titleHeight + (amenities.length ? 7 + iconSize : 0) + padding;
+        const cardHeight = padding + titleHeight + (icons.length ? 7 + iconSize : 0) + padding;
         const height = cardHeight + pointerHeight;
         const canvas = document.createElement("canvas");
         canvas.width = width * scale;
@@ -1379,16 +1394,20 @@
         context.textAlign = "left";
         context.textBaseline = "top";
         titleLines.forEach((line, index) => context.fillText(line, padding, padding + index * 16));
-        if (amenities.length) {
+        if (icons.length) {
           let iconX = (width - iconRowWidth) / 2;
           const iconY = padding + titleHeight + 7;
-          for (const amenity of amenities) {
-            context.fillStyle = "#213a70";
-            context.fillRect(iconX, iconY, iconSize, iconSize);
-            drawAmenityGlyph(context, amenity, iconX, iconY, iconSize);
+          for (const icon of icons) {
+            context.fillStyle = "#edf2fa";
+            context.beginPath();
+            context.roundRect(iconX, iconY, iconSize, iconSize, 5);
+            context.fill();
+            drawAmenityGlyph(context, icon, iconX, iconY, iconSize);
+            iconBounds.push({ x: iconX, y: iconY, size: iconSize, title: icon.hoverTitle });
             iconX += iconSize + iconGap;
           }
         }
+        if (imageId) trailheadLabelLayouts.set(imageId, { width, height, iconBounds });
         return context.getImageData(0, 0, canvas.width, canvas.height);
       }
 
@@ -1399,7 +1418,7 @@
           feature.properties.trailhead_label_image = imageId;
           if (map.hasImage(imageId)) return;
           const amenities = parseInfoWindow(feature.properties.infowindow_html)?.amenities || [];
-          map.addImage(imageId, trailheadLabelImage(feature.properties.name || "Trailhead", amenities), { pixelRatio: 2 });
+          map.addImage(imageId, trailheadLabelImage(feature.properties.name || "Trailhead", amenities, imageId), { pixelRatio: 2 });
         });
       }
 
@@ -1472,7 +1491,7 @@
           <p class="popup-meta">${escapeHtml(featureMetadata(feature))}</p>
           ${infoWindow?.address ? `<p class="popup-address">${escapeHtml(infoWindow.address)}</p>` : ""}
           ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
-          ${amenities.length ? `<ul class="popup-amenities">${amenities.map((amenity) => `<li>${escapeHtml(amenity)}</li>`).join("")}</ul>` : ""}
+          ${amenities.length ? `<ul class="popup-amenities">${groupedAmenityIcons(amenities).map((icon) => `<li><span class="amenity-icon" tabindex="0" title="${escapeHtml(icon.hoverTitle)}" aria-label="${escapeHtml(icon.hoverTitle)}"><img src="assets/amenities/${icon.file}.svg" alt="" width="22" height="22" /></span><span>${icon.amenities.map(escapeHtml).join("; ")}</span></li>`).join("")}</ul>` : ""}
           ${infoWindow?.directionsUrl ? `<a class="popup-link" href="${escapeHtml(infoWindow.directionsUrl)}" target="_blank" rel="noreferrer">Get directions</a>` : ""}
           ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
         `;
@@ -2007,7 +2026,9 @@
           layout: {
             "icon-image": ["get", "trailhead_label_image"],
             "icon-anchor": "bottom",
-            "icon-offset": [0, -7],
+            "icon-offset": [0, -TRAILHEAD_LABEL_OFFSET],
+            "icon-pitch-alignment": "viewport",
+            "icon-rotation-alignment": "viewport",
             "icon-padding": 4,
             "icon-allow-overlap": false,
             "icon-ignore-placement": false,
@@ -2136,24 +2157,66 @@
         updateImprovementFolderFilter("folder2026", ["improvements-2026-lines", "improvements-2026-polygons-fill", "improvements-2026-polygons-outline", "improvements-2026-points"]);
       }
 
+      const amenityTooltip = document.createElement("div");
+      amenityTooltip.id = "amenity-tooltip";
+      amenityTooltip.className = "amenity-tooltip";
+      amenityTooltip.setAttribute("role", "tooltip");
+      amenityTooltip.hidden = true;
+      document.body.append(amenityTooltip);
+
+      function hideAmenityTooltip() {
+        amenityTooltip.hidden = true;
+        amenityTooltip.textContent = "";
+        map.getCanvas().removeAttribute("aria-describedby");
+      }
+
+      function updateAmenityTooltip(event, features) {
+        for (const feature of features) {
+          if (feature.layer.id !== "srg-trailhead-labels") continue;
+          const layout = trailheadLabelLayouts.get(feature.properties.trailhead_label_image);
+          if (!layout) continue;
+          const anchor = map.project(feature.geometry.coordinates);
+          const x = event.point.x - (anchor.x - layout.width / 2);
+          const y = event.point.y - (anchor.y - TRAILHEAD_LABEL_OFFSET - layout.height);
+          const icon = layout.iconBounds.find((bounds) =>
+            x >= bounds.x && x <= bounds.x + bounds.size && y >= bounds.y && y <= bounds.y + bounds.size);
+          if (!icon) continue;
+          amenityTooltip.textContent = icon.title;
+          amenityTooltip.hidden = false;
+          map.getCanvas().setAttribute("aria-describedby", amenityTooltip.id);
+          const rect = map.getCanvas().getBoundingClientRect();
+          const tooltipRect = amenityTooltip.getBoundingClientRect();
+          amenityTooltip.style.left = `${Math.max(12, Math.min(rect.left + event.point.x + 12, window.innerWidth - tooltipRect.width - 12))}px`;
+          amenityTooltip.style.top = `${Math.max(12, Math.min(rect.top + event.point.y + 16, window.innerHeight - tooltipRect.height - 12))}px`;
+          return;
+        }
+        hideAmenityTooltip();
+      }
+
       function addPopups() {
         map.on("mousemove", (event) => {
           const activeLayers = clickableLayers.filter((layerId) => map.getLayer(layerId));
           const features = activeLayers.length
             ? map.queryRenderedFeatures(event.point, { layers: activeLayers })
             : [];
+          updateAmenityTooltip(event, features);
           map.getCanvas().style.cursor = features.length ? "pointer" : "";
           hoverMetadata.hidden = features.length === 0;
           hoverMetadata.textContent = features.length ? featureMetadata(features[0]) : "";
         });
 
+        map.on("movestart", hideAmenityTooltip);
+        map.on("resize", hideAmenityTooltip);
+        map.on("style.load", hideAmenityTooltip);
         map.getCanvasContainer().addEventListener("mouseleave", () => {
+          hideAmenityTooltip();
           map.getCanvas().style.cursor = "";
           hoverMetadata.hidden = true;
           hoverMetadata.textContent = "";
         });
 
         map.on("click", (event) => {
+          hideAmenityTooltip();
           const activeLayers = clickableLayers.filter((layerId) => map.getLayer(layerId));
           const feature = map.queryRenderedFeatures(event.point, { layers: activeLayers })[0];
           if (!feature) {
@@ -2366,6 +2429,7 @@
             loadGeojson(DATASETS.improvements2026),
             loadGeojson(DATASETS.scrubRoute),
           ]);
+          await loadAmenityIconImages();
           const srg = withoutExcludedSrgFeatures(rawSrg);
           scrubRoute = prepareScrubRoute(scrubRouteGeojson);
           overlays = { srgData, srgMeasurements, srg, osm, google, improvements, improvements2026 };
