@@ -399,10 +399,15 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        flex: 0 0 28px;
-        width: 28px;
-        height: 28px;
+        flex: 0 0 23.8px;
+        width: 23.8px;
+        height: 23.8px;
         background: #213a70;
+      }
+
+      .amenity-icon img {
+        width: 100%;
+        height: 100%;
       }
 
       .amenity-icon:focus-visible {
@@ -1358,7 +1363,7 @@
         const iconBounds = [];
         const scale = 2;
         const padding = 9;
-        const iconSize = 28;
+        const iconSize = 23.8;
         const iconGap = 5;
         const pointerHeight = 8;
         const maxTextWidth = 190;
@@ -1486,7 +1491,7 @@
           <p class="popup-meta">${escapeHtml(featureMetadata(feature))}</p>
           ${infoWindow?.address ? `<p class="popup-address">${escapeHtml(infoWindow.address)}</p>` : ""}
           ${body ? `<div class="popup-body">${escapeHtml(body)}</div>` : ""}
-          ${amenities.length ? `<ul class="popup-amenities">${groupedAmenityIcons(amenities).map((icon) => `<li><span class="amenity-icon" tabindex="0" title="${escapeHtml(icon.hoverTitle)}" aria-label="${escapeHtml(icon.hoverTitle)}"><img src="assets/amenities/${icon.file}.svg" alt="" width="28" height="28" /></span><span>${icon.amenities.map(escapeHtml).join("; ")}</span></li>`).join("")}</ul>` : ""}
+          ${amenities.length ? `<ul class="popup-amenities">${groupedAmenityIcons(amenities).map((icon) => `<li><span class="amenity-icon" tabindex="0" title="${escapeHtml(icon.hoverTitle)}" aria-label="${escapeHtml(icon.hoverTitle)}"><img src="assets/amenities/${icon.file}.svg" alt="" width="24" height="24" /></span><span>${icon.amenities.map(escapeHtml).join("; ")}</span></li>`).join("")}</ul>` : ""}
           ${infoWindow?.directionsUrl ? `<a class="popup-link" href="${escapeHtml(infoWindow.directionsUrl)}" target="_blank" rel="noreferrer">Get directions</a>` : ""}
           ${url ? `<a class="popup-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">Open source</a>` : ""}
         `;
