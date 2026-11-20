@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Schuylkill River Trail Map Sources</title>
     <meta name="google-maps-api-key" content="AIzaSyDiJ6649YziSbaV8mCt82d-DYwy0Eazm7c" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" />
@@ -582,6 +582,23 @@
         box-shadow: 0 0 0 1px rgba(32, 33, 36, 0.28), 0 2px 5px rgba(32, 33, 36, 0.22);
       }
 
+      @media (pointer: coarse) {
+        .trail-range {
+          height: 36px;
+        }
+
+        .trail-range::-webkit-slider-thumb {
+          width: 26px;
+          height: 26px;
+          margin-top: -10.5px;
+        }
+
+        .trail-range::-moz-range-thumb {
+          width: 22px;
+          height: 22px;
+        }
+      }
+
       .trail-range:disabled {
         cursor: wait;
         opacity: 0.5;
@@ -636,6 +653,72 @@
         bottom: var(--scrubber-height);
       }
 
+      .scrubber-footer strong {
+        flex: 0 0 auto;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+
+      .nav-next {
+        display: none;
+        flex: 1 1 auto;
+        margin-left: auto;
+        min-width: 0;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .nav-next b {
+        color: var(--ink);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .orientation-toggle svg {
+        display: block;
+        width: 19px;
+        height: 19px;
+        margin: auto;
+      }
+
+      .orientation-toggle [hidden] {
+        display: none;
+      }
+
+      .orientation-toggle .north-needle {
+        transform-origin: 12px 12px;
+      }
+
+      .orientation-toggle[aria-pressed="true"] {
+        background: #edf5f0;
+      }
+
+
+      body.nav-mode .nav-next {
+        display: block;
+      }
+
+      body.nav-mode .scrubber-footer strong {
+        font-size: 15px;
+      }
+
+      body.nav-mode .maplibregl-canvas-container,
+      body.nav-mode .maplibregl-canvas {
+        touch-action: none;
+        cursor: ns-resize;
+      }
+
+      body.nav-mode .hover-metadata {
+        display: none;
+      }
+
+      body .trail-scrubber {
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+      }
+
       @media (max-width: 1000px) {
         .scrubber-stop[data-name="Manayunk"],
         .scrubber-stop[data-name="Phoenixville"],
@@ -651,7 +734,8 @@
 
         .panel {
           left: 10px;
-          right: 10px;
+          /* Leave room for the zoom/compass controls in the top-right corner. */
+          right: 50px;
           top: 10px;
           width: auto;
           max-height: calc(100vh - var(--scrubber-height) - 20px);
@@ -959,6 +1043,7 @@
               </svg>
             </button>
             <strong id="scrubber-distance" aria-live="polite">Loading route</strong>
+            <span class="nav-next" id="nav-next"></span>
           </div>
         </div>
       </div>
@@ -1229,6 +1314,80 @@
       let scrubPlaybackHasStarted = false;
       const SCRUB_PLAYBACK_DURATION = 120_000;
 
+      // Navigation mode: heading-up, pitched camera that keeps the position
+      // dot fixed while vertical drags/wheel move it along the trail.
+      // Two-state orientation button in the map controls: north up (explore)
+      // or heading up (nav mode).
+      const navToggle = document.createElement("button");
+      navToggle.type = "button";
+      navToggle.className = "orientation-toggle";
+      navToggle.disabled = true;
+      navToggle.innerHTML = `
+        <svg data-north-icon viewBox="0 0 24 24" aria-hidden="true">
+          <g class="north-needle">
+            <path d="M12 2.5 15.6 12H8.4Z" fill="#d52022" />
+            <path d="M12 21.5 8.4 12h7.2Z" fill="#9aa1a5" />
+          </g>
+        </svg>
+        <svg data-heading-icon viewBox="0 0 24 24" aria-hidden="true" hidden>
+          <path d="M12 2.5 19.5 20.5 12 16.3 4.5 20.5Z" fill="#397550" stroke="#397550" stroke-width="1.2" stroke-linejoin="round" />
+        </svg>`;
+      const northIcon = navToggle.querySelector("[data-north-icon]");
+      const northNeedle = navToggle.querySelector(".north-needle");
+      const headingIcon = navToggle.querySelector("[data-heading-icon]");
+
+      function renderOrientationToggle() {
+        navToggle.setAttribute("aria-pressed", String(navMode));
+        northIcon.toggleAttribute("hidden", navMode);
+        headingIcon.toggleAttribute("hidden", !navMode);
+        const label = navMode
+          ? "Heading up: drag to travel the trail. Switch to north up"
+          : "North up. Switch to heading-up trail navigation";
+        navToggle.title = label;
+        navToggle.setAttribute("aria-label", label);
+      }
+
+      class OrientationControl {
+        onAdd() {
+          const container = document.createElement("div");
+          container.className = "maplibregl-ctrl maplibregl-ctrl-group";
+          container.appendChild(navToggle);
+          return container;
+        }
+
+        onRemove() {}
+      }
+      const navNext = document.getElementById("nav-next");
+      const trailScrubber = document.querySelector(".trail-scrubber");
+      const NAV_PITCH = 50;
+      const NAV_ZOOM = 15.25;
+      const NAV_PLAYBACK_DURATION = 480_000;
+      // 1: dragging down pulls the road toward you (forward), like a map glued
+      // to the finger. Set to -1 for "swipe up to go forward" page semantics.
+      const NAV_DRAG_DIRECTION = 1;
+      const NAV_MOMENTUM_DECAY_MS = 325;
+      const NAV_BEARING_SMOOTHING_MS = 220;
+      const NAV_STOP_MAX_GAP_MILES = 0.5;
+      let navMode = false;
+      let navMiles = 0;
+      let navVelocity = 0; // miles per millisecond
+      let navBearing = null;
+      let navFrame = null;
+      let navLastTimestamp = null;
+      let navDrag = null;
+      let navHashTimer = null;
+      let navEntering = false;
+      // While the slider is held, ease out to an overview so big jumps stay readable.
+      const NAV_SLIDER_ZOOM = 12.5;
+      const NAV_SLIDER_PITCH = 20;
+      let navSliding = false;
+      let navRestoreZoom = null;
+      let navZoomTarget = null;
+      let navPitch = NAV_PITCH;
+      let navPitchTarget = NAV_PITCH;
+      let navStops = [];
+      const navPointers = new Set();
+
       const map = new maplibregl.Map({
         container: "map",
         style: MAP_STYLES.light(),
@@ -1237,7 +1396,13 @@
         maxZoom: 22,
       });
 
-      map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "top-right");
+      map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+      map.addControl(new OrientationControl(), "top-right");
+      map.on("rotate", () => {
+        // In north-up mode the needle tracks any manual rotation, like a compass.
+        if (!navMode) northNeedle.style.transform = `rotate(${-map.getBearing()}deg)`;
+      });
+      renderOrientationToggle();
       map.addControl(new maplibregl.ScaleControl({ maxWidth: 140, unit: "imperial" }), "bottom-right");
 
       function escapeHtml(value) {
@@ -1577,7 +1742,11 @@
       }
 
       function routeFractionForCoordinate(point) {
-        if (!scrubRoute) return 0;
+        return routeProjection(point).fraction;
+      }
+
+      function routeProjection(point) {
+        if (!scrubRoute) return { fraction: 0, miles: 0, gap: Infinity };
         let closestGap = Infinity;
         let closestMiles = 0;
         for (let index = 1; index < scrubRoute.coordinates.length; index += 1) {
@@ -1603,7 +1772,7 @@
             closestMiles = scrubRoute.cumulative[index - 1] + segmentMiles * amount;
           }
         }
-        return closestMiles / scrubRoute.totalMiles;
+        return { fraction: closestMiles / scrubRoute.totalMiles, miles: closestMiles, gap: closestGap };
       }
 
       function buildScrubberStops(srg) {
@@ -1686,6 +1855,26 @@
       function updateTrailScrubber(fraction, moveCamera = true, setCameraZoom = true) {
         const position = scrubPosition(fraction);
         if (!position) return;
+        renderScrubberReadout(fraction, position);
+        if (moveCamera) {
+          if (activePopup) activePopup.remove();
+          activePopup = null;
+          if (navMode) {
+            navMiles = position.miles;
+            if (!scrubPlaying) navVelocity = 0;
+            requestNavFrame();
+            return;
+          }
+          map.jumpTo({
+            center: position.coordinate,
+            zoom: setCameraZoom ? 13.25 : map.getZoom(),
+            bearing: 0,
+            pitch: 0,
+          });
+        }
+      }
+
+      function renderScrubberReadout(fraction, position) {
         const percent = Math.round(fraction * 100);
         trailRange.style.setProperty("--progress", `${percent}%`);
         scrubberDistance.textContent = `${position.miles.toFixed(1)} / ${scrubRoute.totalMiles.toFixed(1)} mi`;
@@ -1702,16 +1891,317 @@
             geometry: { type: "Point", coordinates: position.coordinate },
           });
         }
-        if (moveCamera) {
-          if (activePopup) activePopup.remove();
-          activePopup = null;
-          map.jumpTo({
+        if (navMode) renderNavNext(position.miles);
+      }
+
+      function renderNavNext(miles) {
+        const next = navStops.find((stop) => stop.miles > miles + 0.02);
+        const name = next ? next.name : "Frackville (trail end)";
+        const remaining = (next ? next.miles : scrubRoute.totalMiles) - miles;
+        const text = `${remaining.toFixed(1)} mi`;
+        if (navNext.dataset.text === text + name) return;
+        navNext.dataset.text = text + name;
+        navNext.innerHTML = `Next <b>${text}</b> · ${escapeHtml(name)}`;
+        navNext.title = `Next trailhead: ${name}, ${text}`;
+      }
+
+      function buildNavStops(srg) {
+        navStops = srg.features
+          .filter(
+            (feature) =>
+              feature.properties?.layer === "trailhead" &&
+              feature.geometry?.type === "Point" &&
+              feature.properties?.name,
+          )
+          .map((feature) => ({
+            name: htmlToText(feature.properties.name),
+            ...routeProjection(feature.geometry.coordinates),
+          }))
+          .filter((stop) => stop.gap <= NAV_STOP_MAX_GAP_MILES)
+          .sort((first, second) => first.miles - second.miles);
+      }
+
+      function routeBearingAt(miles) {
+        const total = scrubRoute.totalMiles;
+        // Look further ahead when zoomed out so small bends don't spin the map.
+        const aheadSpan = Math.max(0.15, 110 * navMilesPerPixel());
+        const behindSpan = aheadSpan * 0.2;
+        const span = aheadSpan + behindSpan;
+        let behind = miles - behindSpan;
+        let ahead = miles + aheadSpan;
+        // Near either end, keep the window full length by sliding it inward.
+        if (behind < 0) {
+          behind = 0;
+          ahead = Math.min(total, span);
+        } else if (ahead > total) {
+          ahead = total;
+          behind = Math.max(0, total - span);
+        }
+        const [x1, y1] = scrubPosition(behind / total).coordinate;
+        const [x2, y2] = scrubPosition(ahead / total).coordinate;
+        const dx = (x2 - x1) * Math.cos(((y1 + y2) / 2) * Math.PI / 180);
+        const dy = y2 - y1;
+        if (!dx && !dy) return navBearing ?? 0;
+        return (Math.atan2(dx, dy) * 180) / Math.PI;
+      }
+
+      function navMilesPerPixel() {
+        const latitude = map.getCenter().lat * Math.PI / 180;
+        const metersPerPixel = (40075016.686 * Math.cos(latitude)) / (512 * 2 ** map.getZoom());
+        // Near the focal point, a vertical screen pixel spans more ground when pitched.
+        return metersPerPixel / Math.cos((map.getPitch() * Math.PI) / 180) / 1609.344;
+      }
+
+      function navPadding() {
+        const height = map.getContainer().clientHeight;
+        const bottom = Math.min(trailScrubber.offsetHeight, height * 0.5);
+        // Put the dot ~72% of the way down the visible map so you see what's ahead.
+        return { top: Math.max(0, 0.44 * (height - bottom)), bottom, left: 0, right: 0 };
+      }
+
+      function requestNavFrame() {
+        if (!navMode || navFrame) return;
+        navFrame = requestAnimationFrame(navStep);
+      }
+
+      function navStep(timestamp) {
+        navFrame = null;
+        if (!navMode || !scrubRoute) return;
+        // Let the enter-nav camera animation finish unless the user takes over.
+        if (navEntering && !navDrag) return;
+        navEntering = false;
+        const elapsed = navLastTimestamp === null ? 16 : Math.min(64, timestamp - navLastTimestamp);
+        navLastTimestamp = timestamp;
+        const total = scrubRoute.totalMiles;
+
+        if (!navDrag && navVelocity) {
+          navMiles += navVelocity * elapsed;
+          navVelocity *= Math.exp(-elapsed / NAV_MOMENTUM_DECAY_MS);
+          if (Math.abs(navVelocity) / navMilesPerPixel() < 0.01) navVelocity = 0;
+        }
+        if (navMiles <= 0 || navMiles >= total) navVelocity = 0;
+        navMiles = Math.max(0, Math.min(total, navMiles));
+
+        const targetBearing = routeBearingAt(navMiles);
+        let bearingGap = 0;
+        if (navBearing === null) {
+          navBearing = targetBearing;
+        } else {
+          bearingGap = ((targetBearing - navBearing + 540) % 360) - 180;
+          navBearing += bearingGap * (1 - Math.exp(-elapsed / NAV_BEARING_SMOOTHING_MS));
+          if (Math.abs(bearingGap) < 0.05) {
+            navBearing = targetBearing;
+            bearingGap = 0;
+          }
+        }
+
+        const cameraEase = 1 - Math.exp(-elapsed / 180);
+        let zoom = map.getZoom();
+        if (navZoomTarget !== null) {
+          zoom += (navZoomTarget - zoom) * cameraEase;
+          if (Math.abs(navZoomTarget - zoom) < 0.01) {
+            zoom = navZoomTarget;
+            navZoomTarget = null;
+          }
+        }
+        navPitch += (navPitchTarget - navPitch) * cameraEase;
+        if (Math.abs(navPitchTarget - navPitch) < 0.1) navPitch = navPitchTarget;
+
+        const fraction = navMiles / total;
+        const position = scrubPosition(fraction);
+        map.jumpTo({ center: position.coordinate, zoom, bearing: navBearing, pitch: navPitch, padding: navPadding() });
+        if (!scrubPlaying && !navSliding) {
+          trailRange.value = String(fraction * Number(trailRange.max));
+          scrubPlaybackValue = Number(trailRange.value);
+        }
+        renderScrubberReadout(fraction, position);
+        if (!navHashTimer) {
+          navHashTimer = setTimeout(() => {
+            navHashTimer = null;
+            if (navMode) updateLocationHash(navMiles / scrubRoute.totalMiles);
+          }, 400);
+        }
+
+        const cameraMoving = navZoomTarget !== null || navPitch !== navPitchTarget;
+        if (navDrag || navVelocity || bearingGap || cameraMoving) navFrame = requestAnimationFrame(navStep);
+        else navLastTimestamp = null;
+      }
+
+      function navPointerDown(event) {
+        if (!navMode || (event.pointerType === "mouse" && event.button !== 0)) return;
+        navPointers.add(event.pointerId);
+        navVelocity = 0;
+        if (navPointers.size === 1) {
+          navDrag = { id: event.pointerId, y: event.clientY, samples: [{ t: event.timeStamp, y: event.clientY }] };
+          if (event.pointerType === "mouse") event.currentTarget.setPointerCapture?.(event.pointerId);
+        } else {
+          // A second finger means pinch-zoom; let MapLibre have it.
+          navDrag = null;
+        }
+      }
+
+      function navPointerMove(event) {
+        if (!navDrag || event.pointerId !== navDrag.id) return;
+        const deltaY = event.clientY - navDrag.y;
+        if (!deltaY) return;
+        navDrag.y = event.clientY;
+        navMiles += deltaY * NAV_DRAG_DIRECTION * navMilesPerPixel();
+        navDrag.samples.push({ t: event.timeStamp, y: event.clientY });
+        while (navDrag.samples.length > 2 && event.timeStamp - navDrag.samples[0].t > 100) navDrag.samples.shift();
+        if (activePopup) activePopup.remove();
+        activePopup = null;
+        requestNavFrame();
+      }
+
+      function navPointerUp(event) {
+        navPointers.delete(event.pointerId);
+        if (!navDrag || event.pointerId !== navDrag.id) return;
+        const { samples } = navDrag;
+        const first = samples[0];
+        const last = samples[samples.length - 1];
+        const span = last.t - first.t;
+        const stale = event.timeStamp - last.t > 100;
+        if (span > 0 && !stale && event.type === "pointerup") {
+          const pixelsPerMs = Math.max(-4, Math.min(4, (last.y - first.y) / span));
+          navVelocity = pixelsPerMs * NAV_DRAG_DIRECTION * navMilesPerPixel();
+        }
+        navDrag = null;
+        requestNavFrame();
+      }
+
+      function navWheel(event) {
+        if (!navMode) return;
+        event.preventDefault();
+        const pixels = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1);
+        if (event.ctrlKey) {
+          // Trackpad pinch arrives as ctrl+wheel.
+          map.setZoom(Math.max(10, Math.min(19, map.getZoom() - pixels * 0.01)));
+        } else {
+          navVelocity = 0;
+          navMiles += pixels * navMilesPerPixel();
+        }
+        requestNavFrame();
+      }
+
+      function navKeydown(event) {
+        if (!navMode || !["ArrowUp", "ArrowDown"].includes(event.key)) return;
+        if (event.target instanceof Element && event.target.closest("input, select, textarea")) return;
+        event.preventDefault();
+        navVelocity = 0;
+        navMiles += event.key === "ArrowUp" ? 0.05 : -0.05;
+        requestNavFrame();
+      }
+
+
+      function setNavMode(enabled) {
+        if (!scrubRoute || enabled === navMode) return;
+        navMode = enabled;
+        document.body.classList.toggle("nav-mode", enabled);
+        syncScrubDotStyle();
+        renderOrientationToggle();
+        navVelocity = 0;
+        navDrag = null;
+        navPointers.clear();
+        if (navFrame) cancelAnimationFrame(navFrame);
+        navFrame = null;
+        navLastTimestamp = null;
+        navSliding = false;
+        navZoomTarget = null;
+        navPitch = navPitchTarget = NAV_PITCH;
+        const fraction = Number(trailRange.value) / Number(trailRange.max);
+        const position = scrubPosition(fraction);
+
+        if (enabled) {
+          map.dragPan.disable();
+          map.dragRotate.disable();
+          map.touchPitch.disable();
+          map.scrollZoom.disable();
+          map.keyboard.disable();
+          map.doubleClickZoom.disable();
+          map.touchZoomRotate.enable({ around: "center" });
+          map.touchZoomRotate.disableRotation();
+          // Collapse MapLibre's expanded attribution so it doesn't cover the road.
+          document.querySelector(".maplibregl-compact-show")?.classList.remove("maplibregl-compact-show");
+          navMiles = position.miles;
+          navBearing = routeBearingAt(navMiles);
+          renderScrubberReadout(fraction, position);
+          navEntering = true;
+          setTimeout(() => {
+            navEntering = false;
+            requestNavFrame();
+          }, 750);
+          map.easeTo({
             center: position.coordinate,
-            zoom: setCameraZoom ? 13.25 : map.getZoom(),
+            zoom: Math.max(map.getZoom(), NAV_ZOOM),
+            bearing: navBearing,
+            pitch: NAV_PITCH,
+            padding: navPadding(),
+            duration: 700,
+          });
+        } else {
+          navEntering = false;
+          map.touchZoomRotate.enable();
+          map.touchZoomRotate.enableRotation();
+          map.dragPan.enable();
+          map.dragRotate.enable();
+          map.touchPitch.enable();
+          map.scrollZoom.enable();
+          map.keyboard.enable();
+          map.doubleClickZoom.enable();
+          updateTrailScrubber(fraction, false);
+          map.easeTo({
+            center: position.coordinate,
             bearing: 0,
             pitch: 0,
+            padding: { top: 0, bottom: 0, left: 0, right: 0 },
+            duration: 600,
           });
         }
+      }
+
+      function navSliderStart() {
+        if (!navMode || navSliding) return;
+        navSliding = true;
+        navRestoreZoom = navZoomTarget ?? map.getZoom();
+        navZoomTarget = Math.min(navRestoreZoom, NAV_SLIDER_ZOOM);
+        navPitchTarget = NAV_SLIDER_PITCH;
+        requestNavFrame();
+      }
+
+      function navSliderEnd() {
+        if (!navSliding) return;
+        navSliding = false;
+        if (!navMode) return;
+        navZoomTarget = navRestoreZoom;
+        navPitchTarget = NAV_PITCH;
+        requestNavFrame();
+      }
+
+      function wireNavMode(srg) {
+        trailRange.addEventListener("pointerdown", navSliderStart);
+        trailRange.addEventListener("touchstart", navSliderStart, { passive: true });
+        for (const type of ["pointerup", "pointercancel", "touchend", "touchcancel"]) {
+          window.addEventListener(type, navSliderEnd);
+        }
+        trailRange.addEventListener("change", navSliderEnd);
+        buildNavStops(srg);
+        const container = map.getCanvasContainer();
+        container.addEventListener("pointerdown", navPointerDown);
+        container.addEventListener("pointermove", navPointerMove);
+        container.addEventListener("pointerup", navPointerUp);
+        container.addEventListener("pointercancel", navPointerUp);
+        container.addEventListener("wheel", navWheel, { passive: false });
+        document.addEventListener("keydown", navKeydown);
+        map.on("zoomend", requestNavFrame);
+        window.addEventListener("resize", requestNavFrame);
+        new ResizeObserver(() => {
+          document.documentElement.style.setProperty("--scrubber-height", `${trailScrubber.offsetHeight}px`);
+          requestNavFrame();
+        }).observe(trailScrubber);
+        navToggle.disabled = false;
+        navToggle.addEventListener("click", () => setNavMode(!navMode));
+        // Touch-first devices (phones, tablets) start heading-up; mouse/trackpad starts north-up.
+        if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) setNavMode(true);
       }
 
       function setScrubPlaybackUi(playing) {
@@ -1735,7 +2225,8 @@
         const elapsed = timestamp - scrubPlaybackTimestamp;
         scrubPlaybackTimestamp = timestamp;
         const max = Number(trailRange.max);
-        scrubPlaybackValue = Math.min(max, scrubPlaybackValue + elapsed * max / SCRUB_PLAYBACK_DURATION);
+        const duration = navMode ? NAV_PLAYBACK_DURATION : SCRUB_PLAYBACK_DURATION;
+        scrubPlaybackValue = Math.min(max, scrubPlaybackValue + elapsed * max / duration);
         trailRange.value = String(scrubPlaybackValue);
         const fraction = scrubPlaybackValue / max;
         updateLocationHash(fraction);
@@ -2108,6 +2599,16 @@
 
         addTrailScrubberMarker();
         map.moveLayer("srg-trailhead-labels");
+        syncScrubDotStyle();
+      }
+
+      // In nav mode the position dot is the focus, so draw it a bit larger.
+      // Trailhead callouts always stay above it.
+      function syncScrubDotStyle() {
+        if (!map.getLayer("trail-scrub-position")) return;
+        map.setPaintProperty("trail-scrub-position-halo", "circle-radius", navMode ? 14 : 11);
+        map.setPaintProperty("trail-scrub-position", "circle-radius", navMode ? 8.5 : 6);
+        map.setPaintProperty("trail-scrub-position", "circle-stroke-width", navMode ? 2.5 : 1.5);
       }
 
       function buildFolderControls(containerId, dataName, folders, folderIndex, improvements) {
@@ -2446,6 +2947,7 @@
             wireBasemapSelector();
             fitGeojsons([srgData, srgMeasurements, srg, osm, google, improvements, improvements2026]);
             wireTrailScrubber(srg);
+            if (scrubRoute) wireNavMode(srg);
             addPopups();
           };
 
