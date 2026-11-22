@@ -476,6 +476,30 @@
         border-top: 1px solid var(--rule);
       }
 
+      .route-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        min-width: 0;
+      }
+
+      .route-controls label { font-size: 13px; }
+      .route-controls select, .route-controls button {
+        min-height: 44px;
+        min-width: 0;
+        padding: 8px 12px;
+        border: 1px solid var(--rule);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        font-size: 16px;
+        touch-action: manipulation;
+      }
+      .route-controls select { flex: 1; max-width: 220px; }
+      .route-controls button { white-space: nowrap; }
+
       .scrubber-control {
         min-width: 0;
       }
@@ -921,7 +945,7 @@
         <label>
           <input type="checkbox" data-layer-toggle="srg-trailheads" checked />
           <span class="swatch point" style="background: #074a67"></span>
-          <span>Trailheads</span>
+          <span id="access-layer-label">Trailheads</span>
           <span class="count" id="count-srg-trailheads"></span>
         </label>
         <label>
@@ -1025,6 +1049,11 @@
 
     <footer class="trail-scrubber" aria-label="Explore the trail from source to end">
       <div class="scrubber-control">
+        <div class="route-controls">
+          <label for="track-selector">Track</label>
+          <select id="track-selector" disabled><option value="srt">SRT</option><option value="srwt">SRWT · River</option></select>
+          <button id="reverse-direction" type="button" title="Reverse travel direction" aria-label="Traveling upriver. Reverse to downriver." disabled>↑ Upriver</button>
+        </div>
         <div class="scrubber-track">
           <div class="scrubber-stops" id="scrubber-stops" aria-label="Trail towns"></div>
           <input
@@ -1316,6 +1345,9 @@
       let activePopup = null;
       let overlays = null;
       let scrubRoute = null;
+      let travelDirection = 1;
+      let activeTrack = new URLSearchParams(location.search).get("track") === "srwt" ? "srwt" : "srt";
+      const trackRoutes = {};
       let scrubFrame = null;
       let scrubPlaybackFrame = null;
       let scrubPlaybackTimestamp = null;
@@ -1586,10 +1618,10 @@
         return context.getImageData(0, 0, canvas.width, canvas.height);
       }
 
-      function registerTrailheadLabelImages(srg) {
+      function registerTrailheadLabelImages(srg, prefix = "trailhead") {
         srg.features.forEach((feature, index) => {
           if (feature.properties?.layer !== "trailhead" || feature.geometry?.type !== "Point") return;
-          const imageId = `trailhead-label-${feature.properties.source_post_id || index}`;
+          const imageId = `${prefix}-label-${feature.properties.source_post_id || feature.properties.srg_id || index}`;
           feature.properties.trailhead_label_image = imageId;
           if (map.hasImage(imageId)) return;
           const amenities = parseInfoWindow(feature.properties.infowindow_html)?.amenities || [];
@@ -1727,7 +1759,7 @@
       }
 
       function prepareScrubRoute(geojson) {
-        const feature = geojson.features?.[0];
+        const feature = geojson.features?.find((item) => item.geometry?.type === "LineString");
         const coordinates = [...(feature?.geometry?.coordinates || [])];
         if (coordinates.length < 2) return null;
         let cumulative = feature?.properties?.cumulative_miles;
@@ -1789,7 +1821,7 @@
         scrubberStops.innerHTML = "";
         const stops = [
           { name: "Philadelphia", fraction: 0, endpoint: "start" },
-          { name: "Frackville", fraction: 1, endpoint: "end" },
+          { name: activeTrack === "srwt" ? "River source" : "Frackville", fraction: 1, endpoint: "end" },
         ];
         for (const name of ["Manayunk", "Phoenixville", "Pottstown", "Reading", "Hamburg", "Pottsville"]) {
           const town = srg.features.find(
@@ -1905,14 +1937,17 @@
       }
 
       function renderNavNext(miles) {
-        const next = navStops.find((stop) => stop.miles > miles + 0.02);
-        const name = next ? next.name : "Frackville (trail end)";
-        const remaining = (next ? next.miles : scrubRoute.totalMiles) - miles;
+        const stops = travelDirection === 1 ? navStops : [...navStops].reverse();
+        const next = stops.find((stop) => (stop.miles - miles) * travelDirection > 0.02);
+        const endpoint = travelDirection === 1 ? scrubRoute.totalMiles : 0;
+        const endName = travelDirection === -1 ? "Philadelphia" : activeTrack === "srwt" ? "River source" : "Frackville";
+        const name = next ? next.name : endName + " (route end)";
+        const remaining = Math.abs((next ? next.miles : endpoint) - miles);
         const text = `${remaining.toFixed(1)} mi`;
         if (navNext.dataset.text === text + name) return;
         navNext.dataset.text = text + name;
         navNext.innerHTML = `Next <b>${text}</b> · ${escapeHtml(name)}`;
-        navNext.title = `Next trailhead: ${name}, ${text}`;
+        navNext.title = `Next ${activeTrack === "srwt" ? "river access" : "trailhead"}: ${name}, ${text}`;
       }
 
       function buildNavStops(srg) {
@@ -1952,7 +1987,7 @@
         const dx = (x2 - x1) * Math.cos(((y1 + y2) / 2) * Math.PI / 180);
         const dy = y2 - y1;
         if (!dx && !dy) return navBearing ?? 0;
-        return (Math.atan2(dx, dy) * 180) / Math.PI;
+        return (Math.atan2(dx, dy) * 180) / Math.PI + (travelDirection === -1 ? 180 : 0);
       }
 
       function navMilesPerPixel() {
@@ -2055,7 +2090,7 @@
         const deltaY = event.clientY - navDrag.y;
         if (!deltaY) return;
         navDrag.y = event.clientY;
-        navMiles += deltaY * NAV_DRAG_DIRECTION * navMilesPerPixel();
+        navMiles += deltaY * NAV_DRAG_DIRECTION * travelDirection * navMilesPerPixel();
         navDrag.samples.push({ t: event.timeStamp, y: event.clientY });
         while (navDrag.samples.length > 2 && event.timeStamp - navDrag.samples[0].t > 100) navDrag.samples.shift();
         if (activePopup) activePopup.remove();
@@ -2073,7 +2108,7 @@
         const stale = event.timeStamp - last.t > 100;
         if (span > 0 && !stale && event.type === "pointerup") {
           const pixelsPerMs = Math.max(-4, Math.min(4, (last.y - first.y) / span));
-          navVelocity = pixelsPerMs * NAV_DRAG_DIRECTION * navMilesPerPixel();
+          navVelocity = pixelsPerMs * NAV_DRAG_DIRECTION * travelDirection * navMilesPerPixel();
         }
         navDrag = null;
         requestNavFrame();
@@ -2088,7 +2123,7 @@
           map.setZoom(Math.max(10, Math.min(19, map.getZoom() - pixels * 0.01)));
         } else {
           navVelocity = 0;
-          navMiles += pixels * navMilesPerPixel();
+          navMiles += pixels * travelDirection * navMilesPerPixel();
         }
         requestNavFrame();
       }
@@ -2098,7 +2133,7 @@
         if (event.target instanceof Element && event.target.closest("input, select, textarea")) return;
         event.preventDefault();
         navVelocity = 0;
-        navMiles += event.key === "ArrowUp" ? 0.05 : -0.05;
+        navMiles += (event.key === "ArrowUp" ? 0.05 : -0.05) * travelDirection;
         requestNavFrame();
       }
 
@@ -2236,12 +2271,12 @@
         scrubPlaybackTimestamp = timestamp;
         const max = Number(trailRange.max);
         const duration = navMode ? NAV_PLAYBACK_DURATION : SCRUB_PLAYBACK_DURATION;
-        scrubPlaybackValue = Math.min(max, scrubPlaybackValue + elapsed * max / duration);
+        scrubPlaybackValue = Math.max(0, Math.min(max, scrubPlaybackValue + travelDirection * elapsed * max / duration));
         trailRange.value = String(scrubPlaybackValue);
         const fraction = scrubPlaybackValue / max;
         updateLocationHash(fraction);
         updateTrailScrubber(fraction, true, false);
-        if (scrubPlaybackValue >= max) {
+        if ((travelDirection === 1 && scrubPlaybackValue >= max) || (travelDirection === -1 && scrubPlaybackValue <= 0)) {
           pauseTrailPlayback();
           return;
         }
@@ -2251,9 +2286,9 @@
       function playTrailPlayback() {
         if (scrubPlaying || !scrubRoute) return;
         const max = Number(trailRange.max);
-        if (Number(trailRange.value) >= max) {
-          scrubPlaybackValue = 0;
-          trailRange.value = "0";
+        if ((travelDirection === 1 && Number(trailRange.value) >= max) || (travelDirection === -1 && Number(trailRange.value) <= 0)) {
+          scrubPlaybackValue = travelDirection === 1 ? 0 : max;
+          trailRange.value = String(scrubPlaybackValue);
         } else {
           scrubPlaybackValue = Number(trailRange.value);
         }
@@ -2765,6 +2800,10 @@
       }
 
       function setVisibility(toggleName, visible) {
+        if (toggleName === "srg-trailheads") {
+          syncRiverVisibility();
+          return;
+        }
         for (const layerId of layerGroups[toggleName] || []) {
           if (map.getLayer(layerId)) {
             map.setLayoutProperty(layerId, "visibility", visible ? "visible" : "none");
@@ -2850,7 +2889,100 @@
           return;
         }
         addLayers(overlays.srgData, overlays.srgMeasurements, overlays.srg, overlays.osm, overlays.google, overlays.improvements, overlays.improvements2026);
+        registerTrailheadLabelImages(overlays.srwt, "srwt");
+        map.addSource("srwt", { type: "geojson", data: overlays.srwt });
+        map.addLayer({
+          id: "srwt-route", type: "line", source: "srwt",
+          filter: ["==", ["geometry-type"], "LineString"],
+          paint: { "line-color": "#007fa3", "line-width": 4 },
+        }, "srg-trailheads");
+        map.addLayer({
+          id: "srwt-access", type: "circle", source: "srwt",
+          filter: ["==", ["geometry-type"], "Point"],
+          paint: { "circle-radius": 7, "circle-color": ["case", ["==", ["get", "kind"], "river_access"], "#007fa3", "#d66a16"], "circle-stroke-color": "#fff", "circle-stroke-width": 2 },
+        });
+        map.addLayer({
+          id: "srwt-labels", type: "symbol", source: "srwt",
+          filter: ["==", ["geometry-type"], "Point"],
+          minzoom: 8,
+          layout: {
+            "icon-image": ["get", "trailhead_label_image"],
+            "icon-anchor": "bottom",
+            "icon-offset": [0, -TRAILHEAD_LABEL_OFFSET],
+            "icon-pitch-alignment": "viewport",
+            "icon-rotation-alignment": "viewport",
+            "icon-padding": 4,
+            "icon-allow-overlap": false,
+            "icon-ignore-placement": false,
+          },
+          paint: { "icon-opacity": 0.9 },
+        });
+        syncRiverVisibility();
         syncLayerVisibilityFromControls();
+      }
+
+      function syncRiverVisibility() {
+        const river = activeTrack === "srwt";
+        const showAccess = document.querySelector('[data-layer-toggle="srg-trailheads"]').checked;
+        const visibility = {
+          "srwt-route": river,
+          "srwt-access": river && showAccess,
+          "srwt-labels": river && showAccess,
+          "srg-trailheads": !river && showAccess,
+          "srg-trailhead-labels": !river && showAccess,
+        };
+        for (const [id, visible] of Object.entries(visibility)) {
+          if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", visible ? "visible" : "none");
+        }
+        document.getElementById("access-layer-label").textContent = river ? "River access & portages" : "Trailheads";
+        if (overlays) setCount("count-srg-trailheads", countFeatures(river ? overlays.srwt : overlays.srg, (f) => f.properties.layer === "trailhead"));
+      }
+
+      function wireTrackSelector() {
+        const selector = document.getElementById("track-selector");
+        selector.disabled = false;
+        selector.value = activeTrack;
+        const reverse = document.getElementById("reverse-direction");
+        reverse.disabled = false;
+        reverse.addEventListener("click", () => {
+          travelDirection *= -1;
+          navVelocity = 0;
+          reverse.textContent = travelDirection === 1 ? "↑ Upriver" : "↓ Downriver";
+          reverse.setAttribute("aria-label", travelDirection === 1 ? "Traveling upriver. Reverse to downriver." : "Traveling downriver. Reverse to upriver.");
+          if (navMode) {
+            renderNavNext(navMiles);
+            requestNavFrame();
+          }
+        });
+        selector.addEventListener("change", () => {
+          pauseTrailPlayback();
+          activeTrack = selector.value;
+          const url = new URL(location.href);
+          url.searchParams.set("track", activeTrack);
+          history.replaceState(null, "", url);
+          scrubRoute = trackRoutes[activeTrack];
+          navVelocity = 0;
+          navMiles = 0;
+          scrubPlaybackHasStarted = false;
+          trailRange.value = "0";
+          trailRange.setAttribute("aria-label", activeTrack === "srwt" ? "River position from Philadelphia to the river source" : "Trail position from Philadelphia to Frackville");
+          buildScrubberStops(overlays.srg);
+          buildNavStops(activeTrack === "srwt" ? overlays.srwt : overlays.srg);
+          syncRiverVisibility();
+          updateLocationHash(0);
+          updateTrailScrubber(0, true);
+        });
+        map.on("click", ["srwt-access", "srwt-labels"], (event) => {
+          const feature = event.features[0];
+          const content = document.createElement("div");
+          const title = document.createElement("strong");
+          title.textContent = feature.properties.name;
+          const description = document.createElement("p");
+          description.textContent = htmlToText(feature.properties.description || "");
+          content.append(title, description);
+          if (activePopup) activePopup.remove();
+          activePopup = new maplibregl.Popup().setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(map);
+        });
       }
 
       function wireBasemapSelector() {
@@ -2921,7 +3053,7 @@
         setCount("count-srg-active-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "active" && f.properties.alignment === "on_road"));
         setCount("count-srg-proposed-off-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "off_road"));
         setCount("count-srg-proposed-on-road", countFeatures(srg, (f) => f.properties.layer === "trail" && f.properties.status === "proposed" && f.properties.alignment === "on_road"));
-        setCount("count-srg-trailheads", countFeatures(srg, (f) => f.properties.layer === "trailhead"));
+        setCount("count-srg-trailheads", countFeatures(activeTrack === "srwt" ? overlays.srwt : srg, (f) => f.properties.layer === "trailhead"));
         setCount("count-srg-towns", countFeatures(srg, (f) => f.properties.layer === "town"));
         setCount("count-srg-places", countFeatures(srg, (f) => f.properties.layer === "places_to_visit"));
         setCount("count-osm-srt", osm.features.length);
@@ -2930,7 +3062,7 @@
 
       async function init() {
         try {
-          const [srgData, srgMeasurements, rawSrg, osm, google, improvements, improvements2026, scrubRouteGeojson] = await Promise.all([
+          const [srgData, srgMeasurements, rawSrg, osm, google, improvements, improvements2026, scrubRouteGeojson, srwt] = await Promise.all([
             loadGeojson(DATASETS.srgData),
             loadGeojson(DATASETS.srgMeasurements),
             loadGeojson(DATASETS.srg),
@@ -2939,11 +3071,15 @@
             loadGeojson(DATASETS.improvements),
             loadGeojson(DATASETS.improvements2026),
             loadGeojson(DATASETS.scrubRoute),
+            loadGeojson("data/srwt.geojson"),
           ]);
           await loadAmenityIconImages();
           const srg = withoutExcludedSrgFeatures(rawSrg);
           scrubRoute = prepareScrubRoute(scrubRouteGeojson);
-          overlays = { srgData, srgMeasurements, srg, osm, google, improvements, improvements2026 };
+          trackRoutes.srt = scrubRoute;
+          trackRoutes.srwt = prepareScrubRoute(srwt);
+          scrubRoute = trackRoutes[activeTrack];
+          overlays = { srwt, srgData, srgMeasurements, srg, osm, google, improvements, improvements2026 };
 
           const render = () => {
             const folders2025 = folderControlConfig(improvements);
@@ -2957,7 +3093,8 @@
             wireBasemapSelector();
             fitGeojsons([srgData, srgMeasurements, srg, osm, google, improvements, improvements2026]);
             wireTrailScrubber(srg);
-            if (scrubRoute) wireNavMode(srg);
+            wireTrackSelector();
+            if (scrubRoute) wireNavMode(activeTrack === "srwt" ? srwt : srg);
             addPopups();
           };
 
